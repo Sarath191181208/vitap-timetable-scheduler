@@ -4,6 +4,7 @@ import "./App.css";
 import { time_table, time_arr } from "./data/time_table";
 import { pick_slot } from "./pick_slot";
 import { subSlotDict, options } from "./data/sub_slot_data";
+import { is_same_slot } from "./data/time_table";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -31,6 +32,25 @@ function getSubjectColorDict(subjectNameArr) {
   return subjectColorDict;
 }
 
+function findCommonSlot(subTimeSlotArr, subSlotArr) {
+  for (const timeSlot of subTimeSlotArr) {
+    for (const subSlot of subSlotArr) {
+      if (is_same_slot(timeSlot, subSlot)) {
+        return subSlot;
+      }
+    }
+  }
+}
+
+function getActualSlotDict(subTimeSlotDict, subjectSlotDict) {
+  const actualSlotDict = {};
+  for (const [subName, subTimeSlotArr] of Object.entries(subTimeSlotDict)) {
+    const actualSlot = findCommonSlot(subTimeSlotArr, subjectSlotDict[subName]);
+    actualSlotDict[subName] = actualSlot;
+  }
+  return actualSlotDict;
+}
+
 function App() {
   const [selecedSubjectsList, setSelecedSubjectsList] = useState([]);
   const [timeTable, setTimetable] = useState({});
@@ -48,18 +68,20 @@ function App() {
     for (const subjectOptions of selecedSubjectsList) {
       const { value: subName } = subjectOptions;
       if (!(subName in pickedSubSlotDict))
-        _subIsSlotTakenDict[subName] = new Array(subSlotDict[subName].length).fill(1); 
+        _subIsSlotTakenDict[subName] = new Array(
+          subSlotDict[subName].length
+        ).fill(1);
       else _subIsSlotTakenDict[subName] = pickedSubSlotDict[subName];
     }
     setPickedSubSlotDict(_subIsSlotTakenDict);
     return _subIsSlotTakenDict;
-  }
+  };
 
   const onSelectBoxChange = (_pickedSubSlotDict) => {
-      console.log("onSelectBoxChange: ")
-      setPickedSubSlotDict(_pickedSubSlotDict);
-      submitSubjects(selecedSubjectsList, _pickedSubSlotDict);
-    };
+    console.log("onSelectBoxChange: ");
+    setPickedSubSlotDict(_pickedSubSlotDict);
+    submitSubjects(selecedSubjectsList, _pickedSubSlotDict);
+  };
 
   const submitSubjects = (selecedSubjectsList, _pickedSubSlotDict) => {
     if (selecedSubjectsList.length === 0) {
@@ -72,7 +94,10 @@ function App() {
     );
 
     const tt = {};
-    const maskedSubSlotDict = getMaskedSubSlotDict(_pickedSubSlotDict , subSlotDict);
+    const maskedSubSlotDict = getMaskedSubSlotDict(
+      _pickedSubSlotDict,
+      subSlotDict
+    );
     const isTrue = pick_slot(selectedSubjects, tt, maskedSubSlotDict);
     if (isTrue) {
       setTimetable(tt);
@@ -109,10 +134,13 @@ function App() {
         </div>
       ) : (
         <div className="time-table-container">
-          <TimeTable subSlotDict={timeTable} />
+          <TimeTable subTimeSlotDict={timeTable} />
         </div>
       )}
-      <SubjectCheckBoxes pickedSubSlotDict={ pickedSubSlotDict } onChange={ onSelectBoxChange } />
+      <SubjectCheckBoxes
+        pickedSubSlotDict={pickedSubSlotDict}
+        onChange={onSelectBoxChange}
+      />
     </>
   );
 }
@@ -121,12 +149,18 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
   const temp_arr = [];
   const subjectNameArr = Object.keys(pickedSubSlotDict);
   const subjectColorDict = getSubjectColorDict(subjectNameArr);
-  for (const [subName, isSlotTakenBoolenArray] of Object.entries(pickedSubSlotDict)) {
+  for (const [subName, isSlotTakenBoolenArray] of Object.entries(
+    pickedSubSlotDict
+  )) {
     temp_arr.push(
       <div className="subject-checkbox" key={subName}>
-        <h3 style={{
-          "--data-pre-color": `#${subjectColorDict[subName]}`,
-        }}>{subName}</h3>
+        <h3
+          style={{
+            "--data-pre-color": `#${subjectColorDict[subName]}`,
+          }}
+        >
+          {subName}
+        </h3>
         {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
           <>
             <input
@@ -138,7 +172,10 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
                 const { checked } = e.target;
                 const placeHolder = [...isSlotTakenBoolenArray];
                 placeHolder[i] = checked;
-                const newDict = { ...pickedSubSlotDict, [subName]: placeHolder };
+                const newDict = {
+                  ...pickedSubSlotDict,
+                  [subName]: placeHolder,
+                };
                 onChange(newDict);
               }}
             />
@@ -152,17 +189,18 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
   return <div className="subject-checkboxes">{temp_arr}</div>;
 }
 
-function TimeTable({ subSlotDict }) {
+function TimeTable({ subTimeSlotDict }) {
   const slotSubjectDict = {};
-  for (const [key, value] of Object.entries(subSlotDict)) {
+  for (const [subName, timeSlots] of Object.entries(subTimeSlotDict)) {
     // iterate the value arr
-    for (const slot of value) {
-      slotSubjectDict[slot] = key;
+    for (const tSlot of timeSlots) {
+      slotSubjectDict[tSlot] = subName;
     }
   }
-  
-  const subjectNameArr = Object.keys(subSlotDict);
+
+  const subjectNameArr = Object.keys(subTimeSlotDict);
   const subjectColorDict = getSubjectColorDict(subjectNameArr);
+  const actualSlotDict = getActualSlotDict(subTimeSlotDict, subSlotDict);
 
   const rows = [];
 
@@ -197,7 +235,10 @@ function TimeTable({ subSlotDict }) {
           <tbody>{rows}</tbody>
         </table>
       </div>
-      <ColorDict subjectColorDict={subjectColorDict} />
+      <ColorDict
+        subjectColorDict={subjectColorDict}
+        actualSlotDict={actualSlotDict}
+      />
     </>
   );
 }
@@ -215,12 +256,14 @@ function TableHead() {
   );
 }
 
-function ColorDict({ subjectColorDict }) {
+function ColorDict({ subjectColorDict, actualSlotDict }) {
   const rows = [];
+
   for (const [key, value] of Object.entries(subjectColorDict)) {
     rows.push(
       <div className="subject-block" style={{ backgroundColor: `#${value}` }}>
         {key}
+        <span className="slot">{" "+actualSlotDict[key]}</span>
       </div>
     );
   }

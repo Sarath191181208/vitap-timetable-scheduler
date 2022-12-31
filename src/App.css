@@ -86,9 +86,11 @@
 
 .subject-block{
   display: block;
+  /* position: relative; */
   padding: 0.5rem;
   border-radius: 4px;
   border: 1px solid #ccc;
+  font-size: small;
 }
 
 .subject-checkbox h3{

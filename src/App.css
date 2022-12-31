@@ -90,3 +90,20 @@
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
+.subject-checkbox h3{
+  position: relative;
+  padding-left: 35px;
+}
+.subject-checkbox h3::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--data-pre-color);
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-left: -35px;
+  border-radius: 4px;
+}

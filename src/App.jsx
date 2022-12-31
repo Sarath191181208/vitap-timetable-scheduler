@@ -18,6 +18,19 @@ function getMaskedSubSlotDict(subjectMaskDict, subSlotDict) {
   return maskedSubSlotDict;
 }
 
+function getSubjectColorDict(subjectNameArr) {
+  const subjectColorDict = {};
+  for (const subj of subjectNameArr) {
+    let clr = localStorage.getItem(subj);
+    if (clr == null) {
+      clr = Math.floor(Math.random() * 16777215).toString(16);
+      localStorage.setItem(subj, clr);
+    }
+    subjectColorDict[subj] = clr;
+  }
+  return subjectColorDict;
+}
+
 function App() {
   const [selecedSubjectsList, setSelecedSubjectsList] = useState([]);
   const [timeTable, setTimetable] = useState({});
@@ -106,10 +119,14 @@ function App() {
 
 function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
   const temp_arr = [];
+  const subjectNameArr = Object.keys(pickedSubSlotDict);
+  const subjectColorDict = getSubjectColorDict(subjectNameArr);
   for (const [subName, isSlotTakenBoolenArray] of Object.entries(pickedSubSlotDict)) {
     temp_arr.push(
       <div className="subject-checkbox" key={subName}>
-        <h3>{subName}</h3>
+        <h3 style={{
+          "--data-pre-color": `#${subjectColorDict[subName]}`,
+        }}>{subName}</h3>
         {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
           <>
             <input
@@ -143,16 +160,9 @@ function TimeTable({ subSlotDict }) {
       slotSubjectDict[slot] = key;
     }
   }
-
-  const subjectColorDict = {};
-  for (const [subj, value] of Object.entries(subSlotDict)) {
-    let clr = localStorage.getItem(subj);
-    if (clr == null) {
-      clr = Math.floor(Math.random() * 16777215).toString(16);
-      localStorage.setItem(subj, clr);
-    }
-    subjectColorDict[subj] = clr;
-  }
+  
+  const subjectNameArr = Object.keys(subSlotDict);
+  const subjectColorDict = getSubjectColorDict(subjectNameArr);
 
   const rows = [];
 

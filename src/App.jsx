@@ -55,15 +55,36 @@ function App() {
   const [selecedSubjectsList, setSelecedSubjectsList] = useState([]);
   const [timeTable, setTimetable] = useState({});
   const [pickedSubSlotDict, setPickedSubSlotDict] = useState({});
+  const [blockedTimeSlots, setBlockedTimeSlots] = useState([]);
 
   const onSubjectSelectChange = (e) => {
     setSelecedSubjectsList(e);
     if (e.length === 0) return;
-    const newPickedSubSlotDict = updateSubSlotTaken(e);
+    const newPickedSubSlotDict = updateSubSlotTaken(e, blockedTimeSlots);
     submitSubjects(e, newPickedSubSlotDict);
   };
 
-  const updateSubSlotTaken = (selecedSubjectsList) => {
+  function markBlockedTimeSlotsInplace(
+    subIsSlotTakenDict,
+    _blockedTimeSlots,
+    value = 0
+  ) {
+    console.log("Blocked time slots", _blockedTimeSlots);
+    for (const [subjName, isSubSlotTakenArr] of Object.entries(
+      subIsSlotTakenDict
+    )) {
+      for (const [i, isSubSlotTaken] of isSubSlotTakenArr.entries()) {
+        const subSlot = subSlotDict[subjName][i];
+        for (const blockedTimeSlot of _blockedTimeSlots) {
+          if (is_same_slot(subSlot, blockedTimeSlot)) {
+            subIsSlotTakenDict[subjName][i] = value;
+          }
+        }
+      }
+    }
+  }
+
+  const updateSubSlotTaken = (selecedSubjectsList, _blockedTimeSlots) => {
     const _subIsSlotTakenDict = {};
     for (const subjectOptions of selecedSubjectsList) {
       const { value: subName } = subjectOptions;
@@ -73,13 +94,16 @@ function App() {
         ).fill(1);
       else _subIsSlotTakenDict[subName] = pickedSubSlotDict[subName];
     }
+
+    markBlockedTimeSlotsInplace(_subIsSlotTakenDict, _blockedTimeSlots);
+
     setPickedSubSlotDict(_subIsSlotTakenDict);
     return _subIsSlotTakenDict;
   };
 
   const onSelectBoxChange = (_pickedSubSlotDict) => {
-    console.log("onSelectBoxChange: ");
     setPickedSubSlotDict(_pickedSubSlotDict);
+    markBlockedTimeSlotsInplace(_pickedSubSlotDict, blockedTimeSlots);
     submitSubjects(selecedSubjectsList, _pickedSubSlotDict);
   };
 
@@ -98,6 +122,7 @@ function App() {
       _pickedSubSlotDict,
       subSlotDict
     );
+
     const isTrue = pick_slot(selectedSubjects, tt, maskedSubSlotDict);
     if (isTrue) {
       setTimetable(tt);
@@ -134,7 +159,34 @@ function App() {
         </div>
       ) : (
         <div className="time-table-container">
-          <TimeTable subTimeSlotDict={timeTable} />
+          <TimeTable
+            subTimeSlotDict={timeTable}
+            onSlotTap={(timeSlot) => {
+              let newBlockedTimeSlots = [];
+              let isBlockedTimeSlotRemoved = false;
+              if (blockedTimeSlots.includes(timeSlot)) {
+                isBlockedTimeSlotRemoved = true;
+                const index = blockedTimeSlots.indexOf(timeSlot);
+                newBlockedTimeSlots = blockedTimeSlots.slice();
+                newBlockedTimeSlots.splice(index, 1); // remove 1 item starting from index
+              } else {
+                newBlockedTimeSlots = [...blockedTimeSlots, timeSlot];
+              }
+
+              setBlockedTimeSlots(newBlockedTimeSlots);
+              const newPickedSubSlotDict = updateSubSlotTaken(
+                selecedSubjectsList,
+                newBlockedTimeSlots
+              );
+              if (isBlockedTimeSlotRemoved) {
+                markBlockedTimeSlotsInplace(newPickedSubSlotDict, [timeSlot], 1);
+                console.log("removed slot" , timeSlot)
+              }
+              setPickedSubSlotDict(newPickedSubSlotDict);
+              submitSubjects(selecedSubjectsList, newPickedSubSlotDict);
+            }}
+            blockedTimeSlots={blockedTimeSlots}
+          />
         </div>
       )}
       <SubjectCheckBoxes
@@ -183,8 +235,11 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
             }
           }> Remove All </button> */}
         </h3>
-        <input type="checkbox" name="select-all-checkbox" id={subName} onChange={
-          (e) => {
+        <input
+          type="checkbox"
+          name="select-all-checkbox"
+          id={subName}
+          onChange={(e) => {
             const { checked } = e.target;
             const placeHolder = [...isSlotTakenBoolenArray];
             placeHolder.fill(checked);
@@ -193,9 +248,8 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
               [subName]: placeHolder,
             };
             onChange(newDict);
-          }
-        }
-        checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
+          }}
+          checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
         />
         <label htmlFor={subName}>Select All</label>
         {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
@@ -226,7 +280,7 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
   return <div className="subject-checkboxes">{temp_arr}</div>;
 }
 
-function TimeTable({ subTimeSlotDict }) {
+function TimeTable({ subTimeSlotDict, onSlotTap, blockedTimeSlots }) {
   const slotSubjectDict = {};
   for (const [subName, timeSlots] of Object.entries(subTimeSlotDict)) {
     // iterate the value arr
@@ -248,6 +302,7 @@ function TimeTable({ subTimeSlotDict }) {
         {value.map((slot) =>
           slot in slotSubjectDict ? (
             <td
+              onClick={() => onSlotTap(slot)}
               key={slot}
               data-hover={slotSubjectDict[slot]}
               style={{
@@ -257,7 +312,15 @@ function TimeTable({ subTimeSlotDict }) {
               {slot}
             </td>
           ) : (
-            <td key={slot}>{slot}</td>
+            <td
+              onClick={() => onSlotTap(slot)}
+              key={slot}
+              className={
+                blockedTimeSlots.includes(slot) ? "blocked-time-slot" : ""
+              }
+            >
+              {slot}
+            </td>
           )
         )}
       </tr>

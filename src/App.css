@@ -124,25 +124,7 @@
   border-radius: 4px;
 }
 
-.btn {
-  display: inline-block;
-  outline: 0;
-  cursor: pointer;
-  text-align: center;
-  border: 1px solid #babfc3;
-  padding: 3px 15px;
-  margin: 0 0.5rem;
-  min-height: 44px;
-  min-width: 44px;
-  color: #202223;
-  background: #ffffff;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 14px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+.blocked-time-slot{
+  background-color: #ccc;
+  color: red;
 }
-
-.btn:hover {
-    background: #f6f6f7;
-    outline: 1px solid transparent;
-  }

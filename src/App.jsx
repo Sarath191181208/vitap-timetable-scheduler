@@ -263,7 +263,7 @@ function ColorDict({ subjectColorDict, actualSlotDict }) {
     rows.push(
       <div className="subject-block" style={{ backgroundColor: `#${value}` }}>
         {key}
-        <span className="slot">{" "+actualSlotDict[key]}</span>
+        <div> <span className="slot">{" "+actualSlotDict[key]}</span></div>
       </div>
     );
   }

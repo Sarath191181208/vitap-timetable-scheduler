@@ -1,21 +1,9 @@
 import { useState } from "react";
 import Select from "react-select";
 import "./App.css";
-import lab_data from "./data/lab_data";
-import theoryData from "./data/theory_data";
 import { time_table, time_arr } from "./data/time_table";
 import { pick_slot } from "./pick_slot";
-
-const subSlotDict = {};
-const options = [];
-for (const [key, value] of Object.entries(lab_data)) {
-  options.push({ value: key, label: key });
-  subSlotDict[key] = value;
-}
-for (const [key, value] of Object.entries(theoryData)) {
-  options.push({ value: key, label: key });
-  subSlotDict[key] = value;
-}
+import { subSlotDict, options } from "./data/sub_slot_data";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -73,7 +61,7 @@ function App() {
             1. Select the subjects you want to take in the dropdown menu you can
             select multiple subjects from the same box
           </p>
-          <p>2. Click on the submit button.</p>
+          <p>2. You can search by typing the course name (or) course code.</p>
           <p>3. You will see the time table.</p>
           <p>4. Hover over the slot to know the course and it's code</p>
         </div>

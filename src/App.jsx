@@ -160,7 +160,44 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
           }}
         >
           {subName}
+          {/* <button className="select-all-btn btn" onClick={
+            () => {
+              const placeHolder = [...isSlotTakenBoolenArray];
+              placeHolder.fill(true);
+              const newDict = {
+                ...pickedSubSlotDict,
+                [subName]: placeHFolder,
+              };
+              onChange(newDict);
+            }
+          }> Select All </button>
+          <button className="remove-all-btn btn" onClick={
+            () => {
+              const placeHolder = [...isSlotTakenBoolenArray];
+              placeHolder.fill(false);
+              const newDict = {
+                ...pickedSubSlotDict,
+                [subName]: placeHolder,
+              };
+              onChange(newDict);
+            }
+          }> Remove All </button> */}
         </h3>
+        <input type="checkbox" name="select-all-checkbox" id={subName} onChange={
+          (e) => {
+            const { checked } = e.target;
+            const placeHolder = [...isSlotTakenBoolenArray];
+            placeHolder.fill(checked);
+            const newDict = {
+              ...pickedSubSlotDict,
+              [subName]: placeHolder,
+            };
+            onChange(newDict);
+          }
+        }
+        checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
+        />
+        <label htmlFor={subName}>Select All</label>
         {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
           <>
             <input
@@ -263,7 +300,10 @@ function ColorDict({ subjectColorDict, actualSlotDict }) {
     rows.push(
       <div className="subject-block" style={{ backgroundColor: `#${value}` }}>
         {key}
-        <div> <span className="slot">{" "+actualSlotDict[key]}</span></div>
+        <div>
+          {" "}
+          <span className="slot">{" " + actualSlotDict[key]}</span>
+        </div>
       </div>
     );
   }

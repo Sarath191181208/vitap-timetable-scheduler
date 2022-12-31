@@ -4,11 +4,11 @@
   padding: 2rem;
 }
 
-.subject-selection-controls{
+.subject-selection-controls {
   margin: 1rem 0;
 }
 
-.subject-selection-controls button{
+.subject-selection-controls button {
   margin: 0 0.5rem;
   height: 38px;
   padding: 0 1rem;
@@ -16,36 +16,35 @@
   border-radius: 4px;
 }
 
-.subject-selection-controls button:hover{
+.subject-selection-controls button:hover {
   border-color: #aaa;
 }
 
-
-.time-table{
+.time-table {
   width: 100%;
   border-collapse: collapse;
   overflow-x: auto;
   margin: 1rem 0;
 }
 
-.time-table th{
+.time-table th {
   background-color: #eee;
   border: 1px solid #ccc;
   padding: 0.5rem;
 }
 
-.time-table td{
+.time-table td {
   border: 1px solid #ccc;
   padding: 0.5rem;
   cursor: default;
   position: relative;
 }
 
-.time-table td:hover{
+.time-table td:hover {
   background-color: #eee;
 }
 
-.time-table td[data-hover]::after{
+.time-table td[data-hover]::after {
   width: 200px;
   content: attr(data-hover);
   display: none;
@@ -57,11 +56,11 @@
   z-index: 1;
 }
 
-.time-table td:hover::after{
+.time-table td:hover::after {
   display: block;
 }
 
-.tutorial{
+.tutorial {
   background-color: #eee;
   padding: 20px;
   border-radius: 4px;
@@ -69,13 +68,13 @@
   place-content: center; */
 }
 
-.time-table-container{
+.time-table-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.subject-color-grid{
+.subject-color-grid {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
@@ -84,7 +83,7 @@
   margin: 1rem 0;
 }
 
-.subject-block{
+.subject-block {
   display: block;
   position: relative;
   padding: 0.5rem;
@@ -93,7 +92,7 @@
   font-size: small;
 }
 
-.subject-block div{
+.subject-block div {
   position: absolute;
   display: flex;
   justify-content: flex-end;
@@ -108,12 +107,12 @@
   font-weight: bold;
 }
 
-.subject-checkbox h3{
+.subject-checkbox h3 {
   position: relative;
   padding-left: 35px;
 }
-.subject-checkbox h3::before{
-  content: '';
+.subject-checkbox h3::before {
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -124,3 +123,26 @@
   margin-left: -35px;
   border-radius: 4px;
 }
+
+.btn {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #babfc3;
+  padding: 3px 15px;
+  margin: 0 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  color: #202223;
+  background: #ffffff;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+}
+
+.btn:hover {
+    background: #f6f6f7;
+    outline: 1px solid transparent;
+  }

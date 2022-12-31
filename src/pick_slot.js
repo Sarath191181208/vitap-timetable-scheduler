@@ -33,7 +33,6 @@ const pick_slot = (subjects_list, picked_slots_dict, subSlotDict) => {
 
     for (const filteredSubSlot of filteredSubSlots) {
         picked_slots_dict[subject] = get_time_slots_for_slot(filteredSubSlot);
-        console.log(picked_slots_dict[subject])
         if (pick_slot(subjects_list.slice(1), picked_slots_dict, subSlotDict)) {
             return true;
         }

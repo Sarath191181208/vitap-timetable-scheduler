@@ -9,16 +9,46 @@ function isEmpty(obj) {
   return Object.keys(obj).length === 0;
 }
 
+function getMaskedSubSlotDict(subjectMaskDict, subSlotDict) {
+  const maskedSubSlotDict = {};
+  for (const [subName, subMask] of Object.entries(subjectMaskDict)) {
+    const maskedSubSlotArr = subSlotDict[subName].filter((_, i) => subMask[i]);
+    maskedSubSlotDict[subName] = maskedSubSlotArr;
+  }
+  return maskedSubSlotDict;
+}
+
 function App() {
   const [selecedSubjectsList, setSelecedSubjectsList] = useState([]);
   const [timeTable, setTimetable] = useState({});
+  const [pickedSubSlotDict, setPickedSubSlotDict] = useState({});
+
   const onSubjectSelectChange = (e) => {
     setSelecedSubjectsList(e);
     if (e.length === 0) return;
-    submitSubjects(e);
+    const newPickedSubSlotDict = updateSubSlotTaken(e);
+    submitSubjects(e, newPickedSubSlotDict);
   };
 
-  const submitSubjects = (selecedSubjectsList) => {
+  const updateSubSlotTaken = (selecedSubjectsList) => {
+    const _subIsSlotTakenDict = {};
+    for (const subjectOptions of selecedSubjectsList) {
+      const { value: subName } = subjectOptions;
+      if (!(subName in pickedSubSlotDict))
+        _subIsSlotTakenDict[subName] = new Array(subSlotDict[subName].length).fill(1); 
+      else _subIsSlotTakenDict[subName] = pickedSubSlotDict[subName];
+    }
+    setPickedSubSlotDict(_subIsSlotTakenDict);
+    return _subIsSlotTakenDict;
+  }
+
+  const onSelectBoxChange = (_pickedSubSlotDict) => {
+      console.log("onSelectBoxChange: ")
+      setPickedSubSlotDict(_pickedSubSlotDict);
+      submitSubjects(selecedSubjectsList, _pickedSubSlotDict);
+    };
+
+  const submitSubjects = (selecedSubjectsList, _pickedSubSlotDict) => {
     if (selecedSubjectsList.length === 0) {
       alert("Please select at least one subject");
       return;
@@ -27,16 +57,15 @@ function App() {
     const selectedSubjects = selecedSubjectsList.map(
       (subject) => subject.value
     );
-    console.log(selectedSubjects);
 
     const tt = {};
-    const isTrue = pick_slot(selectedSubjects, tt, subSlotDict);
+    const maskedSubSlotDict = getMaskedSubSlotDict(_pickedSubSlotDict , subSlotDict);
+    const isTrue = pick_slot(selectedSubjects, tt, maskedSubSlotDict);
     if (isTrue) {
-      console.log("Time Table: ", tt);
       setTimetable(tt);
-      console.log("Time Table: ", timeTable);
+      console.log(tt);
     } else {
-      console.log("Not possible");
+      alert("No possible time table");
     }
   };
 
@@ -51,7 +80,7 @@ function App() {
           className="basic-multi-select"
         />
 
-        {/* <button onClick={() => submitSubjects(selecedSubjectsList)}>Submit</button> */}
+        {/* <button onClick={() => submitSubjects(selecedSubjectsList, pickedSubSlotDict)}>Submit</button> */}
       </div>
 
       {isEmpty(timeTable) ? (
@@ -70,8 +99,40 @@ function App() {
           <TimeTable subSlotDict={timeTable} />
         </div>
       )}
+      <SubjectCheckBoxes pickedSubSlotDict={ pickedSubSlotDict } onChange={ onSelectBoxChange } />
     </>
   );
+}
+
+function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
+  const temp_arr = [];
+  for (const [subName, isSlotTakenBoolenArray] of Object.entries(pickedSubSlotDict)) {
+    temp_arr.push(
+      <div className="subject-checkbox" key={subName}>
+        <h3>{subName}</h3>
+        {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
+          <>
+            <input
+              type="checkbox"
+              key={`${subName}-${i}`}
+              id={i}
+              checked={isSlotTaken}
+              onChange={(e) => {
+                const { checked } = e.target;
+                const placeHolder = [...isSlotTakenBoolenArray];
+                placeHolder[i] = checked;
+                const newDict = { ...pickedSubSlotDict, [subName]: placeHolder };
+                onChange(newDict);
+              }}
+            />
+            <label htmlFor={i}>{subSlotDict[subName][i]}</label>
+          </>
+        ))}
+      </div>
+    );
+  }
+
+  return <div className="subject-checkboxes">{temp_arr}</div>;
 }
 
 function TimeTable({ subSlotDict }) {

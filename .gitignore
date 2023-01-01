@@ -21,3 +21,6 @@ dist/
 *.sln
 *.sw?
 .vercel
+
+# local TODO file
+TODO.md

@@ -5,6 +5,7 @@ import { time_table, time_arr } from "./data/time_table";
 import { pick_slot } from "./pick_slot";
 import { subSlotDict, options } from "./data/sub_slot_data";
 import { is_same_slot } from "./data/time_table";
+import { useCachedState } from "./hooks/useCachedState";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -51,14 +52,24 @@ function getActualSlotDict(subTimeSlotDict, subjectSlotDict) {
   return actualSlotDict;
 }
 
-
 function App() {
-  const [selecedSubjectsList, setSelecedSubjectsList] = useState([]);
-  const [timeTable, setTimetable] = useState({});
-  const [pickedSubSlotDict, setPickedSubSlotDict] = useState({});
-  const [blockedTimeSlots, setBlockedTimeSlots] = useState([]);
+  const [selecedSubjectsList, setSelecedSubjectsList] = useCachedState({
+    cacheKey: "selecedSubjectsList",
+    defaultValue: [],
+  });
+  const [timeTable, setTimetable] = useCachedState({
+    cacheKey: "timeTable",
+    defaultValue: {},
+  });
+  const [pickedSubSlotDict, setPickedSubSlotDict] = useCachedState({
+    cacheKey: "pickedSubSlotDict",
+    defaultValue: {},
+  });
+  const [blockedTimeSlots, setBlockedTimeSlots] = useCachedState({
+    cacheKey: "blockedTimeSlots",
+    defaultValue: [],
+  });
   const alreadyPickedTimeTableConfigsArray = useRef([]);
-
 
   const onSubjectSelectChange = (e) => {
     setSelecedSubjectsList(e);
@@ -109,7 +120,7 @@ function App() {
     submitSubjects(selecedSubjectsList, _pickedSubSlotDict);
   };
 
-  const submitSubjects = (selecedSubjectsList, _pickedSubSlotDict) => {
+  const submitSubjects = (selecedSubjectsList, _pickedSubSlotDict, isRefreshButtonPressed=null) => {
     if (selecedSubjectsList.length === 0) {
       alert("Please select at least one subject");
       return;
@@ -125,16 +136,29 @@ function App() {
       subSlotDict
     );
 
-    const isTrue = pick_slot(
+    let isTrue = pick_slot(
       selectedSubjects,
       tt,
       maskedSubSlotDict,
-      alreadyPickedTimeTableConfigsArray.current,
+      alreadyPickedTimeTableConfigsArray.current
     );
+
+    // if not possible to generate timetable with already picked configs, try without them
+    if (!isTrue && isRefreshButtonPressed === true) {
+      alreadyPickedTimeTableConfigsArray.current = [];
+      isTrue = pick_slot(
+        selectedSubjects,
+        tt,
+        maskedSubSlotDict,
+        alreadyPickedTimeTableConfigsArray.current
+      );
+    }
+
+  
     if (isTrue) {
       setTimetable(tt);
     } else {
-      alert("No possible time table");
+      alert("Sorry, no timetable could be generated");
     }
   };
 
@@ -142,6 +166,7 @@ function App() {
     <>
       <div className="subject-selection-controls">
         <Select
+          defaultValue={selecedSubjectsList}
           onChange={onSubjectSelectChange}
           closeMenuOnSelect={false}
           isMulti
@@ -152,7 +177,7 @@ function App() {
         <button
           onClick={() => {
             alreadyPickedTimeTableConfigsArray.current.push(timeTable);
-            submitSubjects(selecedSubjectsList, pickedSubSlotDict);
+            submitSubjects(selecedSubjectsList, pickedSubSlotDict, true);
           }}
         >
           {" "}

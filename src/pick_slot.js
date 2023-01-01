@@ -55,7 +55,6 @@ const comparePickedSlots = (picked_slots_dict, alredyPickedTimeTableConfigsArray
 const pick_slot = (subjects_list, picked_slots_dict, subSlotDict, alredyPickedTimeTableConfigsArray) => {
     if (subjects_list.length === 0) {
         if (alredyPickedTimeTableConfigsArray == null) return true;
-        console.log("alredyPickedTimeTable", alredyPickedTimeTableConfigsArray)
         let isSameDict = comparePickedSlots(picked_slots_dict, alredyPickedTimeTableConfigsArray);
         if (isSameDict) return false;
         alredyPickedTimeTableConfigsArray.push(picked_slots_dict);
@@ -64,7 +63,6 @@ const pick_slot = (subjects_list, picked_slots_dict, subSlotDict, alredyPickedTi
 
     const subject = subjects_list[0];
     const subSlots = subSlotDict[subject];
-
     const pickedSlots = getAllPickedSlots(picked_slots_dict);
     // subSlots - pickedSlots
     const filteredSubSlots = subSlots.filter((subSlot) => {
@@ -83,7 +81,7 @@ const pick_slot = (subjects_list, picked_slots_dict, subSlotDict, alredyPickedTi
         if (pick_slot(subjects_list.slice(1), picked_slots_dict, subSlotDict, alredyPickedTimeTableConfigsArray)) {
             return true;
         }
-        picked_slots_dict[subject] = null;
+        picked_slots_dict[subject] = [];
     }
 
     return false;

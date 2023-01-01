@@ -14,3 +14,5 @@ function useCachedState({cacheKey, defaultValue}) {
 
     return [state, setStateWithCache];
 }
+
+export { useCachedState };

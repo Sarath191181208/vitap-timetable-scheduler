@@ -8,5 +8,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 )
-// save 
-// clear the dict and try again if reshedule fails 

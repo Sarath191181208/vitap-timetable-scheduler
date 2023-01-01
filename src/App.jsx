@@ -43,6 +43,20 @@ function findCommonSlot(subTimeSlotArr, subSlotArr) {
   }
 }
 
+function isInDisabledSlots(subSlot, disabledSlots) {
+  if (disabledSlots.length === 0) return false;
+  if (subSlot == null) {
+    console.log("Check box has null ????");
+    return false;
+  }
+  for (const disabledSlot of disabledSlots) {
+    if (is_same_slot(subSlot, disabledSlot)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function getActualSlotDict(subTimeSlotDict, subjectSlotDict) {
   const actualSlotDict = {};
   for (const [subName, subTimeSlotArr] of Object.entries(subTimeSlotDict)) {
@@ -237,12 +251,13 @@ function App() {
       <SubjectCheckBoxes
         pickedSubSlotDict={pickedSubSlotDict}
         onChange={onSelectBoxChange}
+        disabledSlots={blockedTimeSlots}
       />
     </>
   );
 }
 
-function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
+function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
   const fillAll = (checked, isSlotTakenBoolenArray, subName) => {
     const placeHolder = [...isSlotTakenBoolenArray];
     placeHolder.fill(checked);
@@ -295,6 +310,10 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
             <input
               type="checkbox"
               key={`${subName}-${i}`}
+              disabled={isInDisabledSlots(
+                subSlotDict[subName][i],
+                disabledSlots
+              )}
               id={i}
               checked={isSlotTaken}
               onChange={(e) => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Select from "react-select";
 import "./App.css";
 import { time_table, time_arr } from "./data/time_table";
@@ -51,11 +51,14 @@ function getActualSlotDict(subTimeSlotDict, subjectSlotDict) {
   return actualSlotDict;
 }
 
+
 function App() {
   const [selecedSubjectsList, setSelecedSubjectsList] = useState([]);
   const [timeTable, setTimetable] = useState({});
   const [pickedSubSlotDict, setPickedSubSlotDict] = useState({});
   const [blockedTimeSlots, setBlockedTimeSlots] = useState([]);
+  const alreadyPickedTimeTableConfigsArray = useRef([]);
+
 
   const onSubjectSelectChange = (e) => {
     setSelecedSubjectsList(e);
@@ -69,7 +72,6 @@ function App() {
     _blockedTimeSlots,
     value = 0
   ) {
-    console.log("Blocked time slots", _blockedTimeSlots);
     for (const [subjName, isSubSlotTakenArr] of Object.entries(
       subIsSlotTakenDict
     )) {
@@ -123,10 +125,14 @@ function App() {
       subSlotDict
     );
 
-    const isTrue = pick_slot(selectedSubjects, tt, maskedSubSlotDict);
+    const isTrue = pick_slot(
+      selectedSubjects,
+      tt,
+      maskedSubSlotDict,
+      alreadyPickedTimeTableConfigsArray.current,
+    );
     if (isTrue) {
       setTimetable(tt);
-      console.log(tt);
     } else {
       alert("No possible time table");
     }
@@ -143,7 +149,15 @@ function App() {
           className="basic-multi-select"
         />
 
-        {/* <button onClick={() => submitSubjects(selecedSubjectsList, pickedSubSlotDict)}>Submit</button> */}
+        <button
+          onClick={() => {
+            alreadyPickedTimeTableConfigsArray.current.push(timeTable);
+            submitSubjects(selecedSubjectsList, pickedSubSlotDict);
+          }}
+        >
+          {" "}
+          ⟳{" "}
+        </button>
       </div>
 
       {isEmpty(timeTable) ? (
@@ -179,8 +193,11 @@ function App() {
                 newBlockedTimeSlots
               );
               if (isBlockedTimeSlotRemoved) {
-                markBlockedTimeSlotsInplace(newPickedSubSlotDict, [timeSlot], 1);
-                console.log("removed slot" , timeSlot)
+                markBlockedTimeSlotsInplace(
+                  newPickedSubSlotDict,
+                  [timeSlot],
+                  1
+                );
               }
               setPickedSubSlotDict(newPickedSubSlotDict);
               submitSubjects(selecedSubjectsList, newPickedSubSlotDict);
@@ -252,6 +269,24 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange }) {
           checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
         />
         <label htmlFor={subName}>Select All</label>
+
+        <input
+          type="checkbox"
+          name="select-all-checkbox"
+          id={subName}
+          onChange={(e) => {
+            const { checked } = e.target;
+            const placeHolder = [...isSlotTakenBoolenArray];
+            placeHolder.fill(!checked);
+            const newDict = {
+              ...pickedSubSlotDict,
+              [subName]: placeHolder,
+            };
+            onChange(newDict);
+          }}
+          checked={isSlotTakenBoolenArray.every((isSlotTaken) => !isSlotTaken)}
+        />
+        <label htmlFor={subName}>Unselect All</label>
         {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
           <>
             <input

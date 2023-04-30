@@ -6,6 +6,9 @@ import { pick_slot } from "./pick_slot";
 import { subSlotDict, options } from "./data/sub_slot_data";
 import { is_same_slot } from "./data/time_table";
 import { useCachedState } from "./hooks/useCachedState";
+import { inject } from "@vercel/analytics";
+
+inject();
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;

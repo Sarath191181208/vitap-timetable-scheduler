@@ -174,6 +174,27 @@ const labData =
     ],
     "SWE4001-Internet and Web Technologies( LAB )": [
         "L37+L38"
+    ],
+    "MAT2003-Optimization Techniques( LAB )": [ 
+        "L7+L8",
+        "L43+L44",
+    ],
+    "MAT1001-Calculus for Engineers( LAB )": [
+        "L13+L14",
+        "L43+L44"
+    ],
+    "MAT1011-Applied Statistics": [
+        "L17+L18"
+    ],
+    "MAT2004-Applied Optimization Techniques": [
+        "L43+L44"
+    ],
+    "CSE4016-Database Administration": [
+        "L45+L46"
+    ],
+    "CSE3008-Introduction to Machine Learning": [
+        "L3+L4",
+        "L37+L38"
     ]
 }
 

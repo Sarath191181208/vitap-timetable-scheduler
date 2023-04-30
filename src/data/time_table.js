@@ -1,11 +1,11 @@
 
 const time_table = {
-    // | Day       | 9:00    |    10:00       |      11:00        |     12:00        |    2:00        |    3:00        |    4:00        |    5:00         |
-    "Tuesday": ["A1+SA1+L1  ", " G1+L2         ", " E1+L3        ", " TD1+L4       ", " A2+SA2+L21  ", " TB2+SB2+L22 ", " E2+L23      ", " C2+SC2+L24   "],
-    "Wednesday": ["B1+SB1+L5  ", " A1+SA1+L6   ", " G1+L7        ", " C1+SC1+L8    ", " B2+SB2+L27  ", " A2+SA2+L28  ", " G2+STC2+L29 ", " TD2+L30      "],
-    "Thursday": ["TC1+SC1+L9 ", " F1+STB1+L10  ", " TA1+SA1+L11  ", " E1+L12       ", " TC2+SC2+L33 ", " G2+STB2+L34 ", " TA2+SA2+L35 ", " E2+L36       "],
-    "Friday": ["D1+L13     ", " C1+SC1+L14     ", " B1+SB1+L15   ", " TF1+STA1+L16 ", " D2+L39      ", " C2+SC2+L40  ", " B2+SB2+L41  ", " TG2+STA2+L42 "],
-    "Saturday": ["TE1+L17    ", " D1+L18       ", " TG1+STC1+L19 ", " TB1+SB1+L20  ", " TE2+L45     ", " D2+L46      ", " -+L49       ", " -+L50        "],
+    "Monday": ["D1+L1","C1+L2","F1+TCC2+L3","TE1+L4","D2+L25","C2+L26","F2+TCC1+L27","TE2+L28","L29", "L30"],
+    "Tuesday": ["B1+L5","A1+L6","C1+L7","TD1+L8","B2+L31","A2+L32","C2+L33","TD2+L34","L35", "L36"],
+    "Wednesday": ["E1+L9","F1+TBB2+L10","TC1+L11","D1+L12","E2+L37","F2+TBB1+L38","TC2+L39","D2+L40","L41", "L42"],
+    "Thursday": ["F1+TDD2+L13","E1+L14","TB1+L15","TA1+L16","F2+TDD1+L43","E2+L44","TB2+L45","TA2+L46","L47", "L48"],
+    "Friday": ["C1+L17","D1+L18","E1+L19","TF1+TAA2+L20","C2+L49","D2+L50","E2+L51","TF2+TAA1+L52","L53", "L54"],
+    "Saturday": ["B1+L21","B1+L22","A1+L23","A1+L24","B2+L55","B2+L56","A2+L57","A2+L58","L59", "L60"]
 };
 
 const strip_spaces = (arr) => {
@@ -21,7 +21,7 @@ for (const day_name of Object.keys(time_table)) {
     const day = strip_spaces(time_table[day_name]);
 }
 
-const time_arr = ["9:00", "10:00", "11:00", "12:00", "2:00", "3:00", "4:00", "5:00"];
+const time_arr = ["9:00", "10:00", "11:00", "12:00", "2:00", "3:00", "4:00", "5:00", "6.00", "7.00"];
 
 const is_same_slot = (slot1, slot2) => {
     const split1 = strip_spaces(slot1.split("+"));

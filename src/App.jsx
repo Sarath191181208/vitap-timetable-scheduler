@@ -7,6 +7,9 @@ import { subSlotDict, options } from "./data/sub_slot_data";
 import { is_same_slot } from "./data/time_table";
 import { useCachedState } from "./hooks/useCachedState";
 import { inject } from "@vercel/analytics";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import {  tutorialSlidesData, TutorialSlide } from "./demo";
 
 inject();
 
@@ -186,8 +189,14 @@ function App() {
 
   function calculateCredits() {
     const actualSlotDict = getActualSlotDict(timeTable, subSlotDict);
-    const creditsSum = Object.values(actualSlotDict).reduce(
-      (acc, slot) => acc + getCreditsFromSlot(slot),
+    const creditsSum = Object.entries(actualSlotDict).reduce(
+      (acc, slotNameSlotTuple) => {
+        const [slotName, slot] = slotNameSlotTuple;
+        const subName = slotName.split("-")[0];
+        const isSTS = slotName.startsWith("STS");
+        const credit = isSTS ? 1 : getCreditsFromSlot(slot);
+        return acc + credit;
+      },
       0
     );
     return creditsSum;
@@ -228,6 +237,20 @@ function App() {
           <p>2. You can search by typing the course name (or) course code.</p>
           <p>3. You will see the time table.</p>
           <p>4. Hover over the slot to know the course and it's code</p>
+
+          <Carousel
+            showArrows={true}
+            autoPlay={true}
+            infiniteLoop={true}
+            className="carousel-container"
+            transitionTime={500}
+          >
+            {tutorialSlidesData.map((slide) => {
+              return (
+                <TutorialSlide imageLink={slide.imageLink} text={slide.text} />
+              );
+            })}
+          </Carousel>
         </div>
       ) : (
         <div className="time-table-container">

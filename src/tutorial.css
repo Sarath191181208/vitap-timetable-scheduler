@@ -1,0 +1,13 @@
+.container{
+    padding: 30px;
+}
+
+.container img{
+    max-width: 500px;
+    max-height: 500px;
+    border: 2px solid black;
+    padding: 10px;
+    outline:  2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 0 auto;
+}

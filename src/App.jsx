@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import Select from "react-select";
 import "./App.css";
-import { time_table, time_arr } from "./data/time_table";
+import { time_table, time_arr, getCreditsFromSlot } from "./data/time_table";
 import { pick_slot } from "./pick_slot";
 import { subSlotDict, options } from "./data/sub_slot_data";
 import { is_same_slot } from "./data/time_table";
@@ -154,6 +154,8 @@ function App() {
       subSlotDict
     );
 
+    console.log("maskedSubSlotDict", maskedSubSlotDict);
+
     let isTrue = pick_slot(
       selectedSubjects,
       tt,
@@ -178,6 +180,17 @@ function App() {
       alert("Sorry, no timetable could be generated");
     }
   };
+
+  function calculateCredits() {
+    const actualSlotDict = getActualSlotDict(timeTable, subSlotDict);
+    const creditsSum = Object.values(actualSlotDict).reduce(
+      (acc, slot) => acc + getCreditsFromSlot(slot),
+      0
+    );
+    return creditsSum;
+  }
+
+  calculateCredits();
 
   return (
     <>
@@ -246,8 +259,12 @@ function App() {
             }}
             blockedTimeSlots={blockedTimeSlots}
           />
+          <div>
+            <h2>Registered Credits: {calculateCredits()}</h2>
+          </div>
         </div>
       )}
+
       <SubjectCheckBoxes
         pickedSubSlotDict={pickedSubSlotDict}
         onChange={onSelectBoxChange}

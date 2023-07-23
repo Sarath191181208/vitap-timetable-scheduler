@@ -6,6 +6,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# python venv 
+.venv
+
 node_modules/
 *.local
 dist/

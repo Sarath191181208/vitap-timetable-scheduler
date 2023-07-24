@@ -59,7 +59,12 @@ const getCreditsFromSlot = (slot) => {
     const isLab = slot.startsWith("L");
     if (isLab) return 1;
     const numberOfPluses = slot.split("+").length - 1;
-
+    if (slot === "B1+TB1+TBB1+TG1"
+        || slot == "B2+TB2+TBB2+TG2"
+        || slot == "A1+TA1+G1"
+        || slot == "A2+TA2+G2"
+        || slot == "B2+TB2+G2"
+    ) return 3;
     if (numberOfPluses === 2) return 4;
     if (numberOfPluses === 1) return 3;
     if (!slot.startsWith("T")) return 2;

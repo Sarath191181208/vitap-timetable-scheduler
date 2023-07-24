@@ -385,16 +385,16 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
 
 function CustomCheckBox({ onChange, checked, label, disabled }) {
   return (
-    <div class="checkbox-wrapper-4">
+    <div className="checkbox-wrapper-4">
       <input
-        class="inp-cbx"
+        className="inp-cbx"
         id={label}
         type="checkbox"
         checked={checked}
         disabled={disabled}
         onChange={(e) => onChange(e)}
       />
-      <label class="cbx" htmlFor={label}>
+      <label className="cbx" htmlFor={label}>
         <span>
           <svg width="12px" height="10px">
             <use></use>
@@ -402,8 +402,8 @@ function CustomCheckBox({ onChange, checked, label, disabled }) {
         </span>
         <span>{label}</span>
       </label>
-      <svg class="inline-svg">
-        <symbol id="check-4" viewbox="0 0 12 10">
+      <svg className="inline-svg">
+        <symbol id="check-4">
           <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
         </symbol>
       </svg>

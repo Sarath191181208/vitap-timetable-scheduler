@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import Select from "react-select";
 import "./App.css";
+import "./checkbox.css";
 import { time_table, time_arr, getCreditsFromSlot } from "./data/time_table";
 import { pick_slot } from "./pick_slot";
 import { subSlotDict, options } from "./data/sub_slot_data";
@@ -9,7 +10,7 @@ import { useCachedState } from "./hooks/useCachedState";
 import { inject } from "@vercel/analytics";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import {  tutorialSlidesData, TutorialSlide } from "./demo";
+import { tutorialSlidesData, TutorialSlide } from "./demo";
 
 inject();
 
@@ -31,11 +32,10 @@ function getSubjectColorDict(subjectNameArr) {
   for (const subj of subjectNameArr) {
     let clr = localStorage.getItem(subj);
     if (clr == null) {
-      clr =
-        Math.floor(Math.random() * 16777215)
-          .toString(16)
-          .padStart(6, "0")
-          .toUpperCase();
+      clr = Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, "0")
+        .toUpperCase();
 
       localStorage.setItem(subj, clr);
     }
@@ -353,17 +353,16 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
           checked={isSlotTakenBoolenArray.every((isSlotTaken) => !isSlotTaken)}
         />
         <label htmlFor={subName}>Unselect All</label>
-        {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
-          <>
-            <input
-              type="checkbox"
-              key={`${subName}-${i}`}
+        <div id="custom-check-box-grid">
+          {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
+            <CustomCheckBox
+              label={subSlotDict[subName][i]}
               disabled={isInDisabledSlots(
                 subSlotDict[subName][i],
                 disabledSlots
               )}
-              id={i}
               checked={isSlotTaken}
+              key={`${subName}-${i}`}
               onChange={(e) => {
                 const { checked } = e.target;
                 const placeHolder = [...isSlotTakenBoolenArray];
@@ -375,14 +374,41 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
                 onChange(newDict);
               }}
             />
-            <label htmlFor={i}>{subSlotDict[subName][i]}</label>
-          </>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }
 
   return <div className="subject-checkboxes">{temp_arr}</div>;
+}
+
+function CustomCheckBox({ onChange, checked, label, disabled }) {
+  return (
+    <div class="checkbox-wrapper-4">
+      <input
+        class="inp-cbx"
+        id={label}
+        type="checkbox"
+        checked={checked}
+        disabled={disabled}
+        onChange={(e) => onChange(e)}
+      />
+      <label class="cbx" htmlFor={label}>
+        <span>
+          <svg width="12px" height="10px">
+            <use></use>
+          </svg>
+        </span>
+        <span>{label}</span>
+      </label>
+      <svg class="inline-svg">
+        <symbol id="check-4" viewbox="0 0 12 10">
+          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+        </symbol>
+      </svg>
+    </div>
+  );
 }
 
 function TimeTable({ subTimeSlotDict, onSlotTap, blockedTimeSlots }) {

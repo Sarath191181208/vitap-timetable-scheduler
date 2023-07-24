@@ -1,7 +1,7 @@
 import Select from "react-select";
 import "./App.css";
 import "./checkbox.css";
-import { time_table, time_arr } from "./data/time_table";
+import { time_table, time_arr  } from "./data/time_table";
 import { subSlotDict, options } from "./data/sub_slot_data";
 import { inject } from "@vercel/analytics";
 import "react-responsive-carousel/lib/styles/carousel.min.css";

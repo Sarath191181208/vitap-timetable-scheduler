@@ -27,7 +27,6 @@ function useAppState() {
 
   const onSubjectSelectChange = (e) => {
     setSelecedSubjectsList(e);
-    if (e.length === 0) return;
     const newPickedSubSlotDict = updateSubSlotTaken(e, blockedTimeSlots);
     submitSubjects(e, newPickedSubSlotDict);
   };
@@ -79,9 +78,10 @@ function useAppState() {
     _pickedSubSlotDict,
     isRefreshButtonPressed = null
   ) => {
-    if (selecedSubjectsList.length === 0) {
-      alert("Please select at least one subject");
-      return;
+      console.log(selecedSubjectsList);
+      if (selecedSubjectsList.length === 0) {
+        setTimetable({});
+        return;
     }
 
     const selectedSubjects = selecedSubjectsList.map(

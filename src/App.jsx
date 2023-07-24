@@ -47,17 +47,19 @@ function App() {
           options={options}
           className="basic-multi-select"
         />
-
-        <button
-          onClick={() => {
-            alreadyPickedTimeTableConfigsArray.current.push(timeTable);
-            submitSubjects(selecedSubjectsList, pickedSubSlotDict, true);
-          }}
-        >
-          {" "}
-          ⟳{" "}
-        </button>
       </div>
+
+      <button
+        id="refresh-button"
+        title="Refresh the Time Table"
+        onClick={() => {
+          alreadyPickedTimeTableConfigsArray.current.push(timeTable);
+          submitSubjects(selecedSubjectsList, pickedSubSlotDict, true);
+        }}
+      >
+        {" "}
+        ⟳{" "}
+      </button>
 
       {isEmpty(timeTable) ? (
         <div className="tutorial">

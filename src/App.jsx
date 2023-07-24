@@ -209,6 +209,37 @@ function App() {
 
   calculateCredits();
 
+  const customFilterFn = (option, searchText) => {
+
+    function convertToShortform(longForm) {
+      let words = longForm.replaceAll(" ", "-").split("-"); // label is of the form CSE1001-Data Mining
+      words.shift(); // removing the course code
+      return words
+        .map((word) => {
+          if (word.length === 0) return "";
+          const trimedWord = word[0].trim()
+          if (trimedWord == trimedWord.toUpperCase()) {
+            return trimedWord.toUpperCase();
+          }
+          return "";
+        })
+        .join("");
+    }
+
+    const label = option.data.label.toLowerCase();
+    const value = option.data.value.toLowerCase();
+    const searchTextLowerCase = searchText.toLowerCase();
+    if (
+      label.includes(searchTextLowerCase) ||
+      value.includes(searchTextLowerCase)
+    ) {
+      return true;
+    }
+      const shortform = convertToShortform(option.data.label);
+    return shortform.includes(searchText.toUpperCase());
+  
+  };
+
   return (
     <>
       <div className="subject-selection-controls">
@@ -217,6 +248,7 @@ function App() {
           onChange={onSubjectSelectChange}
           closeMenuOnSelect={false}
           isMulti
+          filterOption={customFilterFn}
           options={options}
           className="basic-multi-select"
         />

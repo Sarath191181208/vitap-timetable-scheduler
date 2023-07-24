@@ -38,6 +38,16 @@ const is_same_slot = (slot1, slot2) => {
     return false;
 }
 
+const isEqualSlot = (slot1, slot2) => {
+    const split1 = strip_spaces(slot1.split("+"));
+    const split2 = strip_spaces(slot2.split("+"));
+    for (const slot of split1) {
+        if (!split2.includes(slot)) return false;
+    }
+    return true;
+}
+
+
 
 const get_time_slots_for_slot = (slot) => {
     const _temp_arr = [];
@@ -55,16 +65,24 @@ const get_time_slots_for_slot = (slot) => {
     return _temp_arr;
 }
 
+const isExceptionSlot = (testSlot) => {
+    const slots = [
+        "B1+TB1+TBB1+TG1",
+        "B2+TB2+TBB2+TG2",
+        "A1+TA1+G1",
+        "A2+TA2+G2",
+        "B2+TB2+G2",
+    ]
+    for (const slot of slots)
+        if (isEqualSlot(slot, testSlot)) return true;
+    return false;
+}
+
 const getCreditsFromSlot = (slot) => {
     const isLab = slot.startsWith("L");
     if (isLab) return 1;
     const numberOfPluses = slot.split("+").length - 1;
-    if (slot === "B1+TB1+TBB1+TG1"
-        || slot == "B2+TB2+TBB2+TG2"
-        || slot == "A1+TA1+G1"
-        || slot == "A2+TA2+G2"
-        || slot == "B2+TB2+G2"
-    ) return 3;
+    if (isExceptionSlot(slot)) return 3;
     if (numberOfPluses === 2) return 4;
     if (numberOfPluses === 1) return 3;
     if (!slot.startsWith("T")) return 2;

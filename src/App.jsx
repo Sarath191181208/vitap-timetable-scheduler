@@ -147,6 +147,7 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
   const temp_arr = [];
   const subjectNameArr = Object.keys(pickedSubSlotDict);
   const subjectColorDict = getSubjectColorDict(subjectNameArr);
+  console.log(pickedSubSlotDict)
   for (const [subName, isSlotTakenBoolenArray] of Object.entries(
     pickedSubSlotDict
   )) {
@@ -184,15 +185,18 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
         <label htmlFor={subName}>Unselect All</label>
         <div id="custom-check-box-grid">
           {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
-            <CustomCheckBox
+            <>
+              <input
+              type="checkbox"
+              key={`${subName}-${i}`}
               label={subSlotDict[subName][i]}
               disabled={isInDisabledSlots(
                 subSlotDict[subName][i],
                 disabledSlots
               )}
               checked={isSlotTaken}
-              key={`${subName}-${i}`}
               onChange={(e) => {
+                console.log(`[SubjectCheckBoxes]: ${subName} ${i}`);
                 const { checked } = e.target;
                 const placeHolder = [...isSlotTakenBoolenArray];
                 placeHolder[i] = checked;
@@ -202,7 +206,9 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
                 };
                 onChange(newDict);
               }}
-            />
+              />
+            <label htmlFor={i}>{subSlotDict[subName][i]}</label>
+          </>
           ))}
         </div>
       </div>

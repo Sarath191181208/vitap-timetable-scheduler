@@ -78,9 +78,8 @@ function useAppState() {
     _pickedSubSlotDict,
     isRefreshButtonPressed = null
   ) => {
-      console.log(selecedSubjectsList);
       if (selecedSubjectsList.length === 0) {
-        setTimetable({});
+        // setTimetable({});
         return;
     }
 
@@ -114,8 +113,6 @@ function useAppState() {
 
     if (isTrue) {
       setTimetable(tt);
-    } else {
-      alert("Sorry, no timetable could be generated");
     }
   };
 

@@ -163,7 +163,7 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
         <input
           type="checkbox"
           name="select-all-checkbox"
-          id={subName}
+          id={subName+"Select-All"}
           onChange={(e) => {
             const { checked } = e.target;
             fillAll(checked, isSlotTakenBoolenArray, subName);
@@ -175,7 +175,7 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
         <input
           type="checkbox"
           name="select-all-checkbox"
-          id={subName}
+          id={subName+"Unselect-all"}
           onChange={(e) => {
             const { checked } = e.target;
             fillAll(!checked, isSlotTakenBoolenArray, subName);
@@ -186,10 +186,11 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
         <div id="custom-check-box-grid">
           {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
             <>
-              <input
-              type="checkbox"
-              key={`${subName}-${i}`}
-              label={subSlotDict[subName][i]}
+              <CustomCheckBox
+                key={`${subName}-${i}`}
+                // type="checkbox"
+              slotLabel={subSlotDict[subName][i]}
+              slotId={subSlotDict[subName][i]+subName}
               disabled={isInDisabledSlots(
                 subSlotDict[subName][i],
                 disabledSlots
@@ -207,7 +208,6 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
                 onChange(newDict);
               }}
               />
-            <label htmlFor={i}>{subSlotDict[subName][i]}</label>
           </>
           ))}
         </div>
@@ -218,27 +218,27 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
   return <div className="subject-checkboxes">{temp_arr}</div>;
 }
 
-function CustomCheckBox({ onChange, checked, label, disabled }) {
+function CustomCheckBox({ onChange, checked, slotLabel, slotId, disabled }) {
   return (
     <div className="checkbox-wrapper-4">
       <input
         className="inp-cbx"
-        id={label}
+        id={slotId}
         type="checkbox"
         checked={checked}
         disabled={disabled}
-        onChange={(e) => onChange(e)}
+        onChange={onChange}
       />
-      <label className="cbx" htmlFor={label}>
+      <label className="cbx" htmlFor={slotId}>
         <span>
           <svg width="12px" height="10px">
             <use></use>
           </svg>
         </span>
-        <span>{label}</span>
+        <span>{slotLabel}</span>
       </label>
       <svg className="inline-svg">
-        <symbol id="check-4">
+        <symbol className="check-4">
           <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
         </symbol>
       </svg>

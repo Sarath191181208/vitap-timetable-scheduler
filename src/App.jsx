@@ -1,24 +1,30 @@
+// @ts-check
+
 import Select from "react-select";
 import "./App.css";
 import "./checkbox.css";
-import { time_table, time_arr  } from "./data/time_table";
-import { subSlotDict, options } from "./data/sub_slot_data";
 import { inject } from "@vercel/analytics";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { tutorialSlidesData, TutorialSlide } from "./demo";
 import { useAppState } from "./hooks/useAppState";
-import { isEmpty, isInDisabledSlots, getActualSlotDict, getSubjectColorDict } from "./data/utils";
+import {
+  isEmpty,
+  isInDisabledSlots,
+  getActualSlotDict,
+  getSubjectColorDict,
+} from "./data/utils";
+
+import { time_table, time_arr } from "./data/time_table";
+import { subSlotDict, options } from "./data/sub_slot_data";
+import React  from "react";
 
 inject();
-
 
 function App() {
   const {
     selecedSubjectsList,
-    setSelecedSubjectsList,
     timeTable,
-    setTimetable,
     pickedSubSlotDict,
     setPickedSubSlotDict,
     blockedTimeSlots,
@@ -30,7 +36,7 @@ function App() {
     onSelectBoxChange,
     updateSubSlotTaken,
     markBlockedTimeSlotsInplace,
-    customFilterFn
+    customFilterFn,
   } = useAppState();
 
   calculateCredits();
@@ -81,7 +87,11 @@ function App() {
           >
             {tutorialSlidesData.map((slide) => {
               return (
-                <TutorialSlide imageLink={slide.imageLink} text={slide.text} />
+                <TutorialSlide
+                  key={slide.imageLink}
+                  imageLink={slide.imageLink}
+                  text={slide.text}
+                />
               );
             })}
           </Carousel>
@@ -89,8 +99,9 @@ function App() {
       ) : (
         <div className="time-table-container">
           <TimeTable
+            time_table={time_table}
             subTimeSlotDict={timeTable}
-            onSlotTap={(timeSlot) => {
+            onSlotTap={(/** @type {any} */ timeSlot) => {
               let newBlockedTimeSlots = [];
               let isBlockedTimeSlotRemoved = false;
               if (blockedTimeSlots.includes(timeSlot)) {
@@ -118,6 +129,7 @@ function App() {
               submitSubjects(selecedSubjectsList, newPickedSubSlotDict);
             }}
             blockedTimeSlots={blockedTimeSlots}
+            time_arr={time_arr}
           />
           <div>
             <h2>Registered Credits: {calculateCredits()}</h2>
@@ -126,6 +138,7 @@ function App() {
       )}
 
       <SubjectCheckBoxes
+        subSlotDict={subSlotDict}
         pickedSubSlotDict={pickedSubSlotDict}
         onChange={onSelectBoxChange}
         disabledSlots={blockedTimeSlots}
@@ -134,8 +147,25 @@ function App() {
   );
 }
 
-function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
-  const fillAll = (checked, isSlotTakenBoolenArray, subName) => {
+/**
+ * @typedef {Object} SubjectCheckBoxesProps
+ * @property {Object} subSlotDict
+ * @property {Object} pickedSubSlotDict
+ * @property {Function} onChange
+ * @property {Array} disabledSlots
+ * @returns {JSX.Element}
+ */
+function SubjectCheckBoxes({
+  subSlotDict,
+  pickedSubSlotDict,
+  onChange,
+  disabledSlots,
+}) {
+  const fillAll = (
+    /** @type {boolean} */ checked,
+    /** @type {boolean[]} */ isSlotTakenBoolenArray,
+    /** @type {string} */ subName
+  ) => {
     const placeHolder = [...isSlotTakenBoolenArray];
     placeHolder.fill(checked);
     const newDict = {
@@ -147,7 +177,6 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
   const temp_arr = [];
   const subjectNameArr = Object.keys(pickedSubSlotDict);
   const subjectColorDict = getSubjectColorDict(subjectNameArr);
-  console.log(pickedSubSlotDict)
   for (const [subName, isSlotTakenBoolenArray] of Object.entries(
     pickedSubSlotDict
   )) {
@@ -163,7 +192,7 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
         <input
           type="checkbox"
           name="select-all-checkbox"
-          id={subName+"Select-All"}
+          id={subName + "Select-All"}
           onChange={(e) => {
             const { checked } = e.target;
             fillAll(checked, isSlotTakenBoolenArray, subName);
@@ -175,7 +204,7 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
         <input
           type="checkbox"
           name="select-all-checkbox"
-          id={subName+"Unselect-all"}
+          id={subName + "Unselect-all"}
           onChange={(e) => {
             const { checked } = e.target;
             fillAll(!checked, isSlotTakenBoolenArray, subName);
@@ -185,12 +214,11 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
         <label htmlFor={subName}>Unselect All</label>
         <div id="custom-check-box-grid">
           {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
-            <>
-              <CustomCheckBox
-                key={`${subName}-${i}`}
-                // type="checkbox"
+            <CustomCheckBox
+              key={`${subName}-${isSlotTaken}-${i}`}
+              // type="checkbox"
               slotLabel={subSlotDict[subName][i]}
-              slotId={subSlotDict[subName][i]+subName}
+              slotId={subSlotDict[subName][i] + subName}
               disabled={isInDisabledSlots(
                 subSlotDict[subName][i],
                 disabledSlots
@@ -207,8 +235,7 @@ function SubjectCheckBoxes({ pickedSubSlotDict, onChange, disabledSlots }) {
                 };
                 onChange(newDict);
               }}
-              />
-          </>
+            />
           ))}
         </div>
       </div>
@@ -246,7 +273,22 @@ function CustomCheckBox({ onChange, checked, slotLabel, slotId, disabled }) {
   );
 }
 
-function TimeTable({ subTimeSlotDict, onSlotTap, blockedTimeSlots }) {
+/**
+ * @typedef {Object} TimeTableProps
+ * @property {Object} time_table
+ * @property {Object} subTimeSlotDict
+ * @property {Function} onSlotTap
+ * @property {Array} blockedTimeSlots
+ * @property {Array} time_arr
+ * @returns {JSX.Element}
+ */
+function TimeTable({
+  time_table,
+  subTimeSlotDict,
+  onSlotTap,
+  blockedTimeSlots,
+  time_arr,
+}) {
   const slotSubjectDict = {};
   for (const [subName, timeSlots] of Object.entries(subTimeSlotDict)) {
     // iterate the value arr
@@ -297,7 +339,7 @@ function TimeTable({ subTimeSlotDict, onSlotTap, blockedTimeSlots }) {
     <>
       <div className="time-table">
         <table>
-          <TableHead />
+          <TableHead time_arr={time_arr} />
           <tbody>{rows}</tbody>
         </table>
       </div>
@@ -309,7 +351,7 @@ function TimeTable({ subTimeSlotDict, onSlotTap, blockedTimeSlots }) {
   );
 }
 
-function TableHead() {
+function TableHead({ time_arr }) {
   return (
     <thead>
       <tr>

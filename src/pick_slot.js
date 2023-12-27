@@ -1,14 +1,4 @@
-// write the parameters
-
-import { is_same_slot, get_time_slots_for_slot } from "./data/time_table";
-
-const getAllPickedSlots = (picked_slots_dict) => {
-    const pickedSlots = [];
-    for (const subject in picked_slots_dict) {
-        pickedSlots.push(...picked_slots_dict[subject]);
-    }
-    return pickedSlots;
-}
+import { get_time_slots_for_slot, is_same_slot } from "./data/impls/time_table";
 
 const compareArrays = (arr1, arr2) => {
     if (arr1.length !== arr2.length) return false;
@@ -42,6 +32,12 @@ const comparePickedSlotsDicts = (dict1, dict2) => {
     return true;
 }
 
+/**
+ * 
+ * @param {import("./d").AllPossibleSubSlots} picked_slots_dict 
+ * @param {import("./d").CourseNameAndSlots[]} alredyPickedTimeTableConfigsArray 
+ * @returns {boolean}
+ */
 const comparePickedSlots = (picked_slots_dict, alredyPickedTimeTableConfigsArray) => {
     for (let i = 0; i < alredyPickedTimeTableConfigsArray.length; i++) {
         const timeTableConfig = alredyPickedTimeTableConfigsArray[i];
@@ -52,7 +48,15 @@ const comparePickedSlots = (picked_slots_dict, alredyPickedTimeTableConfigsArray
     return false;
 }
 
-const pick_slot = (subjects_list, picked_slots_dict, subSlotDict, alredyPickedTimeTableConfigsArray) => {
+/**
+ * @param {import("./d").TimeTable} timeTable 
+ * @param {string[]} subjects_list 
+ * @param {import("./d").CourseNameAndSlots} picked_slots_dict 
+ * @param {import("./d").AllPossibleSubSlots} subSlotDict 
+ * @param {import("./d").CourseNameAndSlots[]} alredyPickedTimeTableConfigsArray 
+ * @returns 
+ */
+const pick_slot = (timeTable, subjects_list, picked_slots_dict, subSlotDict, alredyPickedTimeTableConfigsArray) => {
     if (subjects_list.length === 0) {
         if (alredyPickedTimeTableConfigsArray == null) return true;
         let isSameDict = comparePickedSlots(picked_slots_dict, alredyPickedTimeTableConfigsArray);
@@ -63,7 +67,8 @@ const pick_slot = (subjects_list, picked_slots_dict, subSlotDict, alredyPickedTi
 
     const subject = subjects_list[0];
     const subSlots = subSlotDict[subject];
-    const pickedSlots = getAllPickedSlots(picked_slots_dict);
+    // const pickedSlots = getAllPickedSlots(picked_slots_dict);
+    const pickedSlots = Object.keys(picked_slots_dict).map((key) => picked_slots_dict[key]).flat();
     // subSlots - pickedSlots
     const filteredSubSlots = subSlots.filter((subSlot) => {
         for (const pickedSlot of pickedSlots) {
@@ -77,8 +82,8 @@ const pick_slot = (subjects_list, picked_slots_dict, subSlotDict, alredyPickedTi
     if (filteredSubSlots.length === 0) return false;
 
     for (const filteredSubSlot of filteredSubSlots) {
-        picked_slots_dict[subject] = get_time_slots_for_slot(filteredSubSlot);
-        if (pick_slot(subjects_list.slice(1), picked_slots_dict, subSlotDict, alredyPickedTimeTableConfigsArray)) {
+        picked_slots_dict[subject] = get_time_slots_for_slot(timeTable, filteredSubSlot);
+        if (pick_slot(timeTable, subjects_list.slice(1), picked_slots_dict, subSlotDict, alredyPickedTimeTableConfigsArray)) {
             return true;
         }
         picked_slots_dict[subject] = [];

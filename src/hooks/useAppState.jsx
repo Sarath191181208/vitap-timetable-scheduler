@@ -2,9 +2,10 @@ import { useCachedState } from "./useCachedState";
 import { useRef } from "react";
 import { pick_slot } from "../pick_slot";
 import { getActualSlotDict, getMaskedSubSlotDict } from "../data/utils";
+
 import { subSlotDict } from "../data/sub_slot_data";
-import { getCreditsFromSlot } from "../data/time_table";
-import { is_same_slot } from "../data/time_table";
+import { getCreditsFromSlot, time_table} from "../data/time_table";
+import { is_same_slot } from "../data/impls/time_table";
 
 function useAppState() {
   const [selecedSubjectsList, setSelecedSubjectsList] = useCachedState({
@@ -87,6 +88,9 @@ function useAppState() {
       (subject) => subject.value
     );
 
+    /**
+     * @type {import("../d").CourseNameAndSlots}
+     */
     const tt = {};
     const maskedSubSlotDict = getMaskedSubSlotDict(
       _pickedSubSlotDict,
@@ -94,6 +98,7 @@ function useAppState() {
     );
 
     let isTrue = pick_slot(
+      time_table,
       selectedSubjects,
       tt,
       maskedSubSlotDict,
@@ -104,6 +109,7 @@ function useAppState() {
     if (!isTrue) {
       alreadyPickedTimeTableConfigsArray.current = [];
       isTrue = pick_slot(
+        time_table,
         selectedSubjects,
         tt,
         maskedSubSlotDict,

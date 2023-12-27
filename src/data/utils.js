@@ -1,4 +1,4 @@
-import { is_same_slot } from "./time_table";
+import { is_same_slot } from "./impls/time_table";
 
 function isEmpty(obj) {
     return Object.keys(obj).length === 0;
@@ -45,7 +45,14 @@ function isInDisabledSlots(subSlot, disabledSlots) {
     return false;
 }
 
+/**
+ * 
+ * @param {*} subjectMaskDict 
+ * @param {*} subSlotDict 
+ * @returns {import("../d").CourseNameAndSlots}
+ */
 function getMaskedSubSlotDict(subjectMaskDict, subSlotDict) {
+    /** @type {import("../d").CourseNameAndSlots} */
     const maskedSubSlotDict = {};
     for (const [subName, subMask] of Object.entries(subjectMaskDict)) {
         const maskedSubSlotArr = subSlotDict[subName].filter((_, i) => subMask[i]);

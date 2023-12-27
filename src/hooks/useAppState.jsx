@@ -3,11 +3,9 @@ import { useRef } from "react";
 import { pick_slot } from "../pick_slot";
 import { getActualSlotDict, getMaskedSubSlotDict } from "../data/utils";
 
-import { subSlotDict } from "../data/sub_slot_data";
-import { getCreditsFromSlot, time_table} from "../data/time_table";
 import { is_same_slot } from "../data/impls/time_table";
 
-function useAppState() {
+function useAppState({ subSlotDict, getCreditsFromSlot, time_table }) {
   const [selecedSubjectsList, setSelecedSubjectsList] = useCachedState({
     cacheKey: "selecedSubjectsList",
     defaultValue: [],

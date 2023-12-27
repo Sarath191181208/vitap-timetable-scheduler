@@ -13,15 +13,19 @@ import {
   isInDisabledSlots,
   getActualSlotDict,
   getSubjectColorDict,
+  withOpacity,
 } from "./data/utils";
 
-import { time_table, time_arr } from "./data/time_table";
-import { subSlotDict, options } from "./data/sub_slot_data";
-import React  from "react";
-
+import React from "react";
+import { getData } from "./data";
 inject();
 
+const colorOpacity = 0.8;
+
 function App() {
+  const { subSlotDict, time_table, time_arr, options, getCreditsFromSlot } =
+    getData("Batch-2021");
+
   const {
     selecedSubjectsList,
     timeTable,
@@ -37,7 +41,7 @@ function App() {
     updateSubSlotTaken,
     markBlockedTimeSlotsInplace,
     customFilterFn,
-  } = useAppState();
+  } = useAppState({ subSlotDict, getCreditsFromSlot, time_table });
 
   calculateCredits();
 
@@ -45,6 +49,7 @@ function App() {
     <>
       <div className="subject-selection-controls">
         <Select
+          classNamePrefix="select_subjects"
           defaultValue={selecedSubjectsList}
           onChange={onSubjectSelectChange}
           closeMenuOnSelect={false}
@@ -130,6 +135,7 @@ function App() {
             }}
             blockedTimeSlots={blockedTimeSlots}
             time_arr={time_arr}
+            subSlotDict={subSlotDict}
           />
           <div>
             <h2>Registered Credits: {calculateCredits()}</h2>
@@ -153,7 +159,8 @@ function App() {
  * @property {Object} pickedSubSlotDict
  * @property {Function} onChange
  * @property {Array} disabledSlots
- * @returns {JSX.Element}
+ * @param {SubjectCheckBoxesProps} props
+ * @returns {import("react").ReactNode}
  */
 function SubjectCheckBoxes({
   subSlotDict,
@@ -185,33 +192,39 @@ function SubjectCheckBoxes({
         <h3
           style={{
             "--data-pre-color": `#${subjectColorDict[subName]}`,
+            margin: 0,
+            marginTop: "3rem",
           }}
         >
           {subName}
         </h3>
-        <input
-          type="checkbox"
-          name="select-all-checkbox"
-          id={subName + "Select-All"}
-          onChange={(e) => {
-            const { checked } = e.target;
-            fillAll(checked, isSlotTakenBoolenArray, subName);
-          }}
-          checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
-        />
-        <label htmlFor={subName}>Select All</label>
-
-        <input
-          type="checkbox"
-          name="select-all-checkbox"
-          id={subName + "Unselect-all"}
-          onChange={(e) => {
-            const { checked } = e.target;
-            fillAll(!checked, isSlotTakenBoolenArray, subName);
-          }}
-          checked={isSlotTakenBoolenArray.every((isSlotTaken) => !isSlotTaken)}
-        />
-        <label htmlFor={subName}>Unselect All</label>
+        <div className="select-unselect-div">
+          <input
+            type="checkbox"
+            name="select-all-checkbox"
+            id={subName + "Select-All"}
+            onChange={(e) => {
+              const { checked } = e.target;
+              fillAll(checked, isSlotTakenBoolenArray, subName);
+            }}
+            checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
+          />
+          <label htmlFor={subName}>Select All</label>
+          <span className="spacer"></span>
+          <input
+            type="checkbox"
+            name="select-all-checkbox"
+            id={subName + "Unselect-all"}
+            onChange={(e) => {
+              const { checked } = e.target;
+              fillAll(!checked, isSlotTakenBoolenArray, subName);
+            }}
+            checked={isSlotTakenBoolenArray.every(
+              (isSlotTaken) => !isSlotTaken
+            )}
+          />
+          <label htmlFor={subName}>Unselect All</label>
+        </div>
         <div id="custom-check-box-grid">
           {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
             <CustomCheckBox
@@ -277,6 +290,7 @@ function CustomCheckBox({ onChange, checked, slotLabel, slotId, disabled }) {
  * @typedef {Object} TimeTableProps
  * @property {Object} time_table
  * @property {Object} subTimeSlotDict
+ * @property {Object} subSlotDict
  * @property {Function} onSlotTap
  * @property {Array} blockedTimeSlots
  * @property {Array} time_arr
@@ -285,6 +299,7 @@ function CustomCheckBox({ onChange, checked, slotLabel, slotId, disabled }) {
 function TimeTable({
   time_table,
   subTimeSlotDict,
+  subSlotDict,
   onSlotTap,
   blockedTimeSlots,
   time_arr,
@@ -314,8 +329,9 @@ function TimeTable({
               key={slot}
               data-hover={slotSubjectDict[slot]}
               style={{
-                backgroundColor: `#${subjectColorDict[slotSubjectDict[slot]]}`,
+                backgroundColor: `${ withOpacity( subjectColorDict[slotSubjectDict[slot]], colorOpacity )}`,
               }}
+              className="table--single-slot"
             >
               {slot}
             </td>
@@ -371,7 +387,7 @@ function ColorDict({ subjectColorDict, actualSlotDict }) {
     rows.push(
       <div
         className="subject-block"
-        style={{ backgroundColor: `#${value}` }}
+        style={{ backgroundColor: `${withOpacity(value, colorOpacity)}` }}
         key={key}
       >
         {key}

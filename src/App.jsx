@@ -23,8 +23,9 @@ inject();
 const colorOpacity = 0.8;
 
 function App() {
+  const semID = "Batch-2021";
   const { subSlotDict, time_table, time_arr, options, getCreditsFromSlot } =
-    getData("Batch-2021");
+    getData(semID);
 
   const {
     selecedSubjectsList,
@@ -42,7 +43,7 @@ function App() {
     updateSubSlotTaken,
     markBlockedTimeSlotsInplace,
     customFilterFn,
-  } = useAppState({ subSlotDict, getCreditsFromSlot, time_table });
+  } = useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table });
 
   calculateCredits();
 

@@ -5,21 +5,21 @@ import { getActualSlotDict, getMaskedSubSlotDict } from "../data/utils";
 
 import { is_same_slot } from "../data/impls/time_table";
 
-function useAppState({ subSlotDict, getCreditsFromSlot, time_table }) {
+function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
   const [selecedSubjectsList, setSelecedSubjectsList] = useCachedState({
-    cacheKey: "selecedSubjectsList",
+    cacheKey: `${semID}-selecedSubjectsList`,
     defaultValue: [],
   });
   const [timeTable, setTimetable] = useCachedState({
-    cacheKey: "timeTable",
+    cacheKey: `${semID}-timeTable`,
     defaultValue: {},
   });
   const [pickedSubSlotDict, setPickedSubSlotDict] = useCachedState({
-    cacheKey: "pickedSubSlotDict",
+    cacheKey: `${semID}-pickedSubSlotDict`,
     defaultValue: {},
   });
   const [blockedTimeSlots, setBlockedTimeSlots] = useCachedState({
-    cacheKey: "blockedTimeSlots",
+    cacheKey: `${semID}-blockedTimeSlots`,
     defaultValue: [],
   });
 

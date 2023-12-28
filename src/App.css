@@ -66,8 +66,6 @@
   background-color: var(--table-subject-box-bg-color);
   padding: 20px;
   border-radius: 4px;
-  /* display: grid;
-  place-content: center; */
 }
 
 .time-table-container {

@@ -49,6 +49,7 @@ function App() {
     <>
       <div className="subject-selection-controls">
         <Select
+          placeholder="Search the subjects you want to take"
           classNamePrefix="select_subjects"
           defaultValue={selecedSubjectsList}
           onChange={onSubjectSelectChange}

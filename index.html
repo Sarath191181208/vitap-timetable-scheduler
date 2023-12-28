@@ -72,6 +72,30 @@
         justify-content: center;
       }
     }
+
+    /* make the button floating */
+    #theme-toggle-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 5px;
+      padding: .7rem;
+      border: none;
+      background-color: #ffffff;
+      /* width: 50px;
+      height: 50px; */
+      font-size: 1.5rem;
+      border-radius: 12.5px;
+      color: #000000;
+      cursor: pointer;
+      transition: .5s;
+      z-index: 10;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-dark-theme{
+      background: black !important;
+    }
   </style>
 </head>
 
@@ -108,11 +132,10 @@
       <p>
         VIT-AP Time Table Scheduler
       </p>
-      <button>
-        Toggle Dark Mode
-      </button>
     </nav>
   </header>
+  <button id="theme-toggle-button" aria-label="Toggle theme">
+  </button>
   <div id="root"></div>
   <footer>
     <ul>
@@ -145,26 +168,31 @@
   </footer>
   <script type="module" src="/src/main.jsx"></script>
   <script>
-    const btn = document.querySelector('button');
+    const btn = document.getElementById("theme-toggle-button");
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function changeTheme(theme) {
+      document.documentElement.classList.remove("light-theme", "dark-theme");
+      document.documentElement.classList.add(theme);
+      if (theme == "dark-theme") {
+        btn.innerHTML = "🌞";
+        btn.classList.add("btn-dark-theme");
+      } else {
+        btn.innerHTML = "🌙";
+        btn.classList.remove("btn-dark-theme");
+      }
+      localStorage.setItem("theme", theme);
+    }
 
     function handleOnLoadTheme() {
       let theme = localStorage.getItem("theme");
       if (theme != null) {
-        document.documentElement.classList.add(theme);
-        return 
-      }       
-
-      if (prefersDarkScheme.matches) {
-        document.documentElement.classList.remove("light-theme");
-        document.documentElement.classList.add("dark-theme");
-        theme = "dark-theme";
-      } else {
-        document.documentElement.classList.remove("dark-theme");
-        document.documentElement.classList.add("light-theme");
-        theme = "light-theme";
+        changeTheme(theme);
+        return
       }
-      localStorage.setItem("theme", theme);
+
+      theme = prefersDarkScheme.matches ? "dark-theme" : "light-theme";
+      changeTheme(theme);
     }
 
     window.addEventListener("load", () => {
@@ -173,9 +201,7 @@
 
     btn.addEventListener("click", function () {
       let newTheme = document.documentElement.classList.contains("light-theme") ? "dark-theme" : "light-theme";
-      let otherTheme = document.documentElement.classList.contains("light-theme") ? "light-theme" : "dark-theme";
-      document.documentElement.classList.remove(otherTheme);
-      document.documentElement.classList.add(newTheme);
+      changeTheme(newTheme);
     });
 
   </script>

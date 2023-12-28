@@ -1,492 +1,469 @@
 {
-    "CHY1001-Environmental Studies": [
-        "E1"
-    ],
-    "CHY1005-Industrial Chemistry for Engineers": [
-        "G2+TG2",
-        "G1+TG1",
-        "C1+TC1"
-    ],
-    "CHY1006-Corrosion Science and Engineering": [
-        "D1+TD1",
-        "E2+TE2",
-        "F2+TF2"
-    ],
-    "CHY1007-Energy Materials and Their Applications": [
-        "B2+TB2",
-        "F1+TF1",
-        "D2+TD2"
-    ],
-    "CHY2001-Chemical and Biosensors": [
-        "A2+TA2"
-    ],
-    "CHY2002-Organic Electronics": [
-        "B2+TB2",
-        "E1+TE1"
+    "CSE1005-Software Engineering": [
+        "L27+L28",
+        "L35+L36",
+        "L19+L20",
+        "L3+L4",
+        "L7+L8",
+        "L1+L2",
+        "L43+L44",
+        "L21+L22",
+        "L33+L34",
+        "L39+L40",
+        "L37+L38",
+        "L5+L6",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46",
+        "L23+L24",
+        "L49+L50",
+        "L13+L14",
+        "L53+L54",
+        "L15+L16",
+        "L17+L18",
+        "L29+L30",
+        "L55+L56",
+        "L25+L26",
+        "L11+L12",
+        "L31+L32",
+        "L57+L58",
+        "L51+L52",
+        "L41+L42"
     ],
     "CSE1006-Foundations for Data Analytics": [
-        "E1"
+        "L23+L24",
+        "L27+L28",
+        "L5+L6",
+        "L13+L14",
+        "L3+L4",
+        "L1+L2",
+        "L33+L34",
+        "L31+L32",
+        "L57+L58",
+        "L51+L52",
+        "L41+L42",
+        "L47+L48"
     ],
-    "CSE1008-Theory of Computation": [
-        "D2+TD2+TDD2",
-        "C1+TC1+TCC1"
+    "CSE1007-Introduction to Cryptography": [
+        "L51+L52",
+        "L7+L8",
+        "L37+L38"
     ],
-    "CSE2001-Data Structures and Algorithms": [
-        "B1+TB1+TBB1+TG1",
-        "A1+G1+TA1",
-        "A2+G2+TA2",
-        "B2+TB2+TBB2+TG2"
+    "CSE1020-Procedural Programming Using C": [
+        "L47+L48",
+        "L43+L44",
+        "L15+L16"
     ],
-    "CSE2009-Soft Computing": [
-        "D2+TD2",
-        "C1+TC1"
+    "CSE2006-Computer Graphics": [
+        "L9+L10"
     ],
-    "CSE2010-Secure Coding": [
-        "C2+TC2"
+    "CSE2007-Database Management Systems": [
+        "L27+L28",
+        "L35+L36",
+        "L19+L20",
+        "L3+L4",
+        "L7+L8",
+        "L1+L2",
+        "L43+L44",
+        "L21+L22",
+        "L33+L34",
+        "L39+L40",
+        "L37+L38",
+        "L5+L6",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46",
+        "L23+L24",
+        "L49+L50",
+        "L13+L14",
+        "L53+L54",
+        "L15+L16",
+        "L17+L18",
+        "L29+L30",
+        "L55+L56",
+        "L25+L26",
+        "L11+L12",
+        "L31+L32",
+        "L57+L58",
+        "L51+L52",
+        "L41+L42"
     ],
     "CSE2011-Cyber Security and Digital Forensics": [
-        "D2+TD2"
-    ],
-    "CSE2013-Information Theory and Coding": [
-        "B1+TB1+TBB1"
-    ],
-    "CSE3001-Agile Development Process": [
-        "F1+TF1",
-        "A2+TA2"
+        "L3+L4",
+        "L41+L42",
+        "L39+L40"
     ],
     "CSE3002-Artificial Intelligence": [
-        "B2+TB2",
-        "A1+TA1"
+        "L27+L28",
+        "L35+L36",
+        "L19+L20",
+        "L3+L4",
+        "L7+L8",
+        "L1+L2",
+        "L43+L44",
+        "L21+L22",
+        "L33+L34",
+        "L39+L40",
+        "L37+L38",
+        "L5+L6",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46",
+        "L23+L24",
+        "L49+L50",
+        "L13+L14",
+        "L53+L54",
+        "L15+L16",
+        "L17+L18",
+        "L29+L30",
+        "L55+L56",
+        "L25+L26",
+        "L11+L12",
+        "L31+L32",
+        "L57+L58",
+        "L51+L52",
+        "L41+L42"
     ],
     "CSE3003-Computer Networks": [
-        "G1+TG1"
+        "L27+L28",
+        "L35+L36",
+        "L19+L20",
+        "L3+L4",
+        "L7+L8",
+        "L1+L2",
+        "L43+L44",
+        "L21+L22",
+        "L33+L34",
+        "L39+L40",
+        "L37+L38",
+        "L5+L6",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46",
+        "L23+L24",
+        "L49+L50",
+        "L13+L14",
+        "L53+L54",
+        "L15+L16",
+        "L17+L18",
+        "L29+L30",
+        "L55+L56",
+        "L25+L26",
+        "L11+L12",
+        "L31+L32",
+        "L57+L58",
+        "L51+L52",
+        "L41+L42"
     ],
     "CSE3004-Design and Analysis of Algorithms": [
-        "F1+TF1"
+        "L27+L28",
+        "L35+L36",
+        "L19+L20",
+        "L3+L4",
+        "L7+L8",
+        "L21+L22",
+        "L43+L44",
+        "L37+L38",
+        "L39+L40",
+        "L5+L6",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46",
+        "L23+L24",
+        "L49+L50",
+        "L13+L14",
+        "L53+L54",
+        "L15+L16",
+        "L17+L18",
+        "L29+L30",
+        "L55+L56",
+        "L25+L26",
+        "L11+L12",
+        "L31+L32",
+        "L57+L58",
+        "L51+L52"
     ],
     "CSE3006-Data Visualization": [
-        "E2+TE2"
+        "L7+L8",
+        "L53+L54",
+        "L15+L16",
+        "L39+L40"
     ],
     "CSE3008-Introduction to Machine Learning": [
-        "D2+TD2",
-        "C1+TC1"
+        "L23+L24",
+        "L49+L50"
     ],
     "CSE3009-No SQL Databases": [
-        "A2+TA2"
+        "L53+L54",
+        "L29+L30",
+        "L25+L26",
+        "L31+L32",
+        "L9+L10"
+    ],
+    "CSE3011-Network Programming": [
+        "L27+L28",
+        "L55+L56",
+        "L53+L54"
     ],
     "CSE3012-Network Security": [
-        "D2+TD2"
+        "L25+L26",
+        "L37+L38"
+    ],
+    "CSE3013-Secure Group Communications": [
+        "L21+L22",
+        "L43+L44",
+        "L27+L28"
     ],
     "CSE3015-Natural Language Processing": [
-        "B1+TB1"
-    ],
-    "CSE3018-Software Configuration Management": [
-        "F2+TF2"
-    ],
-    "CSE3019-Software Quality and Reliability": [
-        "B2+TB2",
-        "E1+TE1"
-    ],
-    "CSE3020-Product Definition and Validation": [
-        "F2+TF2"
-    ],
-    "CSE3031-Mobile Computing": [
-        "G1+TG1"
+        "L27+L28",
+        "L35+L36",
+        "L3+L4",
+        "L7+L8",
+        "L21+L22",
+        "L43+L44",
+        "L33+L34",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46",
+        "L49+L50",
+        "L13+L14",
+        "L53+L54",
+        "L15+L16",
+        "L17+L18",
+        "L55+L56",
+        "L57+L58",
+        "L51+L52"
     ],
     "CSE4005-Data Warehousing and Data Mining": [
-        "B2+TB2"
-    ],
-    "CSE4006-Deep Learning": [
-        "G2+TG2"
+        "L51+L52",
+        "L25+L26",
+        "L41+L42",
+        "L11+L12"
     ],
     "CSE4007-Digital Image Processing": [
-        "G1+TG1"
+        "L27+L28",
+        "L35+L36",
+        "L13+L14",
+        "L3+L4",
+        "L17+L18",
+        "L21+L22",
+        "L37+L38",
+        "L55+L56",
+        "L33+L34",
+        "L11+L12",
+        "L31+L32",
+        "L57+L58",
+        "L47+L48",
+        "L9+L10"
     ],
-    "CSE4011-Internet of Things": [
-        "C2+TC2"
+    "CSE4008-Social Network Analysis": [
+        "L23+L24",
+        "L19+L20",
+        "L1+L2",
+        "L57+L58",
+        "L47+L48"
     ],
-    "CSE4012-UI UX User Experience Design": [
-        "B1+TB1",
-        "A2+TA2"
+    "CSE4016-Database Administration": [
+        "L17+L18",
+        "L49+L50",
+        "L3+L4"
     ],
-    "CSE4018-Computer Vision and Robotics": [
-        "D1+TD1"
+    "CSE4031-Web Application Security": [
+        "L19+L20",
+        "L49+L50"
     ],
-    "CSE4033-IT Project Management": [
-        "E1"
+    "CSE4037-Reinforcement Learning": [
+        "L23+L24",
+        "L35+L36",
+        "L19+L20",
+        "L3+L4",
+        "L15+L16",
+        "L37+L38",
+        "L33+L34",
+        "L31+L32",
+        "L41+L42",
+        "L9+L10",
+        "L45+L46"
     ],
-    "ECE1010-Probability and Random Processes": [
-        "B1+TB1+TBB1",
-        "B2+TB2+TBB2",
-        "A2+TA2+TAA2",
-        "A1+TA1+TAA1"
+    "CSE4040-Mining Massive Data Sets": [
+        "L17+L18",
+        "L21+L22",
+        "L57+L58"
     ],
-    "ECE2002-Computer Organization and Architecture": [
-        "B1+TB1+TBB1",
-        "B2+TB2+TBB2",
-        "A2+TA2+TAA2",
-        "A1+TA1+TAA1",
-        "C1+TC1+TCC1",
-        "D1+TD1+TDD1",
-        "D2+TD2+TDD2",
-        "C2+TC2+TCC2"
+    "CSE4042-Blockchain Platforms and Applications": [
+        "L55+L56"
+    ],
+    "CSE4044-Software Defined Networks and Network Function Virtualization": [
+        "L39+L40"
+    ],
+    "ECE1007-Sensor Systems": [
+        "L55+L56"
+    ],
+    "ECE1008-Sensors and Control Systems": [
+        "L51+L52"
+    ],
+    "ECE2001-Analog Devices and Circuits": [
+        "L7+L8",
+        "L37+L38",
+        "L35+L36",
+        "L39+L40"
+    ],
+    "ECE2006-Communication Systems": [
+        "L23+L24",
+        "L51+L52",
+        "L55+L56",
+        "L3+L4"
     ],
     "ECE2007-Digital Signal Processing": [
-        "B1+TB1"
+        "L11+L12"
     ],
-    "ECE3008-Neural Networks and Fuzzy Systems": [
-        "D1+TD1+TDD1"
+    "ECE2014-Microprocessors and Microcontrollers": [
+        "L41+L42",
+        "L43+L44",
+        "L31+L32",
+        "L3+L4"
     ],
-    "ECE3009-Power Electronic Converters": [
-        "C1+TC1"
+    "ECE3001-Linear Integrated Circuits and Applications": [
+        "L41+L42",
+        "L33+L34",
+        "L11+L12",
+        "L9+L10"
     ],
-    "ECE4002-Wireless and Mobile Communications": [
-        "A1+TA1"
+    "ECE3005-CMOS VLSI Design": [
+        "L51+L52"
     ],
-    "ECE4007-IoT System Architecture": [
-        "G1"
+    "ECE3006-HDL Verification and Methodology": [
+        "L31+L32"
     ],
-    "ENG1001-English for Essential Communication": [
-        "F1"
+    "ECE3010-Speech processing": [
+        "L33+L34"
     ],
-    "ENG1002-English for Effective Communication": [
-        "F2"
+    "ECE4003-Embedded Programming": [
+        "L27+L28"
     ],
-    "ENG1005-Basic Communication in English": [
-        "F1"
+    "ECE4005-SOC Design": [
+        "L21+L22"
     ],
-    "ENG1006-Functional Communication in English": [
-        "F2"
+    "ECE4006-Analog IC Design": [
+        "L3+L4"
     ],
-    "ENG1015-Introduction to 20th Century European Literature in Translation": [
-        "A1+TA1"
+    "ECE4017-IoT Domain Analyst": [
+        "L29+L30"
     ],
-    "ENG2001-English for Professional Communication": [
-        "E2"
-    ],
-    "ENG2004-Advanced Professional Communication": [
-        "E2"
-    ],
-    "ENG3001-Introduction to Translation Studies": [
-        "A2+TA2"
-    ],
-    "ENG3004-Introducing Linguistics": [
-        "F1"
-    ],
-    "FRL1001-Basic French": [
-        "G1",
-        "F2",
-        "G2"
-    ],
-    "FRL1004-Basic Spanish": [
-        "F1"
-    ],
-    "FRL1005-German for Beginners": [
-        "E2",
-        "E1",
-        "G2"
-    ],
-    "FRL2003-French for Engineers": [
-        "E1+TE1"
-    ],
-    "FRL2004-Korean for Beginners": [
-        "F2",
-        "F1"
-    ],
-    "HUM1002-Personal Finance for Engineers": [
-        "F2"
-    ],
-    "HUM2003-Fundamentals of Cost and Management Accounting": [
-        "A1+TA1+TAA1"
-    ],
-    "INL1001-Functional Hindi for non-Hindi Speakers": [
-        "G2"
-    ],
-    "INL1101-Foundations of Hindi Language": [
-        "E2"
-    ],
-    "LAW1001-Law, Internet and Society": [
-        "G1+TG1"
-    ],
-    "LAW1002-Competition Law for Engineers": [
-        "F2+TF2",
-        "C2+TC2"
-    ],
-    "LAW1003-Human Rights and Criminal Justice System": [
-        "G2+TG2"
-    ],
-    "LAW1005-Introduction to Indian Constitution": [
-        "D1+TD1",
-        "F1+TF1"
-    ],
-    "LAW1008-Intellectual Property Law for Engineers": [
-        "D1+TD1+TDD1",
-        "C2+TC2+TCC2"
-    ],
-    "LAW2001-Business and Human Rights": [
-        "E2+TE2"
-    ],
-    "LIB1001-Anthropology \u2013 An Introduction": [
-        "A1+TA1"
-    ],
-    "LIB1003-Psychology - An Introduction": [
-        "B1+TB1"
-    ],
-    "LIB1007-Gender Studies - An Introduction": [
-        "B2"
-    ],
-    "LIB1014-Pursuit of Happiness": [
-        "C1+TC1"
-    ],
-    "LIB2003-Geography of Asia and Sub-Saharan Africa": [
-        "F1+TF1"
-    ],
-    "LIB2004-Ancient Indian History": [
-        "A1+TA1+TAA1"
-    ],
-    "MAT1003-Discrete Mathematical Structures": [
-        "B1+TB1+TBB1",
-        "B2+TB2+TBB2",
-        "A2+TA2+TAA2",
-        "A1+TA1+TAA1",
-        "C1+TC1+TCC1",
-        "D1+TD1+TDD1",
-        "D2+TD2+TDD2",
-        "C2+TC2+TCC2"
-    ],
-    "MAT1007-Discrete Mathematics": [
-        "D1+TD1+TDD1",
-        "D2+TD2+TDD2",
-        "C2+TC2+TCC2",
-        "C1+TC1+TCC1"
+    "ECE4018-Image Analysis and Computer Vision": [
+        "L51+L52"
     ],
     "MAT1011-Applied Statistics": [
-        "E2+TE2",
-        "E1+TE1",
-        "C2+TC2",
-        "C1+TC1"
+        "L27+L28",
+        "L35+L36",
+        "L19+L20",
+        "L3+L4",
+        "L21+L22",
+        "L37+L38",
+        "L43+L44",
+        "L1+L2",
+        "L33+L34",
+        "L39+L40",
+        "L7+L8",
+        "L5+L6",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46",
+        "L23+L24",
+        "L49+L50",
+        "L13+L14",
+        "L53+L54",
+        "L15+L16",
+        "L17+L18",
+        "L29+L30",
+        "L55+L56",
+        "L25+L26",
+        "L11+L12",
+        "L31+L32",
+        "L57+L58",
+        "L51+L52",
+        "L41+L42"
     ],
     "MAT2001-Numerical Methods for Engineers": [
-        "E2",
-        "C1",
-        "E1"
-    ],
-    "MAT2002-Complex Variables and Partial Differential Equations": [
-        "A1+TA1",
-        "A2+TA2"
+        "L49+L50",
+        "L3+L4"
     ],
     "MAT2003-Optimization Techniques": [
-        "A2+TA2"
+        "L27+L28",
+        "L45+L46"
     ],
-    "MAT2004-Applied Optimization Techniques": [
-        "D1+TD1"
+    "MEC1002-Engineering Graphics": [
+        "L13+L14+L21+L22"
     ],
-    "MAT2005-Linear Algebra": [
-        "A1+TA1",
-        "G1+TG1"
+    "MEC2005-Fundamentals of Manufacturing Processes": [
+        "L1+L2",
+        "L5+L6"
     ],
-    "MAT2009-Computational Statistics": [
-        "A1+TA1",
-        "F1+TF1",
-        "C2+TC2"
+    "MEC3001-Heat and Mass Transfer": [
+        "L37+L38"
     ],
-    "MAT2011-Graph Theory and Applications": [
-        "C2+TC2"
+    "MEC3002-Theory of Machines": [
+        "L1+L2",
+        "L5+L6"
     ],
-    "MEC2003-Strength of Materials": [
-        "B1+TB1"
-    ],
-    "MEC2004-Fluid Mechanics": [
-        "D1+TD1"
-    ],
-    "MEC2007-Introduction to Mechanical Engineering Design Process": [
-        "C1+TC1"
+    "MEC3005-Automation in Manufacturing": [
+        "L39+L40"
     ],
     "MEC3012-Additive Manufacturing": [
-        "A1+TA1"
+        "L41+L42"
     ],
-    "MGT1002-Lean Start-up Management": [
-        "D1+TD1",
-        "E2+TE2"
+    "MEC4003-Internal Combustion Engines": [
+        "L33+L34"
     ],
-    "MGT1005-Fundamentals of Creativity and Innovation Management": [
-        "C1"
+    "MEC4008-Automobile Engineering": [
+        "L39+L40"
     ],
-    "MGT1007-Economics for Engineers": [
-        "D2+TD2"
-    ],
-    "MGT1008-Accounting and Finance for Engineers": [
-        "B2+TB2"
-    ],
-    "MGT1011-Fundamentals of Business Strategy": [
-        "B1+TB1"
-    ],
-    "MGT1015-Fundamentals of Consumer Behaviour": [
-        "E2+TE2"
-    ],
-    "MGT1019-Fundamentals of Project Management": [
-        "A2+TA2"
-    ],
-    "MGT1023-Fundamentals of Human Resource Management": [
-        "E1+TE1"
-    ],
-    "MGT1029-Basic Law for Engineers": [
-        "F1+TF1",
-        "D2+TD2"
-    ],
-    "MGT1037-Introduction to Management": [
-        "E2+TE2"
-    ],
-    "MGT1040-Entrepreneurship": [
-        "E2",
-        "F2",
-        "E1",
-        "F1"
-    ],
-    "MGT2016-Essentials of Marketing Management": [
-        "D1+TD1+TDD1"
-    ],
-    "MGT2019-Introduction to Business Environment": [
-        "D2+TD2+TDD2"
-    ],
-    "PHY1002-Semiconductor Device Physics": [
-        "D1+TD1+TDD1",
-        "D2+TD2+TDD2",
-        "C2+TC2+TCC2",
-        "C1+TC1+TCC1"
-    ],
-    "PHY2004-Optoelectronics": [
-        "G2+TG2"
-    ],
-    "PHY2005-Introduction to Nanotechnology": [
-        "D1+TD1",
-        "E1+TE1",
-        "C2+TC2",
-        "D2+TD2",
-        "C1+TC1",
-        "F1+TF1",
-        "G2+TG2",
-        "E2+TE2",
-        "G1+TG1"
-    ],
-    "PHY2006-Solar Photovoltaics : Fundamentals and Technologies": [
-        "D2+TD2",
-        "G1+TG1"
-    ],
-    "STS1002-Fundamentals of Aptitude": [
-        "D1+TD1",
-        "C2+TC2",
-        "D2+TD2",
-        "C1+TC1",
-        "A2+TA2",
-        "A1+TA1"
-    ],
-    "STS1008-Arithmetic Problem Solving Skills": [
-        "D2+TD2"
-    ],
-    "STS2006-Getting Started to Skill Enhancement": [
-        "D1+TD1",
-        "E1+TE1",
-        "C2+TC2",
-        "A2+TA2",
-        "D2+TD2",
-        "C1+TC1",
-        "F2+TF2",
-        "F1+TF1",
-        "B2+TB2",
-        "A1+TA1",
-        "E2+TE2",
-        "B1+TB1"
-    ],
-    "STS2008-Numerical Ability and Cognitive Intelligence": [
-        "D1+TD1",
-        "D2+TD2",
-        "C2+TC2",
-        "A2+TA2",
-        "C1+TC1",
-        "F2+TF2",
-        "F1+TF1",
-        "A1+TA1"
-    ],
-    "STS3004-Introduction to Programming Skills": [
-        "F2+TF2"
-    ],
-    "STS3006-Basic Competitive Coding - I": [
-        "G1+TG1"
-    ],
-    "STS4005-Basic Competitive Coding - II": [
-        "G2+TG2"
-    ],
-    "SWE1002-Principles of Software Engineering": [
-        "B2+TB2",
-        "E1+TE1",
-        "B1+TB1",
-        "E2+TE2"
-    ],
-    "SWE2001-Data Structures and its Applications": [
-        "B1+TB1+TBB1+TG1",
-        "A1+G1+TA1",
-        "A2+G2+TA2",
-        "B2+TB2+TBB2+TG2"
-    ],
-    "SWE2002-Human Computer Interaction": [
-        "G1+TG1"
-    ],
-    "SWE2003-Requirements Engineering Management": [
-        "C2+TC2"
-    ],
-    "SWE2004-Software Design and Architecture": [
-        "B1+TB1"
+    "MGT1001-Ethics and Values": [
+        "L27+L28",
+        "L49+L50",
+        "L35+L36",
+        "L3+L4",
+        "L29+L30",
+        "L15+L16",
+        "L21+L22",
+        "L37+L38",
+        "L43+L44",
+        "L55+L56",
+        "L39+L40",
+        "L9+L10"
     ],
     "SWE2006-Database Systems": [
-        "F2+TF2",
-        "F1+TF1",
-        "C2+TC2",
-        "C1+TC1"
-    ],
-    "SWE2007-Fundamentals of Operating Systems": [
-        "A2+TA2"
-    ],
-    "SWE2008-Object Oriented Analysis and Design": [
-        "A1+TA1",
-        "A2+TA2"
+        "L49+L50",
+        "L53+L54",
+        "L19+L20",
+        "L17+L18",
+        "L1+L2",
+        "L47+L48",
+        "L9+L10",
+        "L45+L46"
     ],
     "SWE3001-Introduction to Computer Networks": [
-        "F1+TF1"
+        "L35+L36",
+        "L3+L4",
+        "L7+L8",
+        "L37+L38",
+        "L31+L32",
+        "L57+L58",
+        "L5+L6"
     ],
-    "SWE3002-Software Project Management": [
-        "D1+TD1"
-    ],
-    "SWE3004-Front End Design and Testing": [
-        "A1+TA1",
-        "A2+TA2"
-    ],
-    "SWE4001-Internet and Web Technologies": [
-        "F2+TF2",
-        "C1+TC1"
+    "SWE3005-Principles of Design Patterns": [
+        "L41+L42",
+        "L11+L12",
+        "L39+L40"
     ],
     "SWE4002-Software Testing": [
-        "E1+TE1"
+        "L29+L30",
+        "L53+L54",
+        "L45+L46"
     ],
-    "SWE4003-Concepts of Mobile Application Development": [
-        "D1+TD1",
-        "D2+TD2"
-    ],
-    "SWE4004-Cloud Computing and its Applications": [
-        "C1+TC1"
-    ],
-    "SWE4005-Storage Technologies and Management": [
-        "G1+TG1"
-    ],
-    "TEC3001-Design Thinking": [
-        "D1+TD1",
-        "E1+TE1",
-        "C2+TC2",
-        "D2+TD2",
-        "C1+TC1",
-        "F1+TF1",
-        "B2+TB2",
-        "E2+TE2",
-        "B1+TB1"
+    "SWE4006-Advanced Server Side Programming": [
+        "L29+L30",
+        "L53+L54",
+        "L45+L46"
     ]
 }

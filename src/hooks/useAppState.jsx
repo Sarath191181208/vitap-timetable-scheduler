@@ -1,5 +1,5 @@
 import { useCachedState } from "./useCachedState";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { pick_slot } from "../pick_slot";
 import { getActualSlotDict, getMaskedSubSlotDict } from "../data/utils";
 
@@ -22,6 +22,9 @@ function useAppState({ subSlotDict, getCreditsFromSlot, time_table }) {
     cacheKey: "blockedTimeSlots",
     defaultValue: [],
   });
+
+  const [errorMesssage, setErrorMesssage] = useState(null);
+
   const alreadyPickedTimeTableConfigsArray = useRef([]);
 
   const onSubjectSelectChange = (e) => {
@@ -116,9 +119,11 @@ function useAppState({ subSlotDict, getCreditsFromSlot, time_table }) {
     }
 
     if (isTrue) {
+      setErrorMesssage(null);
       setTimetable(tt);
     } else {
-      alert("Sorry, no timetable could be generated!")
+      // @ts-ignore
+      setErrorMesssage("Sorry, no timetable could be generated!");
     }
   };
 
@@ -170,6 +175,7 @@ function useAppState({ subSlotDict, getCreditsFromSlot, time_table }) {
   return {
     selecedSubjectsList,
     setSelecedSubjectsList,
+    errorMesssage,
     timeTable,
     setTimetable,
     pickedSubSlotDict,

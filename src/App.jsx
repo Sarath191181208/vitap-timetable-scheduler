@@ -28,6 +28,7 @@ function App() {
 
   const {
     selecedSubjectsList,
+    errorMesssage,
     timeTable,
     pickedSubSlotDict,
     setPickedSubSlotDict,
@@ -104,6 +105,11 @@ function App() {
         </div>
       ) : (
         <div className="time-table-container">
+          {errorMesssage && (
+            <div className="error-message">
+              <h2>⚠️ {errorMesssage}</h2>
+            </div>
+          )}
           <TimeTable
             time_table={time_table}
             subTimeSlotDict={timeTable}
@@ -330,7 +336,10 @@ function TimeTable({
               key={slot}
               data-hover={slotSubjectDict[slot]}
               style={{
-                backgroundColor: `${ withOpacity( subjectColorDict[slotSubjectDict[slot]], colorOpacity )}`,
+                backgroundColor: `${withOpacity(
+                  subjectColorDict[slotSubjectDict[slot]],
+                  colorOpacity
+                )}`,
               }}
               className="table--single-slot"
             >

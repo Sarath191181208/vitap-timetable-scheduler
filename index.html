@@ -81,9 +81,9 @@
       border-radius: 5px;
       padding: .7rem;
       border: none;
+      width: 50px;
+      height: 50px;
       background-color: #ffffff;
-      /* width: 50px;
-      height: 50px; */
       font-size: 1.5rem;
       border-radius: 12.5px;
       color: #000000;
@@ -93,8 +93,23 @@
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     }
 
-    .btn-dark-theme{
+    .btn-dark-theme {
       background: black !important;
+    }
+
+    .btn-dark-theme img svg {
+      fill: white !important;
+      stroke: white;
+    }
+
+    .sun-svg {
+      fill: white;
+      stroke: white;
+    }
+
+    .moon-svg {
+      fill: black;
+      stroke: black;
     }
   </style>
 </head>
@@ -130,12 +145,13 @@
         </li>
       </ul>
       <p>
-        <img rel="icon" type="image/svg+xml" src="/logo.svg" width="30" height="30"/>
+        <img rel="icon" type="image/svg+xml" src="/logo.svg" width="30" height="30" />
         VIT-AP Time Table Scheduler
       </p>
     </nav>
   </header>
   <button id="theme-toggle-button" aria-label="Toggle theme">
+    <img id="theme-toggle-button-icon" src="/public/sun.svg" alt="">
   </button>
   <div id="root"></div>
   <footer>
@@ -170,16 +186,19 @@
   <script type="module" src="/src/main.jsx"></script>
   <script>
     const btn = document.getElementById("theme-toggle-button");
+    const btnIcon = document.getElementById("theme-toggle-button-icon");
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     function changeTheme(theme) {
       document.documentElement.classList.remove("light-theme", "dark-theme");
       document.documentElement.classList.add(theme);
       if (theme == "dark-theme") {
-        btn.innerHTML = "🌞";
+        // btn.innerHTML = "🌞";
+        btnIcon.src = "/public/sun.svg";
         btn.classList.add("btn-dark-theme");
       } else {
-        btn.innerHTML = "🌙";
+        // btn.innerHTML = "🌙";
+        btnIcon.src = "/public/moon.svg";
         btn.classList.remove("btn-dark-theme");
       }
       localStorage.setItem("theme", theme);

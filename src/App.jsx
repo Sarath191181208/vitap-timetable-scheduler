@@ -18,6 +18,7 @@ import {
 
 import React from "react";
 import { getData } from "./data";
+import WarningIcon from "./assets/icons/warning";
 inject();
 
 const colorOpacity = 0.8;
@@ -108,7 +109,11 @@ function App() {
         <div className="time-table-container">
           {errorMesssage && (
             <div className="error-message">
-              <h2>⚠️ {errorMesssage}</h2>
+              <i>
+                {" "}
+                <WarningIcon width={25} height={25} />{" "}
+              </i>
+              <h2> {errorMesssage}</h2>
             </div>
           )}
           <TimeTable

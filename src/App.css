@@ -178,13 +178,18 @@
 
 .error-message{
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  gap: .5rem;
   align-items: center;
   justify-content: center;
   background-color: red;
   border-radius: .3rem;
   width: 100%;
   margin-top: 1rem;
+}
+
+.error-message > i{
+  font-size: 2rem; /* To center the icon don't know why this works */
 }
 
 @media screen and (min-width: 768px) {

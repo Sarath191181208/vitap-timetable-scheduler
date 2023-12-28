@@ -24,7 +24,7 @@ inject();
 const colorOpacity = 0.8;
 
 function App() {
-  const semID = "Batch-2021";
+  const semID = "Batch-2021-WIN";
   const { subSlotDict, time_table, time_arr, options, getCreditsFromSlot } =
     getData(semID);
 

@@ -6,7 +6,7 @@ import { getCreditsFromSlot as gcfs1, time_arr as ta1, time_table as tt1 } from 
  * @param {string} id 
  */
 export function getData(id) {
-    if (id == "Batch-2021") {
+    if (id == "Batch-2021-WIN") {
         const data = {
             subSlotDict: ssd1,
             options: opt1,

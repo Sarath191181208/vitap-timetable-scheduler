@@ -119,6 +119,7 @@ function App() {
           <TimeTable
             time_table={time_table}
             subTimeSlotDict={timeTable}
+            subSlotDict={subSlotDict}
             onSlotTap={(/** @type {any} */ timeSlot) => {
               let newBlockedTimeSlots = [];
               let isBlockedTimeSlotRemoved = false;
@@ -148,7 +149,6 @@ function App() {
             }}
             blockedTimeSlots={blockedTimeSlots}
             time_arr={time_arr}
-            subSlotDict={subSlotDict}
           />
           <div>
             <h2>Registered Credits: {calculateCredits()}</h2>

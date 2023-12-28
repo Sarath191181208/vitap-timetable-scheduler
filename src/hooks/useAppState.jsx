@@ -134,7 +134,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
         const [slotName, slot] = slotNameSlotTuple;
         const subName = slotName.split("-")[0];
         const isSTS = slotName.startsWith("STS");
-        const credit = isSTS ? 1 : getCreditsFromSlot(slot);
+        const credit = isSTS ? 3 : getCreditsFromSlot(slot);
         return acc + credit;
       },
       0

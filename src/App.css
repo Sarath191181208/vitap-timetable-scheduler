@@ -137,6 +137,10 @@
   color: var(--search-box-font-color) !important;
 }
 
+.select_subjects__control input{
+  color: var(--search-box-font-color)  !important;
+}
+
 .select_subjects__multi-value {
   background-color: var(--search-box-chip-bg) !important;
 }

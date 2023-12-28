@@ -108,6 +108,9 @@
       <p>
         VIT-AP Time Table Scheduler
       </p>
+      <button>
+        Toggle Dark Mode
+      </button>
     </nav>
   </header>
   <div id="root"></div>
@@ -141,6 +144,41 @@
     </ul>
   </footer>
   <script type="module" src="/src/main.jsx"></script>
+  <script>
+    const btn = document.querySelector('button');
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function handleOnLoadTheme() {
+      let theme = localStorage.getItem("theme");
+      if (theme != null) {
+        document.documentElement.classList.add(theme);
+        return 
+      }       
+
+      if (prefersDarkScheme.matches) {
+        document.documentElement.classList.remove("light-theme");
+        document.documentElement.classList.add("dark-theme");
+        theme = "dark-theme";
+      } else {
+        document.documentElement.classList.remove("dark-theme");
+        document.documentElement.classList.add("light-theme");
+        theme = "light-theme";
+      }
+      localStorage.setItem("theme", theme);
+    }
+
+    window.addEventListener("load", () => {
+      handleOnLoadTheme();
+    });
+
+    btn.addEventListener("click", function () {
+      let newTheme = document.documentElement.classList.contains("light-theme") ? "dark-theme" : "light-theme";
+      let otherTheme = document.documentElement.classList.contains("light-theme") ? "light-theme" : "dark-theme";
+      document.documentElement.classList.remove(otherTheme);
+      document.documentElement.classList.add(newTheme);
+    });
+
+  </script>
 </body>
 
 </html>

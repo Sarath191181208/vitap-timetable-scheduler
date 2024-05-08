@@ -1,28 +1,29 @@
 const time_table = {
-    "Tuesday": [ "TF1+L1", "TA1+L2", "E1+STC2+L3", "D1+L4", "B1+L5", "L6", "TA2+L31", "E2+STC1+L32", "D2+L33", "B2+L34", "TF2+L35", "L36" ],
-    "Wednesday": [ "TCC1+L7", "E1+STA2+L8", "G1+TFF1+L9", "TBB1+L10", "TDD1+L11", "L12", "E2+STA1+L37", "G2+TFF2+L38", "TBB2+L39", "TDD2+L40", "TCC2+L41", "L42" ],
-    "Thursday": [ "TE1+L13", "C1+L14", "A1+L15", "F1+L16", "D1+L17", "L18", "C2+L43", "A2+L44", "F2+L45", "D2+L46", "TE2+L47", "L48" ],
-    "Friday": [ "TAA1+L19", "TD1+L20", "B1+L21", "G1+TEE1+L22", "C1+L23", "L24", "TD2+L49", "B2+L50", "G2+TEE2+L51", "C2+L52", "TAA2+L53", "L54" ],
-    "Saturday": [ "TG1+L25", "TB1+L26", "TC1+L27", "A1+L28", "F1+L29", "L30", "TB2+L55", "TC2+L56", "A2+L57", "F2+L58", "TG2+L59", "L60"]
+  "Monday":   [ "TBB+L1" , "TBB+L2", "TAA+L3", "TAA+L4", "TCC+L25", "TCC+L26", "TD+L27", "TD+L28" ],
+  "Tuesday":  [ "TC+L5"  , "TC+L6", "TB+L7", "TB+L8", "TA+L29", "TA+L30", "D+L31", "D+L32" ],
+  "Wednesday":[ "B+L9"   , "B+L10", "A+L11", "A+L12", "C+L33", "C+L34", "D+L35", "D+L36" ],
+  "Thursday": [ "B+L13"  , "B+L14", "C+L15", "C+L16", "A+L37", "A+L38", "D+L39", "D+L40" ],
+  "Friday":   [ "TA+L17" , "TA+L18", "TB+L19", "TB+L20", "TC+L41", "TC+L42", "D+L43", "D+L44" ],
+  "Saturday": [ "TBB+L21", "TBB+L22", "TCC+L23", "TCC+L24", "TAA+L45", "TAA+L46", "TD+L47", "TD+L48" ]
 };
 
 
 /**
  * @type {string[]}
  */
-const time_arr = ["8:00", "9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6.00", "7.00"];
+const time_arr = ["9:00", "10:00", "11:00", "12:00", "2:00", "3:00", "4:00", "5:00"];
 
 const isExceptionSlot = (testSlot) => {
-    const slots = [
-        "B1+TB1+TBB1+TG1",
-        "B2+TB2+TBB2+TG2",
-        "A1+TA1+G1",
-        "A2+TA2+G2",
-        "B2+TB2+G2",
-    ]
-    for (const slot of slots)
-        if (isEqualSlot(slot, testSlot)) return true;
-    return false;
+  const slots = [
+    "B1+TB1+TBB1+TG1",
+    "B2+TB2+TBB2+TG2",
+    "A1+TA1+G1",
+    "A2+TA2+G2",
+    "B2+TB2+G2",
+  ]
+  for (const slot of slots)
+    if (isEqualSlot(slot, testSlot)) return true;
+  return false;
 }
 
 /**
@@ -30,14 +31,14 @@ const isExceptionSlot = (testSlot) => {
  * @returns {number}
  */
 const getCreditsFromSlot = (slot) => {
-    const isLab = slot.startsWith("L");
-    if (isLab) return 1;
-    const numberOfPluses = slot.split("+").length - 1;
-    if (isExceptionSlot(slot)) return 3;
-    if (numberOfPluses === 2) return 4;
-    if (numberOfPluses === 1) return 3;
-    if (!slot.startsWith("T")) return 2;
-    return 1;
+  const isLab = slot.startsWith("L");
+  if (isLab) return 1;
+  const numberOfPluses = slot.split("+").length - 1;
+  if (isExceptionSlot(slot)) return 3;
+  if (numberOfPluses === 2) return 3;
+  if (numberOfPluses === 1) return 2;
+  if (!slot.startsWith("T")) return 2;
+  return 1;
 };
 
 /**
@@ -47,12 +48,10 @@ const getCreditsFromSlot = (slot) => {
  * @description checks if two slots are equal
 */
 const isEqualSlot = (slot1, slot2) => {
-    const split1 = slot1.split("+").map((item) => item.trim());
-    const split2 = slot2.split("+").map((item) => item.trim());
-    for (const slot of split1) {
-        if (!split2.includes(slot)) return false;
-    }
-    return true;
+  const split1 = slot1.split("+").map((item) => item.trim());
+  const split2 = slot2.split("+").map((item) => item.trim());
+  for (const slot of split1) {
+    if (!split2.includes(slot)) return false;
+  }
+  return true;
 }
-
-export { time_table, time_arr, getCreditsFromSlot };

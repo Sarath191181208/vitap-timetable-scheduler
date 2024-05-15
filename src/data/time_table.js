@@ -1,10 +1,64 @@
 export const time_table = {
-  "Monday": ["TBB+L1", "TBB+L2", "TAA+L3", "TAA+L4", "TCC+L25", "TCC+L26", "TD+L27", "TD+L28"],
-  "Tuesday": ["TC+L5", "TC+L6", "TB+L7", "TB+L8", "TA+L29", "TA+L30", "D+L31", "D+L32"],
-  "Wednesday": ["B+L9", "B+L10", "A+L11", "A+L12", "C+L33", "C+L34", "D+L35", "D+L36"],
-  "Thursday": ["B+L13", "B+L14", "C+L15", "C+L16", "A+L37", "A+L38", "D+L39", "D+L40"],
-  "Friday": ["TA+L17", "TA+L18", "TB+L19", "TB+L20", "TC+L41", "TC+L42", "D+L43", "D+L44"],
-  "Saturday": ["TBB+L21", "TBB+L22", "TCC+L23", "TCC+L24", "TAA+L45", "TAA+L46", "TD+L47", "TD+L48"]
+  "Monday": [
+    "L1",
+    "L2",
+    "TA+L3",
+    "TB+L4",
+    "TC+L25",
+    "TD+L26",
+    "TE+L27",
+    "L28"
+  ],
+  "Tuesday": [
+    "C+L5",
+    "D+L6",
+    "E+L7",
+    "L8",
+    "A+L29",
+    "B+L30",
+    "L31",
+    "L32"
+  ],
+  "Wednesday": [
+    "L9",
+    "TE+L10",
+    "TB+L11",
+    "TA+L12",
+    "TC+L33",
+    "TD+L34",
+    "L35",
+    "L36"
+  ],
+  "Thursday": [
+    "E+L13",
+    "L14",
+    "D+L15",
+    "C+L16",
+    "B+L37",
+    "A+L38",
+    "L39",
+    "L40"
+  ],
+  "Friday": [
+    "A+L17",
+    "B+L18",
+    "L19",
+    "L20",
+    "D+L41",
+    "C+L42",
+    "E+L43",
+    "L44"
+  ],
+  "Saturday": [
+    "L21",
+    "L22",
+    "C+L23",
+    "D+L24",
+    "A+L45",
+    "B+L46",
+    "E+L47",
+    "L48"
+  ]
 };
 
 
@@ -31,12 +85,13 @@ const isExceptionSlot = (testSlot) => {
  * @returns {number}
  */
 export const getCreditsFromSlot = (slot) => {
+  console.log({ slot });
   const isLab = slot.startsWith("L");
   if (isLab) return 1;
   const numberOfPluses = slot.split("+").length - 1;
-  if (isExceptionSlot(slot)) return 3;
-  if (numberOfPluses === 2) return 3;
-  if (numberOfPluses === 1) return 2;
+  // if (isExceptionSlot(slot)) return 3;
+  if (numberOfPluses === 1) return 3;
+  // if (numberOfPluses === 1) return 2;
   if (!slot.startsWith("T")) return 2;
   return 1;
 };

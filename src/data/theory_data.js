@@ -1,279 +1,165 @@
 const theoryData =
 {
   "CHY1001-Environmental Studies": [
-    "A+TA"
+    "D"
   ],
-  "CHY1004-Engineering Chemistry": [
-    "C+TC"
-  ],
-  "CHY1005-Industrial Chemistry for Engineers": [
-    "A+TA+TAA"
-  ],
-  "CHY1006-Corrosion Science and Engineering": [
-    "C+TC+TCC"
+  "CHY1009-Chemistry and Environmental Studies": [
+    "E+TE"
   ],
   "CHY2001-Chemical and Biosensors": [
-    "A+TA+TAA"
-  ],
-  "CSE1007-Introduction to Cryptography": [
-    "B+TB+TBB"
-  ],
-  "CSE1008-Theory of Computation": [
-    "A+TA+TAA"
-  ],
-  "CSE1012-Problem Solving using Python": [
-    "A+TA+TAA",
-    "C+TC+TCC"
-  ],
-  "CSE2001-Data Structures and Algorithms": [
-    "A+TA+TAA",
-    "B+TB+TBB",
-    "C+TC+TCC"
-  ],
-  "CSE2005-Object Oriented Programming": [
-    "A+TA+TAA",
-    "B+TB+TBB",
-    "C+TC+TCC"
-  ],
-  "CSE2007-Database Management Systems": [
-    "A+TA+TAA"
-  ],
-  "CSE2008-Operating Systems": [
-    "C+TC+TCC"
-  ],
-  "CSE2014-Data Structures and Algorithms": [
-    "A+TA+TAA"
-  ],
-  "CSE2018-Database Management Systems": [
-    "C+TC+TCC"
-  ],
-  "CSE2019-Machine Learning": [
-    "C+TC+TCC"
-  ],
-  "CSE3002-Artificial Intelligence": [
-    "B+TB+TBB"
-  ],
-  "CSE3003-Computer Networks": [
-    "B+TB+TBB"
-  ],
-  "CSE3004-Design and Analysis of Algorithms": [
-    "A+TA+TAA"
-  ],
-  "CSE3008-Introduction to Machine Learning": [
-    "C+TC+TCC"
-  ],
-  "CSE4002-Mobile Application Development": [
-    "B+TB+TBB"
-  ],
-  "CSE4005-Data Warehousing and Data Mining": [
-    "C+TC+TCC"
-  ],
-  "CSE4007-Digital Image Processing": [
-    "A+TA+TAA"
-  ],
-  "ECE1002-Fundamentals of Electrical and Electronics Engineering": [
-    "A+TA+TAA"
-  ],
-  "ECE1003-Digital Logic Design": [
-    "A+TA+TAA",
-    "B+TB+TBB",
-    "C+TC+TCC"
-  ],
-  "ECE1006-Digital Logic and Microprocessors": [
-    "B+TB+TBB",
-    "C+TC+TCC"
-  ],
-  "ECE1007-Sensor Systems": [
-    "A+TA+TAA"
-  ],
-  "ECE2001-Analog Devices and Circuits": [
-    "C+TC+TCC"
-  ],
-  "ECE2002-Computer Organization and Architecture": [
-    "A+TA+TAA",
-    "B+TB+TBB"
-  ],
-  "ECE2003-Control Systems Engineering": [
-    "B+TB+TBB"
-  ],
-  "ECE2004-Microcontrollers and Interfacing": [
-    "C+TC+TCC"
-  ],
-  "ECE2005-Signals and Systems": [
-    "C+TC+TCC"
-  ],
-  "ECE2010-Digital System Design for ASICs and FPGAs": [
-    "B+TB+TBB"
-  ],
-  "ECE2014-Microprocessors and Microcontrollers": [
-    "B+TB+TBB"
-  ],
-  "ECE2015-Computer Architecture": [
-    "A+TA+TAA",
-    "B+TB+TBB"
-  ],
-  "ECE3001-Linear Integrated Circuits and Applications": [
-    "A+TA+TAA"
-  ],
-  "ECE3018-IoT Fundamentals": [
-    "B+TB"
-  ],
-  "ENG2001-English for Professional Communication": [
     "C+TC"
   ],
-  "ENG3004-Introducing Linguistics": [
-    "B+TB"
+  "CSE1005-Software Engineering": [
+    "D+TD"
   ],
-  "FRL1001-Basic French": [
-    "A+TA",
-    "B+TB"
+  "CSE1006-Foundations for Data Analytics": [
+    "C"
   ],
-  "HUM1002-Personal Finance for Engineers": [
-    "B+TB"
-  ],
-  "LAW1005-Introduction to Indian Constitution": [
-    "B+TB+TBB"
-  ],
-  "LIB1001-Anthropology \u2013 An Introduction": [
-    "B+TB+TBB"
-  ],
-  "LIB1014-Pursuit of Happiness": [
-    "C+TC+TCC"
-  ],
-  "MAT1002-Applications of differential and difference equations": [
-    "A+TA+TAA",
-    "B+TB+TBB",
-    "C+TC+TCC"
-  ],
-  "MAT1003-Discrete Mathematical Structures": [
-    "A+TA+TAA",
-    "B+TB+TBB",
-    "C+TC+TCC"
-  ],
-  "MAT1007-Discrete Mathematics": [
-    "B+TB+TBB"
-  ],
-  "MAT1009-Applied Linear Algebra": [
-    "C+TC+TCC",
-    "B+TB+TBB"
-  ],
-  "MAT1011-Applied Statistics": [
-    "A+TA+TAA",
-    "C+TC+TCC",
-    "B+TB+TBB"
-  ],
-  "MAT1014-Fundamental Statistics": [
-    "A+TA+TAA"
-  ],
-  "MEC2002-Thermodynamics": [
-    "A+TA+TAA"
-  ],
-  "MEC2004-Fluid Mechanics": [
-    "B+TB+TBB"
-  ],
-  "MEC2005-Fundamentals of Manufacturing Processes": [
-    "C+TC+TCC"
-  ],
-  "MEC2016-Robot Kinematics and Dynamics": [
-    "B+TB+TBB"
-  ],
-  "MEC3004-Machine Design": [
-    "B+TB+TBB"
-  ],
-  "MEC3026-Robot Kinematics": [
-    "B+TB+TBB"
-  ],
-  "MEC4008-Automobile Engineering": [
-    "C+TC+TCC"
-  ],
-  "MGT1002-Lean Start-up Management": [
-    "A+TA+TAA"
-  ],
-  "MGT1005-Fundamentals of Creativity and Innovation Management": [
-    "B+TB"
-  ],
-  "MGT1020-Fundamentals of Services Marketing": [
-    "A+TA+TAA"
-  ],
-  "MGT1031-Fundamentals of Management": [
+  "CSE1007-Introduction to Cryptography": [
     "A+TA"
   ],
-  "MGT2016-Essentials of Marketing Management": [
-    "A+TA+TAA"
+  "CSE1008-Theory of Computation": [
+    "A+TA"
   ],
-  "MGT3001-Services Science and Service Operational Management": [
+  "CSE2001-Data Structures and Algorithms": [
+    "A+TA"
+  ],
+  "CSE2005-Object Oriented Programming": [
     "B+TB"
   ],
-  "MGT3004-Fundamentals of Operations and Supply Chain Management": [
-    "C+TC+TCC"
+  "CSE2007-Database Management Systems": [
+    "A+TA"
   ],
-  "PHY1002-Semiconductor Device Physics": [
-    "C+TC+TCC"
+  "CSE2008-Operating Systems": [
+    "A+TA"
   ],
-  "PHY2003-Condensed Matter Physics": [
-    "B+TB+TBB"
+  "CSE2013-Information Theory and Coding": [
+    "C+TC"
   ],
-  "PHY2004-Optoelectronics": [
-    "A+TA+TAA"
+  "CSE3002-Artificial Intelligence": [
+    "B+TB"
+  ],
+  "CSE3003-Computer Networks": [
+    "E+TE"
+  ],
+  "CSE3004-Design and Analysis of Algorithms": [
+    "B+TB"
+  ],
+  "CSE3015-Natural Language Processing": [
+    "E+TE"
+  ],
+  "CSE4004-Web Technologies": [
+    "A+TA"
+  ],
+  "CSE4006-Deep Learning": [
+    "D+TD"
+  ],
+  "CSE4007-Digital Image Processing": [
+    "B+TB"
+  ],
+  "ECE1003-Digital Logic Design": [
+    "D+TD"
+  ],
+  "ECE1006-Digital Logic and Microprocessors": [
+    "B+TB"
+  ],
+  "ECE2002-Computer Architecture and Organization": [
+    "C+TC"
+  ],
+  "ECE2006-Communication Systems": [
+    "B+TB"
+  ],
+  "ECE2014-Microprocessors and Microcontrollers": [
+    "D+TD"
+  ],
+  "ECE2015-Computer Architecture": [
+    "C+TC"
+  ],
+  "ECE3001-Linear Integrated Circuits and Applications": [
+    "D+TD"
+  ],
+  "ENG1002-English for Effective Communication": [
+    "C"
+  ],
+  "ENG2001-English for Professional Communication": [
+    "C"
+  ],
+  "FRL1005-German for Beginners": [
+    "E+TE"
+  ],
+  "LIB2004-Ancient India History": [
+    "B+TB"
+  ],
+  "MAT1001-Calculus for Engineers": [
+    "E+TE"
+  ],
+  "MAT1002-Applications of Difference and Differential Equations": [
+    "D+TD"
+  ],
+  "MAT1003-Discrete Mathematical Structures": [
+    "D+TD"
+  ],
+  "MAT1007-Discrete Mathematics": [
+    "B+TB"
+  ],
+  "MAT1009-Applied Linear Algebra": [
+    "A+TA"
+  ],
+  "MAT1011-Applied Statistics": [
+    "E+TE"
+  ],
+  "MGT1002-Lean Start-up Management": [
+    "C+TC"
+  ],
+  "MGT1029-Basic Law for Engineers": [
+    "D+TD"
+  ],
+  "MGT1040-Entrepreneurship": [
+    "C"
+  ],
+  "PHY1005-Fundamentals of Engineering Physics": [
+    "A+TA"
+  ],
+  "PHY1008-Modern Physics": [
+    "B+TB"
+  ],
+  "PHY2001-Applied Electromagnetics": [
+    "A+TA"
   ],
   "PHY2005-Introduction to Nanotechnology": [
-    "C+TC+TCC"
+    "B+TB"
   ],
-  "PHY4204-Quantum Mechanics - II": [
-    "A+TA+TAA"
+  "STS0101-Introduction to Soft Skills": [
+    "E+TE"
   ],
   "STS1001-Introduction to Business Communication": [
-    "B+TB+TBB"
+    "E+TE"
   ],
   "STS1002-Fundamentals of Aptitude": [
-    "B+TB+TBB"
+    "D+TD"
   ],
-  "STS1007-Arithmetic problem solving": [
-    "A+TA+TAA",
-    "B+TB+TBB",
-    "C+TC+TCC"
-  ],
-  "STS1009-Introduction to Quantitative, Logical and Verbal Ability": [
-    "C+TC+TCC"
+  "STS1007-Arithmetic Problem Solving": [
+    "E+TE"
   ],
   "STS2006-Getting Started to Skill Enhancement": [
-    "A+TA+TAA",
-    "B+TB+TBB",
-    "C+TC+TCC"
+    "D+TD",
+    "C+TC"
   ],
   "STS2007-Enhancing Problem Solving Skills": [
-    "C+TC+TCC"
+    "E+TE",
+    "D+TD"
   ],
-  "STS3006-Basic Competitive Coding - I": [
-    "C+TC+TCC"
+  "STS3004-Introduction to Programming Skills": [
+    "A+TA"
+  ],
+  "STS4003-Enhancing Programming Ability": [
+    "A+TA"
   ],
   "STS4005-Basic Competitive Coding - II": [
-    "A+TA+TAA"
+    "B+TB"
   ],
-  "SWE2001-Data Structures and its Applications": [
-    "A+TA+TAA"
-  ],
-  "SWE2005-Concepts of Object Oriented Programming": [
-    "A+TA+TAA"
-  ],
-  "SWE2006-Database Systems": [
-    "B+TB+TBB"
-  ],
-  "SWE2007-Fundamentals of Operating Systems": [
-    "C+TC+TCC"
-  ],
-  "SWE3001-Introduction to Computer Networks": [
-    "A+TA+TAA"
-  ],
-  "SWE4001-Internet and Web Technologies": [
-    "B+TB+TBB"
-  ],
-  "SWE4003-Concepts of Mobile Application Development": [
-    "C+TC+TCC"
-  ],
-  "TEC3001-Design Thinking": [
-    "A+TA+TAA",
-    "C+TC+TCC"
+  "SWE4004-Cloud Computing and its Application": [
+    "C+TC"
   ]
 };
 

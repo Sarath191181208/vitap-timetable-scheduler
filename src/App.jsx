@@ -347,7 +347,7 @@ function TimeTable({
                   colorOpacity
                 )}`,
               }}
-              className="table--single-slot"
+              className="table--single-slot min-w"
             >
               {slot}
             </td>
@@ -356,7 +356,7 @@ function TimeTable({
               onClick={() => onSlotTap(slot)}
               key={slot}
               className={
-                blockedTimeSlots.includes(slot) ? "blocked-time-slot" : ""
+                `min-w ${blockedTimeSlots.includes(slot) ? "blocked-time-slot" : ""}`
               }
             >
               {slot}

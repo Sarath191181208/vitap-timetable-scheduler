@@ -203,3 +203,7 @@
   color: white;
   font-size: medium;
 }
+
+.min-w{
+  min-width: 100px;
+}

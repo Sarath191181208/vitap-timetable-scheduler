@@ -85,7 +85,6 @@ const isExceptionSlot = (testSlot) => {
  * @returns {number}
  */
 export const getCreditsFromSlot = (slot) => {
-  console.log({ slot });
   const isLab = slot.startsWith("L");
   if (isLab) return 1;
   const numberOfPluses = slot.split("+").length - 1;

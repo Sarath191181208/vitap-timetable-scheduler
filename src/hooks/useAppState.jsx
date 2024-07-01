@@ -36,11 +36,13 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
   function markBlockedTimeSlotsInplace(
     subIsSlotTakenDict,
     _blockedTimeSlots,
-    value = 0
+    value = 0,
   ) {
-    for (const [subjName, isSubSlotTakenArr] of Object.entries(
-      subIsSlotTakenDict
-    )) {
+    for (
+      const [subjName, isSubSlotTakenArr] of Object.entries(
+        subIsSlotTakenDict,
+      )
+    ) {
       for (const [i, isSubSlotTaken] of isSubSlotTakenArr.entries()) {
         const subSlot = subSlotDict[subjName][i];
         for (const blockedTimeSlot of _blockedTimeSlots) {
@@ -56,11 +58,11 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
     const _subIsSlotTakenDict = {};
     for (const subjectOptions of selecedSubjectsList) {
       const { value: subName } = subjectOptions;
-      if (!(subName in pickedSubSlotDict))
+      if (!(subName in pickedSubSlotDict)) {
         _subIsSlotTakenDict[subName] = new Array(
-          subSlotDict[subName].length
+          subSlotDict[subName].length,
         ).fill(1);
-      else _subIsSlotTakenDict[subName] = pickedSubSlotDict[subName];
+      } else _subIsSlotTakenDict[subName] = pickedSubSlotDict[subName];
     }
 
     markBlockedTimeSlotsInplace(_subIsSlotTakenDict, _blockedTimeSlots);
@@ -78,24 +80,24 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
   const submitSubjects = (
     selecedSubjectsList,
     _pickedSubSlotDict,
-    isRefreshButtonPressed = null
-  ) => {
-      if (selecedSubjectsList.length === 0) {
-        setTimetable({});
-        return;
+    RefreshButtonPressed = null,
+      
+      selecedSubjectsList.length === 0) {
+      setTimetable({});
+      return;
     }
 
     const selectedSubjects = selecedSubjectsList.map(
-      (subject) => subject.value
+      (subject) => subject.value,
     );
-
-    /**
+     
+     **
      * @type {import("../d").CourseNameAndSlots}
      */
     const tt = {};
     const maskedSubSlotDict = getMaskedSubSlotDict(
       _pickedSubSlotDict,
-      subSlotDict
+      subSlotDict,
     );
 
     let isTrue = pick_slot(
@@ -103,7 +105,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
       selectedSubjects,
       tt,
       maskedSubSlotDict,
-      alreadyPickedTimeTableConfigsArray.current
+      alreadyPickedTimeTableConfigsArray.current,
     );
 
     // if not possible to generate timetable with already picked configs, try without them
@@ -114,7 +116,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
         selectedSubjects,
         tt,
         maskedSubSlotDict,
-        alreadyPickedTimeTableConfigsArray.current
+        alreadyPickedTimeTableConfigsArray.current,
       );
     }
 
@@ -137,7 +139,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
         const credit = isSTS ? 3 : getCreditsFromSlot(slot);
         return acc + credit;
       },
-      0
+      0,
     );
     return creditsSum;
   }
@@ -186,9 +188,9 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
     onSubjectSelectChange,
     calculateCredits,
     onSelectBoxChange,
-    submitSubjects,
+    bmitSubjects,
     updateSubSlotTaken,
-      markBlockedTimeSlotsInplace,
+    markBlockedTimeSlotsInplace,
     customFilterFn,
   };
 }

@@ -48,7 +48,7 @@ function App() {
 
   calculateCredits();
 
-  const onTimeSlotClick = (/** @type {any} */ timeSlot) => {
+  const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];
     let isBlockedTimeSlotRemoved = false;
 

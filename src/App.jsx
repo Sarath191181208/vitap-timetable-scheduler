@@ -48,113 +48,111 @@ function App() {
 
   calculateCredits();
 
+  const onTimeSlotClick = (/** @type {any} */ timeSlot) => {
+    let newBlockedTimeSlots = [];
+    let isBlockedTimeSlotRemoved = false;
+
+    // remove the blocked index
+    if (blockedTimeSlots.includes(timeSlot)) {
+      isBlockedTimeSlotRemoved = true;
+      const index = blockedTimeSlots.indexOf(timeSlot);
+      newBlockedTimeSlots = blockedTimeSlots.slice();
+      newBlockedTimeSlots.splice(index, 1);
+    } else {
+      newBlockedTimeSlots = [...blockedTimeSlots, timeSlot];
+    }
+
+    // update the blocked slots
+    setBlockedTimeSlots(newBlockedTimeSlots);
+
+    // update the blocked slot to be a normal slot
+    const newPickedSubSlotDict = updateSubSlotTaken(
+      selecedSubjectsList,
+      newBlockedTimeSlots,
+    );
+
+    // updating all the slots in new pickable subjects-slots_list to be not blocked
+    const IS_NOT_BLOCKED = 1;
+    if (isBlockedTimeSlotRemoved) {
+      markBlockedTimeSlotsInplace(
+        newPickedSubSlotDict,
+        [timeSlot],
+        IS_NOT_BLOCKED,
+      );
+    }
+
+    // update the pickable slots
+    setPickedSubSlotDict(newPickedSubSlotDict);
+
+    // generate a new timetable
+    submitSubjects(selecedSubjectsList, newPickedSubSlotDict);
+  };
+
+  const SubjectSearchBox = (
+    <Select
+      placeholder="Search the subjects you want to take"
+      classNamePrefix="select_subjects"
+      defaultValue={selecedSubjectsList}
+      onChange={onSubjectSelectChange}
+      closeMenuOnSelect={false}
+      isMulti
+      filterOption={customFilterFn}
+      options={options}
+      className="basic-multi-select"
+    />
+  );
+
+  const RefreshButton = (
+    <button
+      id="refresh-button"
+      title="Refresh the Time Table"
+      onClick={() => {
+        alreadyPickedTimeTableConfigsArray.current.push(timeTable);
+        submitSubjects(selecedSubjectsList, pickedSubSlotDict, true);
+      }}
+    >
+      {" "}
+      ⟳{" "}
+    </button>
+  );
+
+  const CantGenerateTimeTableMessage = (
+    <div className="error-message">
+      <i>
+        {" "}
+        <WarningIcon width={25} height={25} />
+        {" "}
+      </i>
+      <h2>{errorMesssage}</h2>
+    </div>
+  );
+
   return (
     <>
       <div className="subject-selection-controls">
-        <Select
-          placeholder="Search the subjects you want to take"
-          classNamePrefix="select_subjects"
-          defaultValue={selecedSubjectsList}
-          onChange={onSubjectSelectChange}
-          closeMenuOnSelect={false}
-          isMulti
-          filterOption={customFilterFn}
-          options={options}
-          className="basic-multi-select"
-        />
+        {SubjectSearchBox}
       </div>
 
-      <button
-        id="refresh-button"
-        title="Refresh the Time Table"
-        onClick={() => {
-          alreadyPickedTimeTableConfigsArray.current.push(timeTable);
-          submitSubjects(selecedSubjectsList, pickedSubSlotDict, true);
-        }}
-      >
-        {" "}
-        ⟳{" "}
-      </button>
+      {RefreshButton}
 
-      {isEmpty(timeTable) ? (
-        <div className="tutorial">
-          <h2>How to use?</h2>
-          <p>
-            1. Select the subjects you want to take in the dropdown menu you can
-            select multiple subjects from the same box
-          </p>
-          <p>2. You can search by typing the course name (or) course code.</p>
-          <p>3. You will see the time table.</p>
-          <p>4. Hover over the slot to know the course and it's code</p>
-
-          <Carousel
-            showArrows={true}
-            autoPlay={true}
-            infiniteLoop={true}
-            className="carousel-container"
-            transitionTime={500}
-          >
-            {tutorialSlidesData.map((slide) => {
-              return (
-                <TutorialSlide
-                  key={slide.imageLink}
-                  imageLink={slide.imageLink}
-                  text={slide.text}
-                />
-              );
-            })}
-          </Carousel>
-        </div>
-      ) : (
-        <div className="time-table-container">
-          {errorMesssage && (
-            <div className="error-message">
-              <i>
-                {" "}
-                <WarningIcon width={25} height={25} />{" "}
-              </i>
-              <h2> {errorMesssage}</h2>
+      {isEmpty(timeTable)
+        ? <Tutorial />
+        : (
+          <div className="time-table-container">
+            {errorMesssage && CantGenerateTimeTableMessage}
+            <TimeTable
+              time_table={time_table}
+              subTimeSlotDict={timeTable}
+              subSlotDict={subSlotDict}
+              onSlotTap={onTimeSlotClick}
+              blockedTimeSlots={blockedTimeSlots}
+              time_arr={time_arr}
+            />
+            <div>
+              <h2>Registered Credits: {calculateCredits()}</h2>
             </div>
-          )}
-          <TimeTable
-            time_table={time_table}
-            subTimeSlotDict={timeTable}
-            subSlotDict={subSlotDict}
-            onSlotTap={(/** @type {any} */ timeSlot) => {
-              let newBlockedTimeSlots = [];
-              let isBlockedTimeSlotRemoved = false;
-              if (blockedTimeSlots.includes(timeSlot)) {
-                isBlockedTimeSlotRemoved = true;
-                const index = blockedTimeSlots.indexOf(timeSlot);
-                newBlockedTimeSlots = blockedTimeSlots.slice();
-                newBlockedTimeSlots.splice(index, 1); // remove 1 item starting from index
-              } else {
-                newBlockedTimeSlots = [...blockedTimeSlots, timeSlot];
-              }
-
-              setBlockedTimeSlots(newBlockedTimeSlots);
-              const newPickedSubSlotDict = updateSubSlotTaken(
-                selecedSubjectsList,
-                newBlockedTimeSlots
-              );
-              if (isBlockedTimeSlotRemoved) {
-                markBlockedTimeSlotsInplace(
-                  newPickedSubSlotDict,
-                  [timeSlot],
-                  1
-                );
-              }
-              setPickedSubSlotDict(newPickedSubSlotDict);
-              submitSubjects(selecedSubjectsList, newPickedSubSlotDict);
-            }}
-            blockedTimeSlots={blockedTimeSlots}
-            time_arr={time_arr}
-          />
-          <div>
-            <h2>Registered Credits: {calculateCredits()}</h2>
           </div>
-        </div>
-      )}
+        )}
 
       <SubjectCheckBoxes
         subSlotDict={subSlotDict}
@@ -416,6 +414,39 @@ function ColorDict({ subjectColorDict, actualSlotDict }) {
   }
 
   return <div className="subject-color-grid">{rows}</div>;
+}
+
+function Tutorial() {
+  return (
+    <div className="tutorial">
+      <h2>How to use?</h2>
+      <p>
+        1. Select the subjects you want to take in the dropdown menu you can
+        select multiple subjects from the same box
+      </p>
+      <p>2. You can search by typing the course name (or) course code.</p>
+      <p>3. You will see the time table.</p>
+      <p>4. Hover over the slot to know the course and it's code</p>
+
+      <Carousel
+        showArrows={true}
+        autoPlay={true}
+        infiniteLoop={true}
+        className="carousel-container"
+        transitionTime={500}
+      >
+        {tutorialSlidesData.map((slide) => {
+          return (
+            <TutorialSlide
+              key={slide.imageLink}
+              imageLink={slide.imageLink}
+              text={slide.text}
+            />
+          );
+        })}
+      </Carousel>
+    </div>
+  );
 }
 
 export default App;

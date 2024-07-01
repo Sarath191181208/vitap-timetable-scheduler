@@ -19,6 +19,7 @@ import {
 import React from "react";
 import { getData } from "./data";
 import WarningIcon from "./assets/icons/warning";
+import { getCompressedURIFromData } from "./data/impls/URI";
 inject();
 
 const colorOpacity = 0.8;

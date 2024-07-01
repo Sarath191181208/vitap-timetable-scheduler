@@ -1,3 +1,5 @@
+import { is_same_slot } from "./impls/time_table";
+
 export const time_table = {
   "Monday": [
     "L1",
@@ -108,4 +110,21 @@ const isEqualSlot = (slot1, slot2) => {
     if (!split2.includes(slot)) return false;
   }
   return true;
+}
+
+/**
+ * @param {string[]} originalSlots
+ * @param {string[]} timetableSlots
+ */
+export function findCommonSlot(originalSlots, timetableSlots) {
+  // include the slot in originalSlots only if it matches
+  // with `is_same_slot` function for all the slots in timetableSlots
+
+  const commonSlots = originalSlots.filter((/** @type {string} */ slot) => {
+    return timetableSlots.every((/** @type {string} */ timetableSlot) => {
+      return is_same_slot(slot, timetableSlot);
+    });
+  });
+
+  return commonSlots;
 }

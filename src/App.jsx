@@ -6,13 +6,13 @@ import "./checkbox.css";
 import { inject } from "@vercel/analytics";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { tutorialSlidesData, TutorialSlide } from "./demo";
+import { TutorialSlide, tutorialSlidesData } from "./demo";
 import { useAppState } from "./hooks/useAppState";
 import {
-  isEmpty,
-  isInDisabledSlots,
   getActualSlotDict,
   getSubjectColorDict,
+  isEmpty,
+  isInDisabledSlots,
   withOpacity,
 } from "./data/utils";
 
@@ -182,7 +182,7 @@ function SubjectCheckBoxes({
   const fillAll = (
     /** @type {boolean} */ checked,
     /** @type {boolean[]} */ isSlotTakenBoolenArray,
-    /** @type {string} */ subName
+    /** @type {string} */ subName,
   ) => {
     const placeHolder = [...isSlotTakenBoolenArray];
     placeHolder.fill(checked);
@@ -195,9 +195,11 @@ function SubjectCheckBoxes({
   const temp_arr = [];
   const subjectNameArr = Object.keys(pickedSubSlotDict);
   const subjectColorDict = getSubjectColorDict(subjectNameArr);
-  for (const [subName, isSlotTakenBoolenArray] of Object.entries(
-    pickedSubSlotDict
-  )) {
+  for (
+    const [subName, isSlotTakenBoolenArray] of Object.entries(
+      pickedSubSlotDict,
+    )
+  ) {
     temp_arr.push(
       <div className="subject-checkbox" key={temp_arr.length}>
         <h3
@@ -231,7 +233,7 @@ function SubjectCheckBoxes({
               fillAll(!checked, isSlotTakenBoolenArray, subName);
             }}
             checked={isSlotTakenBoolenArray.every(
-              (isSlotTaken) => !isSlotTaken
+              (isSlotTaken) => !isSlotTaken,
             )}
           />
           <label htmlFor={subName}>Unselect All</label>
@@ -245,7 +247,7 @@ function SubjectCheckBoxes({
               slotId={subSlotDict[subName][i] + subName}
               disabled={isInDisabledSlots(
                 subSlotDict[subName][i],
-                disabledSlots
+                disabledSlots,
               )}
               checked={isSlotTaken}
               onChange={(e) => {
@@ -262,7 +264,7 @@ function SubjectCheckBoxes({
             />
           ))}
         </div>
-      </div>
+      </div>,
     );
   }
 
@@ -305,7 +307,7 @@ function CustomCheckBox({ onChange, checked, slotLabel, slotId, disabled }) {
  * @property {Function} onSlotTap
  * @property {Array} blockedTimeSlots
  * @property {Array} time_arr
- * @returns {JSX.Element}
+ * @returns {import("react").ReactNode}
  */
 function TimeTable({
   time_table,
@@ -334,34 +336,36 @@ function TimeTable({
       <tr key={key}>
         <td>{key}</td>
         {value.map((slot) =>
-          slot in slotSubjectDict ? (
-            <td
-              onClick={() => onSlotTap(slot)}
-              key={slot}
-              data-hover={slotSubjectDict[slot]}
-              style={{
-                backgroundColor: `${withOpacity(
-                  subjectColorDict[slotSubjectDict[slot]],
-                  colorOpacity
-                )}`,
-              }}
-              className="table--single-slot min-w"
-            >
-              {slot}
-            </td>
-          ) : (
-            <td
-              onClick={() => onSlotTap(slot)}
-              key={slot}
-              className={
-                `min-w ${blockedTimeSlots.includes(slot) ? "blocked-time-slot" : ""}`
-              }
-            >
-              {slot}
-            </td>
-          )
+          slot in slotSubjectDict
+            ? (
+              <td
+                onClick={() => onSlotTap(slot)}
+                key={slot}
+                data-hover={slotSubjectDict[slot]}
+                style={{
+                  backgroundColor: `${withOpacity(
+                    subjectColorDict[slotSubjectDict[slot]],
+                    colorOpacity,
+                  )
+                    }`,
+                }}
+                className="table--single-slot min-w"
+              >
+                {slot}
+              </td>
+            )
+            : (
+              <td
+                onClick={() => onSlotTap(slot)}
+                key={slot}
+                className={`min-w ${blockedTimeSlots.includes(slot) ? "blocked-time-slot" : ""
+                  }`}
+              >
+                {slot}
+              </td>
+            )
         )}
-      </tr>
+      </tr>,
     );
   }
 
@@ -386,9 +390,7 @@ function TableHead({ time_arr }) {
     <thead>
       <tr>
         <th>Time</th>
-        {time_arr.map((day) => (
-          <th key={day}>{day}</th>
-        ))}
+        {time_arr.map((day) => <th key={day}>{day}</th>)}
       </tr>
     </thead>
   );
@@ -409,7 +411,7 @@ function ColorDict({ subjectColorDict, actualSlotDict }) {
           {" "}
           <span className="slot">{" " + actualSlotDict[key]}</span>
         </div>
-      </div>
+      </div>,
     );
   }
 

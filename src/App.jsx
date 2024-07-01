@@ -59,6 +59,7 @@ function App() {
       newBlockedTimeSlots = blockedTimeSlots.slice();
       newBlockedTimeSlots.splice(index, 1);
     } else {
+      // add the timeslot into blocked slots
       newBlockedTimeSlots = [...blockedTimeSlots, timeSlot];
     }
 

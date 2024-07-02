@@ -169,7 +169,7 @@
     </nav>
   </header>
   <button id="theme-toggle-button" aria-label="Toggle theme">
-    <img id="theme-toggle-button-icon" src="/public/sun.svg" alt="">
+    <img id="theme-toggle-button-icon" src="/sun.svg" alt="">
   </button>
   <div id="root"></div>
   <footer>
@@ -221,11 +221,11 @@
       document.documentElement.classList.add(theme);
       if (theme == "dark-theme") {
         // btn.innerHTML = "🌞";
-        btnIcon.src = "/public/sun.svg";
+        btnIcon.src = "/sun.svg";
         btn.classList.add("btn-dark-theme");
       } else {
         // btn.innerHTML = "🌙";
-        btnIcon.src = "/public/moon.svg";
+        btnIcon.src = "/moon.svg";
         btn.classList.remove("btn-dark-theme");
       }
       localStorage.setItem("theme", theme);

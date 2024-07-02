@@ -6,23 +6,24 @@ import "./css/checkbox.css";
 import { inject } from "@vercel/analytics";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { TutorialSlide, tutorialSlidesData } from "./demo";
+import { TutorialSlide, tutorialSlidesData } from "./components/demo";
 import { useAppState } from "./hooks/useAppState";
 import {
-  getActualSlotDict,
   getSubjectColorDict,
   isEmpty,
   isInDisabledSlots,
-  withOpacity,
 } from "./data/utils";
 
 import React from "react";
 import { getData } from "./data";
 import WarningIcon from "./assets/icons/warning";
-import { getCompressedURIFromData } from "./data/impls/URI";
+import {
+  getCompressedURIFromData,
+} from "./data/impls/URI";
+import { Link } from "react-router-dom";
+import { TimeTable } from "./components/TimeTable";
 inject();
 
-const colorOpacity = 0.8;
 
 function App() {
   const semID = "Batch-2021-WIN";
@@ -48,6 +49,15 @@ function App() {
   } = useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table });
 
   calculateCredits();
+
+  const getShareableLink = () => {
+    const compressedBase16URI = getCompressedURIFromData(
+      timeTable,
+      subSlotDict,
+    );
+
+    return `/share?v=1&sem=${semID}&data=${compressedBase16URI}`;
+  }
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];
@@ -136,6 +146,10 @@ function App() {
       </div>
 
       {RefreshButton}
+
+      <Link to={getShareableLink()}> 
+        <button id="share-button">Share</button>
+      </Link>
 
       {isEmpty(timeTable)
         ? <Tutorial />
@@ -253,7 +267,6 @@ function SubjectCheckBoxes({
               )}
               checked={isSlotTaken}
               onChange={(e) => {
-                console.log(`[SubjectCheckBoxes]: ${subName} ${i}`);
                 const { checked } = e.target;
                 const placeHolder = [...isSlotTakenBoolenArray];
                 placeHolder[i] = checked;
@@ -300,7 +313,6 @@ function CustomCheckBox({ onChange, checked, slotLabel, slotId, disabled }) {
     </div>
   );
 }
-
 
 function Tutorial() {
   return (

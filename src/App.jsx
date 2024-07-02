@@ -1,8 +1,8 @@
 // @ts-check
 
 import Select from "react-select";
-import "./App.css";
-import "./checkbox.css";
+import "./css/App.css";
+import "./css/checkbox.css";
 import { inject } from "@vercel/analytics";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";

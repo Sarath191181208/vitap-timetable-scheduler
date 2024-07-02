@@ -16,6 +16,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.24.0",
     "react-select": "^5.7.0",
     "require": "^2.4.20"
   },

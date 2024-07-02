@@ -1,10 +1,10 @@
 import React from "react";
 
-import hover from "./assets/screenshots/hover.png";
-import searchbox from "./assets/screenshots/searchbox.png";
-import slotpicker from "./assets/screenshots/slotpicer.png";
-import block_slots from "./assets/screenshots/block_slots.png";
-import "./css/tutorial.css";
+import hover from "../assets/screenshots/hover.png";
+import searchbox from "../assets/screenshots/searchbox.png";
+import slotpicker from "../assets/screenshots/slotpicer.png";
+import block_slots from "../assets/screenshots/block_slots.png";
+import "../css/tutorial.css";
 
 const tutorialSlidesData = [
   {

@@ -16,7 +16,6 @@ export function getData(id) {
             time_table: time_table,
             getCreditsFromSlot: getCreditsFromSlot,
         }
-        console.log(data);
         return data;
     }
     else

@@ -145,11 +145,23 @@ function App() {
         {SubjectSearchBox}
       </div>
 
+      <div className="action-buttons">
+        
       {RefreshButton}
 
       <Link to={getShareableLink()}> 
-        <button id="share-button">Share</button>
+        <button id="share-button">
+        <img 
+          src="/share.svg" 
+          alt="Share Icon" 
+          width="20px" 
+          height="20px" 
+        />
+        <div>Share</div>
+        
+         </button>
       </Link>
+      </div>
 
       {isEmpty(timeTable)
         ? <Tutorial />

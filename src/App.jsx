@@ -55,18 +55,23 @@ function App() {
       timeTable,
       subSlotDict,
     );
-    //first gets the base url using window.location.href then adds the values for query parameters
-    const shareableLink = window.location.href+`share?v=1&sem=${semID}&data=${compressedBase16URI}`;
-    
-      navigator.clipboard.writeText(shareableLink)
-      .then(() => {
-        alert('Link copied to clipboard!');
-        console.log("Link shared Successfully");
-    })
-      .catch((error) => {
-        console.log("Erorr Sharing: ",error);
-      });
-    };
+    if(compressedBase16URI == 'Q'){
+      alert('Add the Subjects to share Time Table!');
+    }
+    else{
+      //first gets the base url using window.location.href then adds the values for query parameters
+      const shareableLink = window.location.href+`share?v=1&sem=${semID}&data=${compressedBase16URI}`;
+      
+        navigator.clipboard.writeText(shareableLink)
+        .then(() => {
+          alert('Link copied to clipboard!');
+          console.log("Link shared Successfully");
+      })
+        .catch((error) => {
+          console.log("Erorr Sharing: ",error);
+        });
+      };
+    }
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];

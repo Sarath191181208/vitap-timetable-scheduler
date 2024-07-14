@@ -26,7 +26,7 @@ inject();
 
 
 function App() {
-  const semID = "Batch-2022-WIn";
+  const semID = "FALL-2024-25";
   const { subSlotDict, time_table, time_arr, options, getCreditsFromSlot } =
     getData(semID);
 

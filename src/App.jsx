@@ -55,24 +55,18 @@ function App() {
       timeTable,
       subSlotDict,
     );
-    const shareableLink = `/share?v=1&sem=${semID}&data=${compressedBase16URI}`;
-    if(navigator.share){
-      navigator.share({
-        title: "VIT-AP TIME TABLE SCHEDULER",
-        text: "Shareable Link",
-        url: shareableLink,
-      })
+    //first gets the base url using window.location.href then adds the values for query parameters
+    const shareableLink = window.location.href+`share?v=1&sem=${semID}&data=${compressedBase16URI}`;
+    
+      navigator.clipboard.writeText(shareableLink)
       .then(() => {
+        alert('Link copied to clipboard!');
         console.log("Link shared Successfully");
     })
       .catch((error) => {
         console.log("Erorr Sharing: ",error);
       });
-    }
-    else{
-      alert("Your browser doesn't support the Web Share API");
-    }
-  };
+    };
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];

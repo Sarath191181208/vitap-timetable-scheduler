@@ -55,9 +55,24 @@ function App() {
       timeTable,
       subSlotDict,
     );
-
-    return `/share?v=1&sem=${semID}&data=${compressedBase16URI}`;
-  }
+    const shareableLink = `/share?v=1&sem=${semID}&data=${compressedBase16URI}`;
+    if(navigator.share){
+      navigator.share({
+        title: "VIT-AP TIME TABLE SCHEDULER",
+        text: "Shareable Link",
+        url: shareableLink,
+      })
+      .then(() => {
+        console.log("Link shared Successfully");
+    })
+      .catch((error) => {
+        console.log("Erorr Sharing: ",error);
+      });
+    }
+    else{
+      alert("Your browser doesn't support the Web Share API");
+    }
+  };
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];
@@ -127,6 +142,17 @@ function App() {
       ⟳{" "}
     </button>
   );
+  const ShareButton = (<button id="share-button" onClick={getShareableLink}>
+  <img 
+    src="/share.svg" 
+    alt="Share Icon" 
+    width="20px" 
+    height="20px" 
+  />
+  <div>Share</div>
+  
+   </button>
+  );
 
   const CantGenerateTimeTableMessage = (
     <div className="error-message">
@@ -148,19 +174,9 @@ function App() {
       <div className="action-buttons">
         
       {RefreshButton}
+      {ShareButton}
 
-      <Link to={getShareableLink()}> 
-        <button id="share-button">
-        <img 
-          src="/share.svg" 
-          alt="Share Icon" 
-          width="20px" 
-          height="20px" 
-        />
-        <div>Share</div>
         
-         </button>
-      </Link>
       </div>
 
       {isEmpty(timeTable)

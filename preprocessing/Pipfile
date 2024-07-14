@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 pandas = "*"
 jupyterlab = "*"
+tabula = "*"
+tabula-py = "*"
 
 [dev-packages]
 

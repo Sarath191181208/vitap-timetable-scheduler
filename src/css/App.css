@@ -5,8 +5,14 @@
   background-color: var(--background-color);
 }
 
-#refresh-button {
-  margin: 2px;
+/*Styles for refresh-button, share-button*/
+.action-buttons{
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button{
+  margin: 10px 0 0;
   height: 38px;
   padding: 0 1rem;
   border: 1px solid #ccc;
@@ -14,8 +20,16 @@
   cursor: pointer;
   color: var(--font-color);
   border-radius: 4px;
-  max-width: 50px;
+  max-width: 150px;
   max-height: 50px;
+  text-align: center;
+}
+
+#share-button{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .subject-selection-controls button:hover {
@@ -207,3 +221,4 @@
 .min-w{
   min-width: 100px;
 }
+

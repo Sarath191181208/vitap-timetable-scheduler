@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VITAP Time Table Scheduler | Long Summer 2022-23</title>
+  <title>VITAP Time Table Scheduler | Fall Sem 2024-25</title>
   <style>
     footer,
     header {
@@ -169,7 +169,7 @@
     </nav>
   </header>
   <button id="theme-toggle-button" aria-label="Toggle theme">
-    <img id="theme-toggle-button-icon" src="/public/sun.svg" alt="">
+    <img id="theme-toggle-button-icon" src="/sun.svg" alt="">
   </button>
   <div id="root"></div>
   <footer>
@@ -221,11 +221,11 @@
       document.documentElement.classList.add(theme);
       if (theme == "dark-theme") {
         // btn.innerHTML = "🌞";
-        btnIcon.src = "/public/sun.svg";
+        btnIcon.src = "/sun.svg";
         btn.classList.add("btn-dark-theme");
       } else {
         // btn.innerHTML = "🌙";
-        btnIcon.src = "/public/moon.svg";
+        btnIcon.src = "/moon.svg";
         btn.classList.remove("btn-dark-theme");
       }
       localStorage.setItem("theme", theme);

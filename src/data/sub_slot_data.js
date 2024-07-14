@@ -1,5 +1,5 @@
-import lab_data from "./lab_data";
-import theoryData from "./theory_data";
+import lab_data from "./update/lab_data";
+import theoryData from "./update/theory_data";
 
 const subSlotDict = {};
 const options = [];

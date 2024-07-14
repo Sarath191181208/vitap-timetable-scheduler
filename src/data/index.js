@@ -1,5 +1,7 @@
+// @ts-check
 import { subSlotDict as ssd1, options as opt1 } from "../data/sub_slot_data";
-import { getCreditsFromSlot as gcfs1, time_arr as ta1, time_table as tt1 } from "../data/time_table";
+import { getCreditsFromSlot } from "./impls/calc_credits";
+import { time_arr, time_table } from "./update/time_table";
 
 /**
  * 
@@ -10,19 +12,18 @@ export function getData(id) {
         const data = {
             subSlotDict: ssd1,
             options: opt1,
-            time_arr: ta1,
-            time_table: tt1,
-            getCreditsFromSlot: gcfs1,
+            time_arr: time_arr,
+            time_table: time_table,
+            getCreditsFromSlot: getCreditsFromSlot,
         }
-        console.log(data);
         return data;
     }
     else
         return {
             subSlotDict: ssd1,
             options: opt1,
-            time_arr: ta1,
-            time_table: tt1,
-            getCreditsFromSlot: gcfs1,
+            time_arr: time_arr,
+            time_table: time_table,
+            getCreditsFromSlot: getCreditsFromSlot,
         }
 }

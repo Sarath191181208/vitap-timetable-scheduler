@@ -61,8 +61,29 @@ function App() {
     else{
       //first gets the base url using window.location.href then adds the values for query parameters
       const shareableLink = window.location.href+`share?v=1&sem=${semID}&data=${compressedBase16URI}`;
-      
-        navigator.clipboard.writeText(shareableLink)
+      if(navigator.share){
+  	      navigator.share({
+            title: "VIT-AP TIME TABLE SCHEDULER",
+            text: "Shareable Link",
+            url: shareableLink,
+          })
+          .then(() => {
+            console.log("Link shared Successfully");
+        })
+          .catch((error) => {
+            console.log("Erorr Sharing using navigator.share : ",error);
+            copyToClipboard(shareableLink);
+          });
+        }
+        else{
+          console.log("browser doesn't support the Web Share API ");
+          copyToClipboard(shareableLink);
+        }
+        
+      }
+    }
+    const copyToClipboard = (/** @type {string} */ shareableLink) =>{
+      navigator.clipboard.writeText(shareableLink)
         .then(() => {
           alert('Link copied to clipboard!');
           console.log("Link shared Successfully");
@@ -70,8 +91,9 @@ function App() {
         .catch((error) => {
           console.log("Erorr Sharing: ",error);
         });
-      };
     }
+
+
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];

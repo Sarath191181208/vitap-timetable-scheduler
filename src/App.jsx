@@ -55,9 +55,45 @@ function App() {
       timeTable,
       subSlotDict,
     );
+    if(compressedBase16URI == 'Q'){
+      alert('Add the Subjects to share Time Table!');
+    }
+    else{
+      //first gets the base url using window.location.href then adds the values for query parameters
+      const shareableLink = window.location.href+`share?v=1&sem=${semID}&data=${compressedBase16URI}`;
+      if(navigator.share){
+  	      navigator.share({
+            title: "VIT-AP TIME TABLE SCHEDULER",
+            text: "Shareable Link",
+            url: shareableLink,
+          })
+          .then(() => {
+            console.log("Link shared Successfully");
+        })
+          .catch((error) => {
+            console.log("Erorr Sharing using navigator.share : ",error);
+            copyToClipboard(shareableLink);
+          });
+        }
+        else{
+          console.log("browser doesn't support the Web Share API ");
+          copyToClipboard(shareableLink);
+        }
+        
+      }
+    }
+    const copyToClipboard = (/** @type {string} */ shareableLink) =>{
+      navigator.clipboard.writeText(shareableLink)
+        .then(() => {
+          alert('Link copied to clipboard!');
+          console.log("Link shared Successfully");
+      })
+        .catch((error) => {
+          console.log("Erorr Sharing: ",error);
+        });
+    }
 
-    return `/share?v=1&sem=${semID}&data=${compressedBase16URI}`;
-  }
+
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];
@@ -127,6 +163,17 @@ function App() {
       ⟳{" "}
     </button>
   );
+  const ShareButton = (<button id="share-button" onClick={getShareableLink}>
+  <img 
+    src="/share.svg" 
+    alt="Share Icon" 
+    width="20px" 
+    height="20px" 
+  />
+  <div>Share</div>
+  
+   </button>
+  );
 
   const CantGenerateTimeTableMessage = (
     <div className="error-message">
@@ -148,19 +195,9 @@ function App() {
       <div className="action-buttons">
         
       {RefreshButton}
+      {ShareButton}
 
-      <Link to={getShareableLink()}> 
-        <button id="share-button">
-        <img 
-          src="/share.svg" 
-          alt="Share Icon" 
-          width="20px" 
-          height="20px" 
-        />
-        <div>Share</div>
         
-         </button>
-      </Link>
       </div>
 
       {isEmpty(timeTable)

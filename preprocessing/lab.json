@@ -1,123 +1,123 @@
 {
     "CSE1005-Software Engineering( LAB )": [
-        "L49+L50",
-        "L31+L32",
-        "L35+L36",
-        "L51+L52",
-        "L47+L48",
-        "L53+L54",
-        "L37+L38",
-        "L33+L34",
-        "L26+L27",
-        "L10+L11",
-        "L22+L23",
-        "L28+L29",
-        "L45+L46",
         "L20+L21",
+        "L49+L50",
+        "L53+L54",
+        "L22+L23",
         "L55+L56",
         "L2+L3",
-        "L39+L40",
-        "L8+L9",
-        "L43+L44",
-        "L41+L42",
         "L14+L15",
-        "L4+L5"
+        "L31+L32",
+        "L35+L36",
+        "L41+L42",
+        "L45+L46",
+        "L47+L48",
+        "L28+L29",
+        "L10+L11",
+        "L4+L5",
+        "L39+L40",
+        "L33+L34",
+        "L51+L52",
+        "L43+L44",
+        "L8+L9",
+        "L26+L27",
+        "L37+L38"
     ],
     "CSE1006-Foundations for Data Analytics( LAB )": [
-        "L33+L34",
-        "L10+L11",
-        "L16+L17",
-        "L22+L23",
-        "L49+L50",
-        "L35+L36",
-        "L45+L46",
         "L20+L21",
-        "L51+L52",
-        "L53+L54",
+        "L49+L50",
         "L39+L40",
+        "L22+L23",
+        "L33+L34",
+        "L4+L5",
+        "L53+L54",
+        "L51+L52",
         "L43+L44",
         "L14+L15",
-        "L4+L5"
+        "L35+L36",
+        "L16+L17",
+        "L45+L46",
+        "L10+L11"
     ],
     "CSE1007-Introduction to Cryptography( LAB )": [
-        "L26+L27",
         "L49+L50",
-        "L35+L36",
-        "L45+L46",
+        "L4+L5",
         "L14+L15",
-        "L4+L5"
+        "L26+L27",
+        "L35+L36",
+        "L45+L46"
     ],
     "CSE1022-Introduction to Programming( LAB )": [
-        "L49+L50",
-        "L31+L32",
-        "L35+L36",
-        "L51+L52",
-        "L47+L48",
-        "L53+L54",
-        "L37+L38",
-        "L33+L34",
-        "L26+L27",
-        "L10+L11",
-        "L22+L23",
-        "L28+L29",
-        "L45+L46",
         "L20+L21",
+        "L49+L50",
+        "L53+L54",
+        "L22+L23",
         "L55+L56",
         "L2+L3",
-        "L39+L40",
-        "L8+L9",
-        "L43+L44",
-        "L41+L42",
         "L14+L15",
-        "L4+L5"
+        "L31+L32",
+        "L35+L36",
+        "L41+L42",
+        "L45+L46",
+        "L47+L48",
+        "L28+L29",
+        "L10+L11",
+        "L4+L5",
+        "L39+L40",
+        "L33+L34",
+        "L51+L52",
+        "L43+L44",
+        "L8+L9",
+        "L26+L27",
+        "L37+L38"
     ],
     "CSE2001-Data Structures and Algorithms( LAB )": [
-        "L49+L50",
-        "L31+L32",
-        "L35+L36",
-        "L51+L52",
-        "L47+L48",
-        "L53+L54",
-        "L37+L38",
-        "L33+L34",
-        "L26+L27",
-        "L10+L11",
-        "L22+L23",
-        "L28+L29",
-        "L45+L46",
         "L20+L21",
+        "L49+L50",
+        "L53+L54",
+        "L22+L23",
         "L55+L56",
         "L2+L3",
-        "L39+L40",
-        "L8+L9",
-        "L43+L44",
-        "L41+L42",
         "L14+L15",
-        "L4+L5"
+        "L31+L32",
+        "L35+L36",
+        "L41+L42",
+        "L45+L46",
+        "L47+L48",
+        "L28+L29",
+        "L10+L11",
+        "L4+L5",
+        "L39+L40",
+        "L33+L34",
+        "L51+L52",
+        "L43+L44",
+        "L8+L9",
+        "L26+L27",
+        "L37+L38"
     ],
     "CSE2008-Operating Systems( LAB )": [
-        "L49+L50",
-        "L31+L32",
-        "L35+L36",
-        "L51+L52",
-        "L47+L48",
-        "L53+L54",
-        "L37+L38",
-        "L33+L34",
-        "L26+L27",
-        "L10+L11",
-        "L22+L23",
-        "L28+L29",
-        "L45+L46",
         "L20+L21",
+        "L49+L50",
+        "L53+L54",
+        "L22+L23",
         "L55+L56",
         "L2+L3",
-        "L39+L40",
-        "L8+L9",
-        "L43+L44",
-        "L41+L42",
         "L14+L15",
-        "L4+L5"
+        "L31+L32",
+        "L35+L36",
+        "L41+L42",
+        "L45+L46",
+        "L47+L48",
+        "L28+L29",
+        "L10+L11",
+        "L4+L5",
+        "L39+L40",
+        "L33+L34",
+        "L51+L52",
+        "L43+L44",
+        "L8+L9",
+        "L26+L27",
+        "L37+L38"
     ],
     "CSE2011-Cyber Security and Digital Forensics( LAB )": [
         "L33+L34",
@@ -125,40 +125,46 @@
         "L37+L38"
     ],
     "CSE3001-Agile Development Process( LAB )": [
+        "L51+L52",
         "L31+L32",
-        "L26+L27",
         "L2+L3",
-        "L51+L52"
+        "L26+L27"
     ],
     "CSE3008-Introduction to Machine Learning( LAB )": [
-        "L49+L50",
-        "L31+L32",
-        "L35+L36",
-        "L47+L48",
-        "L53+L54",
-        "L37+L38",
-        "L33+L34",
-        "L26+L27",
-        "L22+L23",
-        "L28+L29",
-        "L45+L46",
         "L20+L21",
+        "L49+L50",
+        "L53+L54",
+        "L22+L23",
         "L55+L56",
         "L2+L3",
-        "L39+L40",
-        "L8+L9",
-        "L43+L44",
+        "L31+L32",
+        "L35+L36",
         "L41+L42",
-        "L51+L52"
+        "L45+L46",
+        "L28+L29",
+        "L47+L48",
+        "L39+L40",
+        "L33+L34",
+        "L51+L52",
+        "L43+L44",
+        "L8+L9",
+        "L26+L27",
+        "L37+L38"
     ],
     "CSE3009-No SQL Databases( LAB )": [
-        "L16+L17",
         "L49+L50",
-        "L28+L29",
-        "L55+L56",
-        "L47+L48",
         "L53+L54",
-        "L41+L42"
+        "L55+L56",
+        "L16+L17",
+        "L41+L42",
+        "L28+L29",
+        "L47+L48"
+    ],
+    "CSE3014-Software Design with UML( LAB )": [
+        "L57+L58",
+        "L4+L5",
+        "L45+L46",
+        "L39+L40"
     ],
     "CSE4012-UI UX User Experience Design( LAB )": [
         "L16+L17"
@@ -171,6 +177,9 @@
     "CSE4043-Intrusion Detection and Prevention System( LAB )": [
         "L57+L58",
         "L26+L27"
+    ],
+    "ECE2003-Control Systems Engineering( LAB )": [
+        "L2+L3"
     ],
     "ECE2007-Digital Signal Processing( LAB )": [
         "L14+L15",
@@ -203,8 +212,8 @@
         "L10+L11"
     ],
     "MEC2003-Strength of Materials( LAB )": [
-        "L39+L40",
-        "L8+L9"
+        "L8+L9",
+        "L39+L40"
     ],
     "MEC2004-Fluid Mechanics( LAB )": [
         "L20+L21",
@@ -214,10 +223,12 @@
         "L28+L29"
     ],
     "MEC3001-Heat and Mass Transfer( LAB )": [
-        "L20+L21"
+        "L39+L40",
+        "L55+L56"
     ],
     "MEC3004-Machine Design( LAB )": [
-        "L28+L29"
+        "L51+L52",
+        "L37+L38"
     ],
     "MEC3005-Automation in Manufacturing( LAB )": [
         "L14+L15"
@@ -229,7 +240,8 @@
         "L33+L34"
     ],
     "MEC3029-Machining Processes and Workshop Technology( LAB )": [
-        "L28+L29"
+        "L57+L58",
+        "L45+L46"
     ],
     "MEC4003-Internal Combustion Engines( LAB )": [
         "L2+L3"
@@ -238,86 +250,86 @@
         "L4+L5"
     ],
     "MGT1001-Ethics and Values( LAB )": [
-        "L49+L50",
-        "L31+L32",
-        "L35+L36",
-        "L51+L52",
-        "L47+L48",
-        "L53+L54",
-        "L37+L38",
-        "L33+L34",
-        "L26+L27",
-        "L10+L11",
-        "L22+L23",
-        "L28+L29",
-        "L45+L46",
         "L20+L21",
+        "L49+L50",
+        "L53+L54",
+        "L22+L23",
         "L55+L56",
         "L2+L3",
-        "L39+L40",
-        "L8+L9",
-        "L43+L44",
-        "L41+L42",
         "L14+L15",
-        "L4+L5"
-    ],
-    "SWE1002-Principles of Software Engineering( LAB )": [
-        "L33+L34",
-        "L26+L27",
+        "L31+L32",
+        "L35+L36",
+        "L41+L42",
         "L45+L46",
         "L47+L48",
-        "L53+L54",
+        "L28+L29",
+        "L10+L11",
+        "L4+L5",
+        "L39+L40",
+        "L33+L34",
+        "L51+L52",
+        "L43+L44",
         "L8+L9",
+        "L26+L27",
+        "L37+L38"
+    ],
+    "SWE1002-Principles of Software Engineering( LAB )": [
+        "L53+L54",
+        "L33+L34",
+        "L14+L15",
+        "L8+L9",
+        "L26+L27",
         "L41+L42",
-        "L14+L15"
+        "L45+L46",
+        "L47+L48"
     ],
     "SWE2001-Data Structures and  Its Applications( LAB )": [
-        "L10+L11",
-        "L22+L23",
         "L4+L5",
-        "L35+L36",
-        "L47+L48",
+        "L22+L23",
         "L39+L40",
+        "L10+L11",
+        "L51+L52",
         "L43+L44",
+        "L35+L36",
         "L41+L42",
-        "L51+L52"
+        "L47+L48"
     ],
     "SWE2007-Fundamentals of Operating Systems( LAB )": [
-        "L26+L27",
-        "L31+L32",
-        "L49+L50",
-        "L35+L36",
-        "L28+L29",
         "L20+L21",
-        "L2+L3",
+        "L49+L50",
         "L53+L54",
-        "L37+L38"
+        "L2+L3",
+        "L31+L32",
+        "L26+L27",
+        "L35+L36",
+        "L37+L38",
+        "L28+L29"
     ],
     "SWE2008-Object Oriented Analysis and Design( LAB )": [
         "L51+L52",
-        "L22+L23",
         "L4+L5",
+        "L22+L23",
         "L37+L38"
     ],
     "SWE2009-Analysis of Algorithms( LAB )": [
         "L49+L50",
-        "L22+L23",
         "L4+L5",
+        "L22+L23",
         "L37+L38"
     ],
     "SWE3004-Front End Design and Testing( LAB )": [
-        "L31+L32",
         "L20+L21",
-        "L39+L40",
-        "L8+L9"
+        "L8+L9",
+        "L31+L32",
+        "L39+L40"
     ],
     "SWE4001-Internet and Web Technologies( LAB )": [
-        "L33+L34",
-        "L35+L36",
-        "L45+L46",
         "L20+L21",
-        "L2+L3",
         "L39+L40",
-        "L8+L9"
+        "L33+L34",
+        "L2+L3",
+        "L8+L9",
+        "L35+L36",
+        "L45+L46"
     ]
 }

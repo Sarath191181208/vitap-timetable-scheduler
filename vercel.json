@@ -1,4 +1,8 @@
 {
+  "routes":{
+    {"src": "/", "dest": "/"},
+    {"src": "/share", "dest": "/"}
+  },
   "git": {
     "deploymentEnabled": {
       "dev": false

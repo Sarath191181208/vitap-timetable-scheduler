@@ -1,4 +1,8 @@
 {
+  "rewrites":[
+    {"source": "/", "destination": "/"},
+    {"source": "/share", "destination": "/"}
+  ],
   "git": {
     "deploymentEnabled": {
       "dev": false

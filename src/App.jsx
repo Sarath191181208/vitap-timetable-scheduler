@@ -1,6 +1,5 @@
 // @ts-check
 
-import Select from "react-select";
 import "./css/App.css";
 import "./css/checkbox.css";
 import { inject } from "@vercel/analytics";
@@ -8,22 +7,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { TutorialSlide, tutorialSlidesData } from "./components/demo";
 import { useAppState } from "./hooks/useAppState";
-import {
-  getSubjectColorDict,
-  isEmpty,
-  isInDisabledSlots,
-} from "./data/utils";
+import * as React from "react";
+import { getSubjectColorDict, isEmpty, isInDisabledSlots } from "./data/utils";
 
-import React from "react";
 import { getData } from "./data";
 import WarningIcon from "./assets/icons/warning";
-import {
-  getCompressedURIFromData,
-} from "./data/impls/URI";
-import { Link } from "react-router-dom";
+import { getCompressedURIFromData } from "./data/impls/URI";
 import { TimeTable } from "./components/TimeTable";
+import { SubjectSearchBox } from "./components/SubjectSearchBox";
 inject();
-
 
 function App() {
   const semID = "FALL-2024-25";
@@ -34,8 +26,8 @@ function App() {
     selecedSubjectsList,
     errorMesssage,
     timeTable,
-    pickedSubSlotDict,
-    setPickedSubSlotDict,
+    courseToPickableSlotsDict,
+    updatePickableSlots,
     blockedTimeSlots,
     setBlockedTimeSlots,
     alreadyPickedTimeTableConfigsArray,
@@ -45,7 +37,6 @@ function App() {
     onSelectBoxChange,
     updateSubSlotTaken,
     markBlockedTimeSlotsInplace,
-    customFilterFn,
   } = useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table });
 
   calculateCredits();
@@ -55,45 +46,41 @@ function App() {
       timeTable,
       subSlotDict,
     );
-    if(compressedBase16URI == 'Q'){
-      alert('Add the Subjects to share Time Table!');
-    }
-    else{
+    if (compressedBase16URI == "Q") {
+      alert("Add the Subjects to share Time Table!");
+    } else {
       //first gets the base url using window.location.href then adds the values for query parameters
-      const shareableLink = window.location.href+`share?v=1&sem=${semID}&data=${compressedBase16URI}`;
-      if(navigator.share){
-  	      navigator.share({
-            title: "VIT-AP TIME TABLE SCHEDULER",
-            text: "Shareable Link",
-            url: shareableLink,
-          })
+      const shareableLink = window.location.href +
+        `share?v=1&sem=${semID}&data=${compressedBase16URI}`;
+      if (navigator.share) {
+        navigator.share({
+          title: "VIT-AP TIME TABLE SCHEDULER",
+          text: "Shareable Link",
+          url: shareableLink,
+        })
           .then(() => {
             console.log("Link shared Successfully");
-        })
+          })
           .catch((error) => {
-            console.log("Erorr Sharing using navigator.share : ",error);
+            console.log("Erorr Sharing using navigator.share : ", error);
             copyToClipboard(shareableLink);
           });
-        }
-        else{
-          console.log("browser doesn't support the Web Share API ");
-          copyToClipboard(shareableLink);
-        }
-        
+      } else {
+        console.log("browser doesn't support the Web Share API ");
+        copyToClipboard(shareableLink);
       }
     }
-    const copyToClipboard = (/** @type {string} */ shareableLink) =>{
-      navigator.clipboard.writeText(shareableLink)
-        .then(() => {
-          alert('Link copied to clipboard!');
-          console.log("Link shared Successfully");
+  };
+  const copyToClipboard = (/** @type {string} */ shareableLink) => {
+    navigator.clipboard.writeText(shareableLink)
+      .then(() => {
+        alert("Link copied to clipboard!");
+        console.log("Link shared Successfully");
       })
-        .catch((error) => {
-          console.log("Erorr Sharing: ",error);
-        });
-    }
-
-
+      .catch((error) => {
+        console.log("Erorr Sharing: ", error);
+      });
+  };
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];
@@ -130,25 +117,11 @@ function App() {
     }
 
     // update the pickable slots
-    setPickedSubSlotDict(newPickedSubSlotDict);
+    updatePickableSlots(newPickedSubSlotDict);
 
     // generate a new timetable
     submitSubjects(selecedSubjectsList, newPickedSubSlotDict);
   };
-
-  const SubjectSearchBox = (
-    <Select
-      placeholder="Search the subjects you want to take"
-      classNamePrefix="select_subjects"
-      defaultValue={selecedSubjectsList}
-      onChange={onSubjectSelectChange}
-      closeMenuOnSelect={false}
-      isMulti
-      filterOption={customFilterFn}
-      options={options}
-      className="basic-multi-select"
-    />
-  );
 
   const RefreshButton = (
     <button
@@ -156,23 +129,23 @@ function App() {
       title="Refresh the Time Table"
       onClick={() => {
         alreadyPickedTimeTableConfigsArray.current.push(timeTable);
-        submitSubjects(selecedSubjectsList, pickedSubSlotDict, true);
+        submitSubjects(selecedSubjectsList, courseToPickableSlotsDict, true);
       }}
     >
       {" "}
       ⟳{" "}
     </button>
   );
-  const ShareButton = (<button id="share-button" onClick={getShareableLink}>
-  <img 
-    src="/share.svg" 
-    alt="Share Icon" 
-    width="20px" 
-    height="20px" 
-  />
-  <div>Share</div>
-  
-   </button>
+  const ShareButton = (
+    <button id="share-button" onClick={getShareableLink}>
+      <img
+        src="/share.svg"
+        alt="Share Icon"
+        width="20px"
+        height="20px"
+      />
+      <div>Share</div>
+    </button>
   );
 
   const CantGenerateTimeTableMessage = (
@@ -189,15 +162,17 @@ function App() {
   return (
     <>
       <div className="subject-selection-controls">
-        {SubjectSearchBox}
+        <SubjectSearchBox
+          selecedSubjectsList={selecedSubjectsList}
+          subSlotDict={subSlotDict}
+          options={options}
+          onSubjectSelectChange={onSubjectSelectChange}
+        />
       </div>
 
       <div className="action-buttons">
-        
-      {RefreshButton}
-      {ShareButton}
-
-        
+        {RefreshButton}
+        {ShareButton}
       </div>
 
       {isEmpty(timeTable)
@@ -221,7 +196,7 @@ function App() {
 
       <SubjectCheckBoxes
         subSlotDict={subSlotDict}
-        pickedSubSlotDict={pickedSubSlotDict}
+        pickedSubSlotDict={courseToPickableSlotsDict}
         onChange={onSelectBoxChange}
         disabledSlots={blockedTimeSlots}
       />
@@ -285,7 +260,9 @@ function SubjectCheckBoxes({
               const { checked } = e.target;
               fillAll(checked, isSlotTakenBoolenArray, subName);
             }}
-            checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
+            checked={isSlotTakenBoolenArray.every((
+              /** @type {any} */ isSlotTaken,
+            ) => isSlotTaken)}
           />
           <label htmlFor={subName}>Select All</label>
           <span className="spacer"></span>
@@ -298,13 +275,16 @@ function SubjectCheckBoxes({
               fillAll(!checked, isSlotTakenBoolenArray, subName);
             }}
             checked={isSlotTakenBoolenArray.every(
-              (isSlotTaken) => !isSlotTaken,
+              (/** @type {boolean} */ isSlotTaken) => !isSlotTaken,
             )}
           />
           <label htmlFor={subName}>Unselect All</label>
         </div>
         <div id="custom-check-box-grid">
-          {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
+          {isSlotTakenBoolenArray.map((
+            /** @type {boolean} */ isSlotTaken,
+            /** @type {string | number} */ i,
+          ) => (
             <CustomCheckBox
               key={`${subName}-${isSlotTaken}-${i}`}
               // type="checkbox"
@@ -315,7 +295,7 @@ function SubjectCheckBoxes({
                 disabledSlots,
               )}
               checked={isSlotTaken}
-              onChange={(e) => {
+              onChange={(/** @type {{ target: { checked: any; }; }} */ e) => {
                 const { checked } = e.target;
                 const placeHolder = [...isSlotTakenBoolenArray];
                 placeHolder[i] = checked;

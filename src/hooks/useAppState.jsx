@@ -14,7 +14,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
     cacheKey: `${semID}-timeTable`,
     defaultValue: {},
   });
-  const [pickedSubSlotDict, setPickedSubSlotDict] = useCachedState({
+  const [courseToPickableSlotsDict, updatePickableSlot] = useCachedState({
     cacheKey: `${semID}-pickedSubSlotDict`,
     defaultValue: {},
   });
@@ -36,11 +36,13 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
   function markBlockedTimeSlotsInplace(
     subIsSlotTakenDict,
     _blockedTimeSlots,
-    value = 0
+    value = 0,
   ) {
-    for (const [subjName, isSubSlotTakenArr] of Object.entries(
-      subIsSlotTakenDict
-    )) {
+    for (
+      const [subjName, isSubSlotTakenArr] of Object.entries(
+        subIsSlotTakenDict,
+      )
+    ) {
       for (const [i, isSubSlotTaken] of isSubSlotTakenArr.entries()) {
         const subSlot = subSlotDict[subjName][i];
         for (const blockedTimeSlot of _blockedTimeSlots) {
@@ -56,21 +58,21 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
     const _subIsSlotTakenDict = {};
     for (const subjectOptions of selecedSubjectsList) {
       const { value: subName } = subjectOptions;
-      if (!(subName in pickedSubSlotDict))
+      if (!(subName in courseToPickableSlotsDict)) {
         _subIsSlotTakenDict[subName] = new Array(
-          subSlotDict[subName].length
+          subSlotDict[subName].length,
         ).fill(1);
-      else _subIsSlotTakenDict[subName] = pickedSubSlotDict[subName];
+      } else _subIsSlotTakenDict[subName] = courseToPickableSlotsDict[subName];
     }
 
     markBlockedTimeSlotsInplace(_subIsSlotTakenDict, _blockedTimeSlots);
 
-    setPickedSubSlotDict(_subIsSlotTakenDict);
+    updatePickableSlot(_subIsSlotTakenDict);
     return _subIsSlotTakenDict;
   };
 
   const onSelectBoxChange = (_pickedSubSlotDict) => {
-    setPickedSubSlotDict(_pickedSubSlotDict);
+    updatePickableSlot(_pickedSubSlotDict);
     markBlockedTimeSlotsInplace(_pickedSubSlotDict, blockedTimeSlots);
     submitSubjects(selecedSubjectsList, _pickedSubSlotDict);
   };
@@ -78,15 +80,15 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
   const submitSubjects = (
     selecedSubjectsList,
     _pickedSubSlotDict,
-    isRefreshButtonPressed = null
+    isRefreshButtonPressed = null,
   ) => {
-      if (selecedSubjectsList.length === 0) {
-        setTimetable({});
-        return;
+    if (selecedSubjectsList.length === 0) {
+      setTimetable({});
+      return;
     }
 
     const selectedSubjects = selecedSubjectsList.map(
-      (subject) => subject.value
+      (subject) => subject.value,
     );
 
     /**
@@ -95,7 +97,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
     const tt = {};
     const maskedSubSlotDict = getMaskedSubSlotDict(
       _pickedSubSlotDict,
-      subSlotDict
+      subSlotDict,
     );
 
     let isTrue = pick_slot(
@@ -103,7 +105,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
       selectedSubjects,
       tt,
       maskedSubSlotDict,
-      alreadyPickedTimeTableConfigsArray.current
+      alreadyPickedTimeTableConfigsArray.current,
     );
 
     // if not possible to generate timetable with already picked configs, try without them
@@ -114,7 +116,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
         selectedSubjects,
         tt,
         maskedSubSlotDict,
-        alreadyPickedTimeTableConfigsArray.current
+        alreadyPickedTimeTableConfigsArray.current,
       );
     }
 
@@ -137,40 +139,10 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
         const credit = isSTS ? 3 : getCreditsFromSlot(slot);
         return acc + credit;
       },
-      0
+      0,
     );
     return creditsSum;
   }
-
-  const customFilterFn = (option, searchText) => {
-    onSelectBoxChange;
-    function convertToShortform(longForm) {
-      let words = longForm.replaceAll(" ", "-").split("-"); // label is of the form CSE1001-Data Mining
-      words.shift(); // removing the course code
-      return words
-        .map((word) => {
-          if (word.length === 0) return "";
-          const trimedWord = word[0].trim();
-          if (trimedWord == trimedWord.toUpperCase()) {
-            return trimedWord.toUpperCase();
-          }
-          return "";
-        })
-        .join("");
-    }
-
-    const label = option.data.label.toLowerCase();
-    const value = option.data.value.toLowerCase();
-    const searchTextLowerCase = searchText.toLowerCase();
-    if (
-      label.includes(searchTextLowerCase) ||
-      value.includes(searchTextLowerCase)
-    ) {
-      return true;
-    }
-    const shortform = convertToShortform(option.data.label);
-    return shortform.includes(searchText.toUpperCase());
-  };
 
   return {
     selecedSubjectsList,
@@ -178,8 +150,8 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
     errorMesssage,
     timeTable,
     setTimetable,
-    pickedSubSlotDict,
-    setPickedSubSlotDict,
+    courseToPickableSlotsDict,
+    updatePickableSlot,
     blockedTimeSlots,
     setBlockedTimeSlots,
     alreadyPickedTimeTableConfigsArray,
@@ -188,8 +160,7 @@ function useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table }) {
     onSelectBoxChange,
     submitSubjects,
     updateSubSlotTaken,
-      markBlockedTimeSlotsInplace,
-    customFilterFn,
+    markBlockedTimeSlotsInplace,
   };
 }
 

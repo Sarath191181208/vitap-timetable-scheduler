@@ -206,7 +206,7 @@ function App() {
 
       <SubjectCheckBoxes
         subSlotDict={subSlotDict}
-        pickedSubSlotDict={pickedSubSlotDict}
+        pickedSubSlotDict={courseToPickableSlotsDict}
         onChange={onSelectBoxChange}
         disabledSlots={blockedTimeSlots}
       />
@@ -270,7 +270,9 @@ function SubjectCheckBoxes({
               const { checked } = e.target;
               fillAll(checked, isSlotTakenBoolenArray, subName);
             }}
-            checked={isSlotTakenBoolenArray.every((isSlotTaken) => isSlotTaken)}
+            checked={isSlotTakenBoolenArray.every((
+              /** @type {any} */ isSlotTaken,
+            ) => isSlotTaken)}
           />
           <label htmlFor={subName}>Select All</label>
           <span className="spacer"></span>
@@ -283,13 +285,16 @@ function SubjectCheckBoxes({
               fillAll(!checked, isSlotTakenBoolenArray, subName);
             }}
             checked={isSlotTakenBoolenArray.every(
-              (isSlotTaken) => !isSlotTaken,
+              (/** @type {boolean} */ isSlotTaken) => !isSlotTaken,
             )}
           />
           <label htmlFor={subName}>Unselect All</label>
         </div>
         <div id="custom-check-box-grid">
-          {isSlotTakenBoolenArray.map((isSlotTaken, i) => (
+          {isSlotTakenBoolenArray.map((
+            /** @type {boolean} */ isSlotTaken,
+            /** @type {string | number} */ i,
+          ) => (
             <CustomCheckBox
               key={`${subName}-${isSlotTaken}-${i}`}
               // type="checkbox"
@@ -300,7 +305,7 @@ function SubjectCheckBoxes({
                 disabledSlots,
               )}
               checked={isSlotTaken}
-              onChange={(e) => {
+              onChange={(/** @type {{ target: { checked: any; }; }} */ e) => {
                 const { checked } = e.target;
                 const placeHolder = [...isSlotTakenBoolenArray];
                 placeHolder[i] = checked;

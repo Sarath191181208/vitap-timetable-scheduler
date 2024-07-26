@@ -1,6 +1,9 @@
 // @ts-check
 import * as React from "react";
 import Select from "react-select";
+import makeAnimated from "react-select/animated";
+
+const animatedComponents = makeAnimated();
 
 export function SubjectSearchBox(
   { selecedSubjectsList, options, onSubjectSelectChange, subSlotDict },
@@ -10,6 +13,7 @@ export function SubjectSearchBox(
       placeholder="Search the subjects you want to take"
       classNamePrefix="select_subjects"
       defaultValue={selecedSubjectsList}
+      components={animatedComponents}
       value={selecedSubjectsList}
       onChange={(e) => {
         const isSubjectAdded = e.length > selecedSubjectsList.length;

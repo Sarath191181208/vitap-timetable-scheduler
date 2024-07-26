@@ -8,22 +8,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { TutorialSlide, tutorialSlidesData } from "./components/demo";
 import { useAppState } from "./hooks/useAppState";
-import {
-  getSubjectColorDict,
-  isEmpty,
-  isInDisabledSlots,
-} from "./data/utils";
+import { getSubjectColorDict, isEmpty, isInDisabledSlots } from "./data/utils";
 
 import React from "react";
 import { getData } from "./data";
 import WarningIcon from "./assets/icons/warning";
-import {
-  getCompressedURIFromData,
-} from "./data/impls/URI";
-import { Link } from "react-router-dom";
+import { getCompressedURIFromData } from "./data/impls/URI";
 import { TimeTable } from "./components/TimeTable";
 inject();
-
 
 function App() {
   const semID = "FALL-2024-25";
@@ -55,45 +47,41 @@ function App() {
       timeTable,
       subSlotDict,
     );
-    if(compressedBase16URI == 'Q'){
-      alert('Add the Subjects to share Time Table!');
-    }
-    else{
+    if (compressedBase16URI == "Q") {
+      alert("Add the Subjects to share Time Table!");
+    } else {
       //first gets the base url using window.location.href then adds the values for query parameters
-      const shareableLink = window.location.href+`share?v=1&sem=${semID}&data=${compressedBase16URI}`;
-      if(navigator.share){
-  	      navigator.share({
-            title: "VIT-AP TIME TABLE SCHEDULER",
-            text: "Shareable Link",
-            url: shareableLink,
-          })
+      const shareableLink = window.location.href +
+        `share?v=1&sem=${semID}&data=${compressedBase16URI}`;
+      if (navigator.share) {
+        navigator.share({
+          title: "VIT-AP TIME TABLE SCHEDULER",
+          text: "Shareable Link",
+          url: shareableLink,
+        })
           .then(() => {
             console.log("Link shared Successfully");
-        })
+          })
           .catch((error) => {
-            console.log("Erorr Sharing using navigator.share : ",error);
+            console.log("Erorr Sharing using navigator.share : ", error);
             copyToClipboard(shareableLink);
           });
-        }
-        else{
-          console.log("browser doesn't support the Web Share API ");
-          copyToClipboard(shareableLink);
-        }
-        
+      } else {
+        console.log("browser doesn't support the Web Share API ");
+        copyToClipboard(shareableLink);
       }
     }
-    const copyToClipboard = (/** @type {string} */ shareableLink) =>{
-      navigator.clipboard.writeText(shareableLink)
-        .then(() => {
-          alert('Link copied to clipboard!');
-          console.log("Link shared Successfully");
+  };
+  const copyToClipboard = (/** @type {string} */ shareableLink) => {
+    navigator.clipboard.writeText(shareableLink)
+      .then(() => {
+        alert("Link copied to clipboard!");
+        console.log("Link shared Successfully");
       })
-        .catch((error) => {
-          console.log("Erorr Sharing: ",error);
-        });
-    }
-
-
+      .catch((error) => {
+        console.log("Erorr Sharing: ", error);
+      });
+  };
 
   const onTimeSlotClick = (/** @type {string} */ timeSlot) => {
     let newBlockedTimeSlots = [];
@@ -163,16 +151,16 @@ function App() {
       ⟳{" "}
     </button>
   );
-  const ShareButton = (<button id="share-button" onClick={getShareableLink}>
-  <img 
-    src="/share.svg" 
-    alt="Share Icon" 
-    width="20px" 
-    height="20px" 
-  />
-  <div>Share</div>
-  
-   </button>
+  const ShareButton = (
+    <button id="share-button" onClick={getShareableLink}>
+      <img
+        src="/share.svg"
+        alt="Share Icon"
+        width="20px"
+        height="20px"
+      />
+      <div>Share</div>
+    </button>
   );
 
   const CantGenerateTimeTableMessage = (
@@ -193,11 +181,8 @@ function App() {
       </div>
 
       <div className="action-buttons">
-        
-      {RefreshButton}
-      {ShareButton}
-
-        
+        {RefreshButton}
+        {ShareButton}
       </div>
 
       {isEmpty(timeTable)

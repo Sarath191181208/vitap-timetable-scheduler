@@ -8,13 +8,12 @@ const animatedComponents = makeAnimated();
 export function SubjectSearchBox(
   { selecedSubjectsList, options, onSubjectSelectChange, subSlotDict },
 ) {
-  const {updateBackspace, resetBackspace, canDeleteItem} = useAccidentalBackspace()
+  const { updateBackspace, resetBackspace, canDeleteItem } =
+    useAccidentalBackspace();
   return (
     <Select
       placeholder="Search the subjects you want to take"
-      classNamePrefix="select_subjects"
       defaultValue={selecedSubjectsList}
-      components={animatedComponents}
       value={selecedSubjectsList}
       onChange={(e, actionMeta) => {
         if (actionMeta.action == "pop-value" && !canDeleteItem()) {
@@ -46,6 +45,8 @@ export function SubjectSearchBox(
       filterOption={customFilterFn}
       options={options}
       className="basic-multi-select"
+      classNamePrefix="select_subjects"
+      components={animatedComponents}
     />
   );
 }

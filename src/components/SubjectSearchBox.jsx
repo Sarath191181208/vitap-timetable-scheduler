@@ -8,6 +8,7 @@ const animatedComponents = makeAnimated();
 export function SubjectSearchBox(
   { selecedSubjectsList, options, onSubjectSelectChange, subSlotDict },
 ) {
+  const {updateBackspace, resetBackspace, canDeleteItem} = useAccidentalBackspace()
   return (
     <Select
       placeholder="Search the subjects you want to take"
@@ -15,8 +16,13 @@ export function SubjectSearchBox(
       defaultValue={selecedSubjectsList}
       components={animatedComponents}
       value={selecedSubjectsList}
-      onChange={(e) => {
-        const isSubjectAdded = e.length > selecedSubjectsList.length;
+      onChange={(e, actionMeta) => {
+        if (actionMeta.action == "pop-value" && !canDeleteItem()) {
+          updateBackspace();
+          return;
+        }
+        resetBackspace();
+        const isSubjectAdded = actionMeta.action == "select-option";
         let newSubjects = e;
         // find courses with same course code and add then like lab
         if (isSubjectAdded) {
@@ -42,6 +48,24 @@ export function SubjectSearchBox(
       className="basic-multi-select"
     />
   );
+}
+
+function useAccidentalBackspace() {
+  const popValueCount = React.useRef(0);
+  const updateBackspace = () => {
+    popValueCount.current = 1;
+  };
+
+  const resetBackspace = () => {
+    popValueCount.current = 0;
+  };
+
+  const canDeleteItem = () => {
+    // This represents only if you press the backspace key twice
+    return popValueCount.current == 1;
+  };
+
+  return { updateBackspace, resetBackspace, canDeleteItem };
 }
 
 const customFilterFn = (

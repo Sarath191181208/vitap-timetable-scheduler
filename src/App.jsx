@@ -1,6 +1,5 @@
 // @ts-check
 
-import Select from "react-select";
 import "./css/App.css";
 import "./css/checkbox.css";
 import { inject } from "@vercel/analytics";
@@ -8,13 +7,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { TutorialSlide, tutorialSlidesData } from "./components/demo";
 import { useAppState } from "./hooks/useAppState";
+import * as React from "react";
 import { getSubjectColorDict, isEmpty, isInDisabledSlots } from "./data/utils";
 
-import React from "react";
 import { getData } from "./data";
 import WarningIcon from "./assets/icons/warning";
 import { getCompressedURIFromData } from "./data/impls/URI";
 import { TimeTable } from "./components/TimeTable";
+import { SubjectSearchBox } from "./components/SubjectSearchBox";
 inject();
 
 function App() {
@@ -26,8 +26,8 @@ function App() {
     selecedSubjectsList,
     errorMesssage,
     timeTable,
-    pickedSubSlotDict,
-    setPickedSubSlotDict,
+    courseToPickableSlotsDict,
+    updatePickableSlots,
     blockedTimeSlots,
     setBlockedTimeSlots,
     alreadyPickedTimeTableConfigsArray,
@@ -37,7 +37,6 @@ function App() {
     onSelectBoxChange,
     updateSubSlotTaken,
     markBlockedTimeSlotsInplace,
-    customFilterFn,
   } = useAppState({ semID, subSlotDict, getCreditsFromSlot, time_table });
 
   calculateCredits();
@@ -118,25 +117,11 @@ function App() {
     }
 
     // update the pickable slots
-    setPickedSubSlotDict(newPickedSubSlotDict);
+    updatePickableSlots(newPickedSubSlotDict);
 
     // generate a new timetable
     submitSubjects(selecedSubjectsList, newPickedSubSlotDict);
   };
-
-  const SubjectSearchBox = (
-    <Select
-      placeholder="Search the subjects you want to take"
-      classNamePrefix="select_subjects"
-      defaultValue={selecedSubjectsList}
-      onChange={onSubjectSelectChange}
-      closeMenuOnSelect={false}
-      isMulti
-      filterOption={customFilterFn}
-      options={options}
-      className="basic-multi-select"
-    />
-  );
 
   const RefreshButton = (
     <button
@@ -144,7 +129,7 @@ function App() {
       title="Refresh the Time Table"
       onClick={() => {
         alreadyPickedTimeTableConfigsArray.current.push(timeTable);
-        submitSubjects(selecedSubjectsList, pickedSubSlotDict, true);
+        submitSubjects(selecedSubjectsList, courseToPickableSlotsDict, true);
       }}
     >
       {" "}
@@ -177,7 +162,12 @@ function App() {
   return (
     <>
       <div className="subject-selection-controls">
-        {SubjectSearchBox}
+        <SubjectSearchBox
+          selecedSubjectsList={selecedSubjectsList}
+          subSlotDict={subSlotDict}
+          options={options}
+          onSubjectSelectChange={onSubjectSelectChange}
+        />
       </div>
 
       <div className="action-buttons">

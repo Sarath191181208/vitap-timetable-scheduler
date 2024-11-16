@@ -1,499 +1,499 @@
 const theoryData = {
-  "CHY1005-Industrial Chemistry for Engineers": [
-    "A1+TA1",
-  ],
-  "CHY1006-Corrosion Science and Engineering": [
-    "E1+TE1",
-  ],
-  "CHY1007-Energy Materials and Their Applications": [
-    "D2+TD2",
-  ],
-  "CHY2002-Organic Electronics": [
-    "C2+TC2",
-  ],
   "CSE1005-Software Engineering": [
-    "A1+TA1",
+    "F2+TF2",
     "C2+TC2",
-    "A2+TA2",
+    "F1+TF1",
     "C1+TC1",
+    "E2+TE2",
+    "F1+TFF1",
+    "E1+TE1",
+    "F2+SF1"
   ],
   "CSE1006-Foundations for Data Analytics": [
-    "G1",
-    "E1",
     "G2",
-    "E2",
-  ],
-  "CSE1007-Introduction to Cryptography": [
-    "G1+TG1",
-    "G2+TG2",
-    "E2+TE2",
-    "E1+TE1",
-  ],
-  "CSE1021-Foundations of Blockchain Technology": [
-    "F1+TF1",
-    "E2+TE2",
-    "E1+TE1",
-  ],
-  "CSE1022-Introduction to Programming": [
+    "G1",
     "F1",
-    "F2",
-    "G1",
-    "G2",
+    "F2"
   ],
-  "CSE2001-Data Structures and Algorithms": [
-    "F1+TF1",
+  "CSE1008-Theory of Computation": [
+    "D1+TD1+TDD1",
+    "B2+TB2+TBB2",
+    "A1+TA1+TAA1",
+    "B1+TB1+TBB1",
+    "D2+TD2+TDD2",
+    "A2+TA2+TAA2"
+  ],
+  "CSE2003-Requirements Engineering Management": [
+    "B2+TB2"
+  ],
+  "CSE2004-Software Design and Architecture": [
+    "A2+TA2"
+  ],
+  "CSE2007-Database Management Systems": [
+    "A1+TA1",
     "B1+TB1",
     "D2+TD2",
-    "B2+TB2",
     "D1+TD1",
+    "A2+TA2",
+    "B2+TB2"
   ],
-  "CSE2008-Operating Systems": [
-    "B1+TB1",
-    "D2+TD2",
-    "B2+TB2",
-    "D1+TD1",
+  "CSE2009-Soft Computing": [
+    "A2+TA2",
+    "A1+TA1",
+    "B2+TB2"
   ],
   "CSE2011-Cyber Security and Digital Forensics": [
-    "A1+TA1",
-    "A2+TA2",
-    "B1+TB1",
-  ],
-  "CSE2025-AWS Solution Architecture": [
-    "F1+TFF1",
-    "F2+TF2",
-    "E2+TE2",
-    "F1+TF1",
-    "E1+TE1",
-  ],
-  "CSE2027-AWS for Cloud Computing": [
-    "B1+TB1",
     "C2+TC2",
-    "C1+TC1",
+    "C1+TC1"
   ],
-  "CSE2028-Cloud Computing using Salesforce": [
+  "CSE2013-Information Theory and Coding": [
+    "B2+TB2+TBB2",
+    "A1+TA1+TAA1",
+    "B1+TB1+TBB1",
+    "C1+TC1+TCC1",
+    "A2+TA2+TAA2",
+    "C2+TC2+TCC2"
+  ],
+  "CSE2024-Blockchain Architecture Design": [
     "E1+TE1",
-  ],
-  "CSE3001-Agile Development Process": [
-    "B1+TB1",
-    "D2+TD2",
-    "B2+TB2",
-    "D1+TD1",
+    "E2+TE2"
   ],
   "CSE3002-Artificial Intelligence": [
+    "A2+TA2",
+    "A1+TA1",
+    "F1+TF1"
+  ],
+  "CSE3004-Design and Analysis of Algorithm": [
     "F2+TF2",
+    "C2+TC2",
     "F1+TF1",
+    "C1+TC1",
     "E2+TE2",
+    "F1+TFF1",
     "E1+TE1",
+    "F2+SF1"
+  ],
+  "CSE3006-Data Visualization": [
+    "C2+TC2",
+    "E1+TE1",
+    "C1+TC1",
+    "E2+TE2"
   ],
   "CSE3008-Introduction to Machine Learning": [
-    "G1+TG1",
-    "F1+TFF1",
-    "G2+TG2",
-    "F2+SF1",
-  ],
-  "CSE3009-No SQL Databases": [
-    "F2+TF2",
-    "F1+TF1",
-    "E2+TE2",
-    "E1+TE1",
-  ],
-  "CSE3014-Software Design with UML": [
-    "F1",
-    "F2",
-    "E1",
-    "E2",
-  ],
-  "CSE3037-Public Key Infrastructure & Trust Management": [
-    "C1+TC1",
-    "B2+TB2",
     "C2+TC2",
+    "B1+TB1",
+    "D2+TD2",
+    "C1+TC1",
+    "D1+TD1",
+    "G1+TG1",
+    "B2+TB2"
+  ],
+  "CSE3009-NoSQL Databases": [
+    "D1+TD1",
+    "D2+TD2",
+    "E1+TE1"
+  ],
+  "CSE3012-Network Security": [
+    "F1+TFF1",
+    "F2+TF2",
+    "C1+TC1"
+  ],
+  "CSE3015-Natural Language Processing": [
+    "C2+TC2",
+    "C1+TC1",
+    "E1+TE1",
+    "A2+TA2",
+    "A1+TA1",
+    "E2+TE2"
+  ],
+  "CSE3018-Software Configuration Management": [
+    "A2+TA2",
+    "A1+TA1",
+    "B1+TB1",
+    "B2+TB2"
+  ],
+  "CSE3035-Blockchain and Distributed Ledger Technology": [
+    "A2+TA2",
+    "A1+TA1"
+  ],
+  "CSE3041-Malware Analysis": [
+    "C2+TC2",
+    "G1+TG1",
+    "C1+TC1"
   ],
   "CSE4001-Cloud Computing": [
+    "G2+TG2",
     "E1+TE1",
+    "E2+TE2"
   ],
   "CSE4005-Data Warehousing and Data Mining": [
-    "D2+TD2",
-    "E1+TE1",
+    "G1+TG1",
     "D1+TD1",
+    "D2+TD2"
   ],
   "CSE4006-Deep Learning": [
-    "G1+TG1",
-    "G2+TG2",
-    "A1+TA1",
-    "A2+TA2",
-  ],
-  "CSE4012-UI UX User Experience Design": [
-    "E2+TE2",
-  ],
-  "CSE4023-Introduction to Blockchain Technology": [
-    "C2+TC2",
-    "A2+TA2",
-    "C1+TC1",
-  ],
-  "CSE4043-Intrusion Detection and Prevention System": [
-    "D2+TD2",
+    "F2+TF2",
     "B1+TB1",
+    "F1+TF1",
+    "D2+TD2",
+    "D1+TD1",
+    "F1+TFF1",
+    "B2+TB2",
+    "F2+SF1"
+  ],
+  "CSE4007-Digital Image Processing": [
+    "A2+TA2",
+    "A1+TA1",
+    "F2+TF2"
+  ],
+  "CSE4011-Internet of Things": [
+    "G2+TG2",
+    "F1+TFF1",
+    "F2+SF1"
+  ],
+  "CSE4016-Database Administration": [
+    "G1+TG1",
+    "F1+TF1",
+    "F2+SF1"
+  ],
+  "CSE4037-Reinforcement Learning": [
+    "A2+TA2",
+    "A1+TA1"
+  ],
+  "CSE4049-Software Project Management": [
+    "B2+TB2"
+  ],
+  "ECE1008-Sensors and Control Systems": [
+    "E1+TE1"
   ],
   "ECE1010-Probability and Random Processes": [
-    "B1+TB1+TBB1",
-  ],
-  "ECE2003-Control Systems Engineering": [
-    "F2+SF1",
-  ],
-  "ECE2005-Signals and Systems": [
-    "A1+TA1+TAA1",
-    "C2+TC2+TCC2",
     "A2+TA2+TAA2",
-    "C1+TC1+TCC1",
+    "A1+TA1+TAA1",
+    "B2+TB2+TBB2",
+    "B1+TB1+TBB1"
   ],
-  "ECE2007-Digital Signal Processing": [
-    "D2+TD2",
+  "ECE1011-Hybrid and Electric Vehicles": [
+    "B2+TB2+TBB2"
+  ],
+  "ECE2001-Analog Devices and Circuits": [
+    "C2+TC2",
     "D1+TD1",
+    "D2+TD2",
+    "C1+TC1"
+  ],
+  "ECE2002-Computer Organization and Architecture": [
+    "D1+TD1+TDD1",
+    "B2+TB2+TBB2",
+    "A1+TA1+TAA1",
+    "B1+TB1+TBB1",
+    "D2+TD2+TDD2",
+    "A2+TA2+TAA2"
+  ],
+  "ECE2006-Communication Systems": [
+    "D1+TD1",
+    "B1+TB1",
+    "B2+TB2",
+    "D2+TD2"
   ],
   "ECE2009-Data Acquisition and Transmission Systems": [
-    "E2+TE2",
+    "B1+TB1"
   ],
-  "ECE2010-Digital System Design for ASICs and FPGAs": [
+  "ECE2014-Microprocessors and Microcontrollers": [
     "E1+TE1",
+    "F2+TF2",
+    "F1+TF1",
+    "E2+TE2"
   ],
-  "ECE2013-Computer Organization and Architecture": [
-    "D2+TD2",
-    "E2+TE2",
-    "E1+TE1",
-    "D1+TD1",
+  "ECE2015-Computer Architecture": [
+    "A2+TA2+TAA2",
+    "A1+TA1+TAA1",
+    "B2+TB2+TBB2",
+    "B1+TB1+TBB1"
+  ],
+  "ECE3001-Linear Integrated Circuits and Applications": [
+    "C2+TC2",
+    "A2+TA2",
+    "A1+TA1",
+    "C1+TC1"
+  ],
+  "ECE3002-Antennas and wave propagation": [
+    "B2+TB2"
+  ],
+  "ECE3004-Embedded Hardware Software System Design": [
+    "E2+TE2"
   ],
   "ECE3005-CMOS VLSI Design": [
-    "C2+TC2",
+    "E1+TE1"
   ],
-  "ECE3018-IoT Fundamentals": [
-    "G1",
+  "ECE3006-HDL Verification and Methodology": [
+    "D1+TD1"
   ],
-  "ECE4002-Wireless and Mobile Communications": [
-    "F2+SF1",
+  "ECE3008-Neural Networks and Fuzzy systems": [
+    "D2+TD2+TDD2"
   ],
-  "ECE4003-Embedded C Programming and Linux Development": [
-    "D2+TD2",
+  "ECE3010-Speech Processing": [
+    "B1+TB1"
+  ],
+  "ECE3023-Scripting Languages": [
+    "D1+TD1"
   ],
   "ECE4004-Automotive Electrical and Electronic systems": [
-    "B1+TB1+TBB1",
-    "B2+TB2+TBB2",
+    "E1+TE1+TEE1"
   ],
-  "ECE4005-SOC Design": [
-    "C1+TC1",
+  "ECE4006-Analog IC Design": [
+    "F1+TFF1"
   ],
-  "ECE4007-IoT System Architecture": [
-    "E1+SE1+TE1",
+  "ECE4011-Robotics and Automation": [
+    "A2+TA2+TAA2"
   ],
-  "ECE4019-Autonomous Vehicle Technology": [
-    "B1+TB1+TBB1",
+  "ECE4017-IoT Domain Analyst": [
+    "C2"
   ],
-  "ECE4020-Digital Video Processing": [
-    "C2+TC2",
+  "ECE4018-Image Analysis and Computer Vision": [
+    "A1+TA1"
   ],
-  "ENG1015-Introduction to 20th Century European Literature in Translation": [
-    "B1+TB1",
-  ],
-  "ENG2012-Stories Retold: Reading Cinema": [
-    "D1+TD1",
-  ],
-  "ENG2013-Cross-Cultural Communication Skills for Global Interaction": [
-    "F2+SF1",
-  ],
-  "ENG3008-Strategic Communication for Entrepreneurs": [
-    "G1+TG1",
-  ],
-  "FRL1001-Basic French": [
-    "F2",
-    "C2",
-    "G2",
-    "G1",
-    "E2",
-    "D1",
+  "FRL1002-French for Beginners": [
+    "F2"
   ],
   "FRL1004-Basic Spanish": [
-    "D2",
-    "E1",
-    "G2",
+    "F1"
   ],
   "FRL1005-German for Beginners": [
-    "F1",
-    "A2",
-    "F2",
-    "G1",
+    "G2"
   ],
-  "FRL2003-French for Engineers": [
-    "E2+TE2",
+  "FRL2004-Korean for Beginners": [
+    "G1"
   ],
-  "FRL2005-German for Advanced Learners": [
-    "D2+TD2",
-  ],
-  "HUM2003-Fundamentals of Cost and Management Accounting": [
-    "E2+TE2+TEE2",
-  ],
-  "HUM3002-Game Theory and Dissertation": [
-    "F1+SF1+TFF1",
-  ],
-  "LAW1012-Critical Legal Philosophy": [
-    "F1+SF1+TFF1",
-  ],
-  "LIB1013-Introduction to Comics and Graphic Narratives": [
-    "E1+TE1",
-  ],
-  "LIB1014-Pursuit of Happiness": [
-    "A2+TA2",
-  ],
-  "LIB1019-Dynamics of Gender Psychology": [
-    "G2+TG2",
-  ],
-  "LIB2003-Geography of Asia and Sub-Saharan Africa": [
-    "F1+TFF1",
-  ],
-  "MAT1003-Discrete Mathematical Structures": [
-    "A1+TA1+TAA1",
-    "C2+TC2+TCC2",
-    "A2+TA2+TAA2",
-    "C1+TC1+TCC1",
-  ],
-  "MAT1007-Discrete Mathematics": [
-    "A1+TA1+TAA1",
-    "C2+TC2+TCC2",
-    "A2+TA2+TAA2",
-    "C1+TC1+TCC1",
-  ],
-  "MAT2001-Numerical Methods for Engineers": [
-    "F2",
-    "B1",
-    "E1",
-  ],
-  "MAT2005-Linear Algebra": [
-    "A1+TA1",
-    "D2+TD2",
-    "E1+TE1",
-  ],
-  "MEC2002-Thermodynamics": [
-    "A1+TA1",
-    "A2+TA2",
-  ],
-  "MEC2003-Strength of Materials": [
-    "C1+TC1",
+  "MAT1011-Applied Statistics": [
+    "F2+TF2",
     "C2+TC2",
-  ],
-  "MEC2004-Fluid Mechanics": [
+    "F1+TF1",
+    "C1+TC1",
     "E2+TE2",
-    "E1+TE1",
-  ],
-  "MEC2007-Introduction to Mechanical Engineering Design Process": [
     "F1+TFF1",
+    "E1+TE1",
+    "F2+SF1"
+  ],
+  "MAT2003-Optimization Techniques": [
+    "C2+TC2",
+    "D1+TD1",
+    "D2+TD2",
+    "C1+TC1"
+  ],
+  "MEC2005-Fundamentals of Manufacturing Processes": [
+    "E1+TE1",
+    "E2+TE2"
+  ],
+  "MEC2008-Product Design and Development": [
+    "B1+TB1+TBB1"
   ],
   "MEC2014-Production Planning and Inventory Control": [
-    "G2+TG2",
+    "C2+TC2"
   ],
-  "MEC2017-Vehicle Dynamics": [
-    "B1+TB1+TBB1",
+  "MEC2018-Thermal Engineering Systems": [
+    "A2+TA2",
+    "A1+TA1"
   ],
-  "MEC2020-Computer Aided Design and Manufacturing": [
-    "D2+TD2",
+  "MEC2021-Mechatronics": [
+    "B2+TB2+TBB2"
   ],
-  "MEC3001-Heat and Mass Transfer": [
-    "A1+TA1",
+  "MEC3002-Theory of Machines": [
+    "B1+TB1",
+    "B2+TB2"
   ],
-  "MEC3004-Machine Design": [
-    "D1+TD1",
+  "MEC3006-Fluid Dynamics and Hydraulic Machines": [
+    "E2+TE2"
   ],
-  "MEC3005-Automation in Manufacturing": [
-    "F2+SF1",
+  "MEC3010-Renewable Source of Energy": [
+    "C1+TC1"
+  ],
+  "MEC3011-Operations Research": [
+    "F2+SF1"
+  ],
+  "MEC3012-Additive Manufacturing": [
+    "F1+TFF1"
   ],
   "MEC3015-Advanced Machining Processes": [
-    "B2+TB2",
+    "D1+TD1"
   ],
-  "MEC3026-Robot Kinematics": [
-    "B2+TB2+TBB2",
+  "MEC3027-Robot Dynamics": [
+    "A1+TA1+TAA1"
   ],
-  "MEC3028-Robot Programming": [
-    "G1+TG1",
+  "MEC4001-Computational Fluid Dynamics": [
+    "D2+TD2"
   ],
-  "MEC3029-Machining Processes and Workshop Technology": [
-    "C1+TC1",
-  ],
-  "MEC4003-Internal Combustion Engines": [
-    "E2+TE2",
-  ],
-  "MEC4005-Power Plant Engineering": [
-    "B1+TB1",
+  "MEC4004-Refrigeration and Air Conditioning": [
+    "F1+TFF1"
   ],
   "MEC4008-Automobile Engineering": [
-    "E2+TE2",
+    "A2+TA2"
   ],
-  "MGT1002-Lean Start-up Management": [
-    "A1+TA1",
-  ],
-  "MGT1015-Fundamentals of Consumer Behaviour": [
-    "G1+TG1",
-  ],
-  "MGT1026-Basics of Investment Analysis and Portfolio Management": [
-    "C2+TC2",
-  ],
-  "MGT1029-Basic Law for Engineers": [
-    "E1+TE1",
+  "MEC4017-Introduction to Mechanical Vibrations": [
+    "F2+SF1"
   ],
   "MGT1040-Entrepreneurship": [
-    "B1",
-    "A1",
-    "A2",
-    "B2",
-    "C2",
-    "D2",
-    "C1",
-    "E1",
     "G2",
     "G1",
+    "F1",
+    "E1",
+    "A2",
     "E2",
-    "D1",
+    "F2",
+    "A1"
   ],
-  "MGT2006-Fundamentals of Financial Management": [
-    "F2+SF1",
-  ],
-  "MGT2023-Impact Evaluation": [
-    "C1+SC1+TC1",
-  ],
-  "MGT3004-Fundamentals of Operations and Supply Chain Management": [
-    "F1+TFF1",
-  ],
-  "PHY1002-Semiconductor Device Physics": [
-    "E1+TE1+TEE1",
-    "B1+TB1+TBB1",
-    "E2+TE2+TEE2",
-    "B2+TB2+TBB2",
-  ],
-  "PHY1009-Engineering Mechanics": [
-    "D2+TD2",
-  ],
-  "PHY2001-Applied Electromagnetics": [
-    "A1+TA1+TAA1",
-    "C2+TC2+TCC2",
-    "A2+TA2+TAA2",
-    "D1+TD1+TDD1",
-  ],
-  "PHY2003-Condensed Matter Physics": [
-    "C2+TC2",
-  ],
-  "PHY2004-Optoelectronics": [
-    "E1+TE1",
-  ],
-  "PHY2005-Introduction to Nanotechnology": [
-    "D2+TD2",
-  ],
-  "PHY2006-Solar Photovoltaics : Fundamentals and Technologies": [
-    "E2+TE2",
-  ],
-  "STS1002-Fundamentals of Aptitude": [
-    "G1+TG1",
-    "G2+TG2",
-    "E2+TE2",
-    "E1+TE1",
+  "STS1007-Arithmetic Problem Solving": [
+    "A2+TA2",
+    "A1+TA1",
+    "B1+TB1",
+    "B2+TB2"
   ],
   "STS2006-Getting Started to Skill Enhancement": [
-    "C2+TC2",
-    "A2+TA2",
-    "C1+TC1",
-    "B1+TB1",
-    "D2+TD2",
-    "B2+TB2",
-    "D1+TD1",
+    "D1+TD1"
   ],
-  "STS2008-Numerical Ability and Cognitive Intelligence": [
-    "F1+TFF1",
-    "A1+TA1",
-    "C2+TC2",
-    "A2+TA2",
-    "C1+TC1",
-    "B1+TB1",
-    "D2+TD2",
-    "B2+TB2",
-    "D1+TD1",
-  ],
-  "STS3004-Introduction to programming skills": [
-    "F2+TF2",
-    "A1+TA1",
-    "A2+TA2",
-    "C2+TC2",
-    "D1+TD1",
-  ],
-  "STS3006-Basic Competitive Coding - I": [
-    "F2+SF1",
-    "A1+TA1",
-    "F1+TF1",
-    "B1+TB1",
-    "D2+TD2",
-  ],
-  "STS3007-Advanced Competitive Coding - I": [
-    "G1+TG1",
-    "F2+TF2",
-    "A1+TA1",
+  "STS2007-Enhancing Problem Solving Skills": [
     "G2+TG2",
-    "E2+TE2",
+    "F2+SF1",
+    "G1+TG1",
+    "A2+TA2",
+    "A1+TA1",
+    "F1+TFF1",
+    "E2+TE2"
+  ],
+  "STS2009-Arithmetic Problem Solving Skills": [
+    "G2+TG2",
+    "B2+TB2",
+    "F2+TF2",
     "C2+TC2",
+    "B1+TB1",
     "F1+TF1",
+    "C1+TC1",
+    "D2+TD2",
+    "D1+TD1",
+    "G1+TG1",
     "E1+TE1",
     "A2+TA2",
-    "C1+TC1",
-    "B1+TB1",
-    "D2+TD2",
-    "B2+TB2",
-    "D1+TD1",
-  ],
-  "SWE1002-Principles of Software Engineering": [
-    "B1+TB1",
-    "D2+TD2",
-    "B2+TB2",
-    "D1+TD1",
-  ],
-  "SWE2001-Data Structures and  Its Applications": [
     "A1+TA1",
-    "C2+TC2",
-    "A2+TA2",
-    "C1+TC1",
+    "E2+TE2"
   ],
-  "SWE2007-Fundamentals of Operating Systems": [
+  "STS4003-Enhancing Programming Ability": [
+    "E1+TE1",
+    "B1+TB1",
+    "B2+TB2",
+    "E2+TE2"
+  ],
+  "STS4005-Basic Competitive Coding - II": [
+    "C2+TC2",
+    "C1+TC1",
+    "G1+TG1",
+    "E1+TE1",
+    "E2+TE2"
+  ],
+  "STS4006-Advanced Competitive Coding - II": [
+    "G2+TG2",
+    "F2+TF2",
+    "F1+TF1",
+    "C1+TC1",
+    "D1+TD1",
+    "G1+TG1",
+    "E1+TE1",
+    "F1+TFF1",
+    "B2+TB2",
+    "F2+SF1",
+    "E2+TE2",
+    "C2+TC2",
     "B1+TB1",
     "D2+TD2",
-    "B2+TB2",
+    "A2+TA2",
+    "A1+TA1"
+  ],
+  "SWE2002-Human Computer Interaction": [
+    "G1+TG1",
+    "E1+TE1",
+    "G2+TG2",
+    "E2+TE2"
+  ],
+  "SWE2003-Requirements Engineering Management": [
+    "C2+TC2",
+    "F1+TFF1",
+    "F2+TF2",
+    "C1+TC1"
+  ],
+  "SWE2004-Software Design and Architecture": [
+    "A2+TA2",
+    "A1+TA1",
+    "B1+TB1",
+    "B2+TB2"
+  ],
+  "SWE2006-Database Systems": [
+    "C2+TC2",
     "D1+TD1",
+    "D2+TD2",
+    "C1+TC1"
   ],
   "SWE2008-Object Oriented Analysis and Design": [
-    "A1+TA1",
     "C2+TC2",
-    "A2+TA2",
-    "C1+TC1",
+    "C1+TC1"
   ],
-  "SWE2009-Analysis of Algorithms": [
-    "B1+TB1",
-    "B2+TB2",
-    "D1+TD1",
-  ],
-  "SWE3002-Software Project Management": [
-    "F1+TF1",
+  "SWE3001-Introduction to Computer Networks": [
+    "F2+TF2",
     "E2+TE2",
+    "F1+TFF1",
     "E1+TE1",
+    "F2+SF1"
   ],
-  "SWE3004-Front End Design and Testing": [
-    "A1+TA1",
-    "A2+TA2",
-    "C1+TC1",
+  "SWE3003-Information and System Security": [
+    "E1+TE1",
+    "D1+TD1",
+    "D2+TD2",
+    "E2+TE2"
+  ],
+  "SWE3005-Principles of Design Patterns": [
+    "C2+TC2",
+    "C1+TC1"
   ],
   "SWE4001-Internet and Web Technologies": [
-    "F2+TF2",
-    "F1+TF1",
-    "E2+TE2",
+    "F1+TFF1"
+  ],
+  "SWE4002-Software Testing": [
     "E1+TE1",
+    "D1+TD1",
+    "D2+TD2",
+    "E2+TE2"
+  ],
+  "SWE4003-Concepts of Mobile Application Development": [
+    "A2+TA2",
+    "A1+TA1",
+    "B1+TB1",
+    "B2+TB2"
+  ],
+  "SWE4004-Cloud Computing and its Applications": [
+    "F1+TFF1",
+    "F2+SF1"
+  ],
+  "SWE4005-Storage Technologies and Management": [
+    "G2+TG2",
+    "D2+TD2",
+    "D1+TD1",
+    "F1+TFF1",
+    "G1+TG1",
+    "F2+SF1"
+  ],
+  "SWE4006-Advanced Server Side Programming": [
+    "B1+TB1",
+    "B2+TB2",
+    "E2+TE2"
   ],
   "SWE4007-Software Application Architecture": [
-    "B2+TB2",
-    "B1+TB1",
+    "G2+TG2",
+    "D1+TD1",
+    "D2+TD2"
   ],
-  "TEC3001-Design Thinking": [
+  "SWE4008-Application Development and Deployment Architecture": [
     "F1+TFF1",
-  ],
+    "A2+TA2",
+    "A1+TA1",
+    "F2+SF1"
+  ]
 };
 
 export default theoryData;

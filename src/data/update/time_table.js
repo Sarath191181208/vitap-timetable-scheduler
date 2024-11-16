@@ -17,11 +17,11 @@ export const time_table = {
         "TG1+L7",
         "D1+L8",
         "F1+L9",
-        "E1+L10",
+        "E1+SC2+L10",
         "B1+L11",
         "L12",
-        "E2+SC1+L37",
-        "D2+L38",
+        "D2+L37",
+        "E2+SC1+L38",
         "F2+L39",
         "B2+L40",
         "TCC2+L41",
@@ -38,15 +38,15 @@ export const time_table = {
         "F2+L44",
         "TD2+L45",
         "TA2+L46",
-        "TG2+L47",
+        "TEE2+L47",
         "L48"
     ],
     "Friday": [
         "TCC1+L19",
         "TB1+L20",
         "TAA1+G1+L21",
-        "TE1+L22",
-        "F1+L23",
+        "F1+L22",
+        "TE1+SD2+L23",
         "L24",
         "C2+L49",
         "TB2+L50",
@@ -57,16 +57,16 @@ export const time_table = {
     ],
     "Saturday": [
         "TDD1+L25",
-        "C1+L26",
-        "A1+L27",
+        "E1+SE2+L26",
+        "C1+L27",
         "TBB1+G1+L28",
-        "E1+L29",
+        "A1+L29",
         "L30",
         "D2+L55",
         "TC2+L56",
         "A2+L57",
         "SF1+CLUBS+ECS+L58",
-        "TEE2+L59",
+        "TG2+CLUBS+ECS+L59",
         "L60"
     ]
 };
@@ -76,4 +76,3 @@ export const time_table = {
  * @type {string[]}
  */
 export const time_arr = ["8:00","9:00", "10:00", "11:00", "12:00", "1:30", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00"];
-

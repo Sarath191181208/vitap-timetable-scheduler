@@ -1,1 +1,1 @@
-{"TEC": 0, "SWE": 1, "STS": 2, "PHY": 3, "MGT": 4, "MEC": 5, "MAT": 6, "LIB": 7, "LAW": 8, "HUM": 9, "FRL": 10, "ENG": 11, "ECE": 12, "CSE": 13, "CHY": 14}
+{"SWE": 0, "STS": 1, "MGT": 2, "MEC": 3, "MAT": 4, "FRL": 5, "ECE": 6, "CSE": 7}

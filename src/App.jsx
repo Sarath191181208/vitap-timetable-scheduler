@@ -160,47 +160,49 @@ function App() {
   );
 
   return (
-    <>
-      <div className="subject-selection-controls">
-        <SubjectSearchBox
-          selecedSubjectsList={selecedSubjectsList}
+    <div id="container-root">
+      <div id="container">
+        <div className="subject-selection-controls">
+          <SubjectSearchBox
+            selecedSubjectsList={selecedSubjectsList}
+            subSlotDict={subSlotDict}
+            options={options}
+            onSubjectSelectChange={onSubjectSelectChange}
+          />
+        </div>
+
+        <div className="action-buttons">
+          {RefreshButton}
+          {ShareButton}
+        </div>
+
+        {isEmpty(timeTable)
+          ? <Tutorial />
+          : (
+            <div className="time-table-container">
+              {errorMesssage && CantGenerateTimeTableMessage}
+              <TimeTable
+                time_table={time_table}
+                subTimeSlotDict={timeTable}
+                subSlotDict={subSlotDict}
+                onSlotTap={onTimeSlotClick}
+                blockedTimeSlots={blockedTimeSlots}
+                time_arr={time_arr}
+              />
+              <div>
+                <h2>Registered Credits: {calculateCredits()}</h2>
+              </div>
+            </div>
+          )}
+
+        <SubjectCheckBoxes
           subSlotDict={subSlotDict}
-          options={options}
-          onSubjectSelectChange={onSubjectSelectChange}
+          pickedSubSlotDict={courseToPickableSlotsDict}
+          onChange={onSelectBoxChange}
+          disabledSlots={blockedTimeSlots}
         />
       </div>
-
-      <div className="action-buttons">
-        {RefreshButton}
-        {ShareButton}
-      </div>
-
-      {isEmpty(timeTable)
-        ? <Tutorial />
-        : (
-          <div className="time-table-container">
-            {errorMesssage && CantGenerateTimeTableMessage}
-            <TimeTable
-              time_table={time_table}
-              subTimeSlotDict={timeTable}
-              subSlotDict={subSlotDict}
-              onSlotTap={onTimeSlotClick}
-              blockedTimeSlots={blockedTimeSlots}
-              time_arr={time_arr}
-            />
-            <div>
-              <h2>Registered Credits: {calculateCredits()}</h2>
-            </div>
-          </div>
-        )}
-
-      <SubjectCheckBoxes
-        subSlotDict={subSlotDict}
-        pickedSubSlotDict={courseToPickableSlotsDict}
-        onChange={onSelectBoxChange}
-        disabledSlots={blockedTimeSlots}
-      />
-    </>
+    </div>
   );
 }
 

@@ -1,14 +1,23 @@
 #root {
-  max-width: 1280px;
+  background-color: var(--background-color);
+}
+
+#container-root{
+  display: grid;
+  place-items: center;
   width: 100%;
   padding: 2rem;
-  background-color: var(--background-color);
+}
+#container{
+  max-width: 1280px;
 }
 
 /*Styles for refresh-button, share-button*/
 .action-buttons{
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
+  margin: 5px;
 }
 
 .action-buttons button{

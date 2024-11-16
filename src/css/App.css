@@ -1,26 +1,27 @@
 #root {
+  width: 100%;
+  padding: 2rem;
   background-color: var(--background-color);
 }
 
-#container-root{
-  display: grid;
-  place-items: center;
-  width: 100%;
-  padding: 2rem;
+#container-root {
+  display: block;
 }
-#container{
+#container {
   max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /*Styles for refresh-button, share-button*/
-.action-buttons{
+.action-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin: 5px;
+  margin: 10px;
 }
 
-.action-buttons button{
+.action-buttons button {
   margin: 10px 0 0;
   height: 38px;
   padding: 0 1rem;
@@ -34,7 +35,7 @@
   text-align: center;
 }
 
-#share-button{
+#share-button {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -117,7 +118,7 @@
 
 .subject-block div {
   position: absolute;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   top: 0;
   right: 0;
   padding: 5px;
@@ -160,8 +161,8 @@
   color: var(--search-box-font-color) !important;
 }
 
-.select_subjects__control input{
-  color: var(--search-box-font-color)  !important;
+.select_subjects__control input {
+  color: var(--search-box-font-color) !important;
 }
 
 .select_subjects__multi-value {
@@ -199,35 +200,34 @@
   }
 }
 
-.error-message{
+.error-message {
   display: flex;
   /* flex-direction: column; */
-  gap: .5rem;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   background-color: red;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   width: 100%;
   margin-top: 1rem;
 }
 
-.error-message > i{
+.error-message > i {
   font-size: 2rem; /* To center the icon don't know why this works */
 }
 
 @media screen and (min-width: 768px) {
-  .error-message{
+  .error-message {
     margin: 0;
     width: 50%;
-  } 
+  }
 }
 
-.error-message h2{
+.error-message h2 {
   color: white;
   font-size: medium;
 }
 
-.min-w{
+.min-w {
   min-width: 100px;
 }
-
